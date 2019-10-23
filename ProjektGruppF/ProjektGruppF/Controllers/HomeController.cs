@@ -15,6 +15,7 @@ namespace ProjektGruppF.Controllers
 
         public ActionResult About()
         {
+            //test kommentar Linda
             ViewBag.Message = "Your application description page.";
 
             return View();
