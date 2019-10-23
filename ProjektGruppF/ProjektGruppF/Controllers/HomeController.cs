@@ -19,7 +19,7 @@ namespace ProjektGruppF.Controllers
 
             return View();
         }
-
+        // test kommentar Håkan
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
