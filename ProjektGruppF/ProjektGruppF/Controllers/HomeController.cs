@@ -10,7 +10,7 @@ namespace ProjektGruppF.Controllers
     {//sabrinas testkommentar
         public ActionResult Index()
         {
-            return View();
+            return View();  
         }
 
         public ActionResult About()
