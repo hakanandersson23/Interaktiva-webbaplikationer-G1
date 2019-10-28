@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjektGruppFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="adress" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="customer_freelancer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="freelancer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="freelancer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cv">
+          <Key>
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="cv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="nationality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="drivers_license" Type="varchar" MaxLength="50" />
+          <Property Name="registration_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="education_id" />
+          </Key>
+          <Property Name="education_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="education_name" Type="varchar" MaxLength="50" />
+          <Property Name="university_name" Type="varchar" MaxLength="50" />
+          <Property Name="study_years" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="education_cv">
+          <Key>
+            <PropertyRef Name="education_id" />
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="education_id" Type="int" Nullable="false" />
+          <Property Name="cv_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="expertise">
+          <Key>
+            <PropertyRef Name="expertise_id" />
+          </Key>
+          <Property Name="expertise_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="55" Nullable="false" />
+          <Property Name="rank_expertise_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="expertise_cv">
+          <Key>
+            <PropertyRef Name="expertise_id" />
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="expertise_id" Type="int" Nullable="false" />
+          <Property Name="cv_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="freelancer">
+          <Key>
+            <PropertyRef Name="freelancer_id" />
+          </Key>
+          <Property Name="freelancer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="adress" Type="nvarchar" MaxLength="50" />
+          <Property Name="phonenumber" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cv_id" Type="int" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="language_cv">
+          <Key>
+            <PropertyRef Name="language_id" />
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="language_id" Type="int" Nullable="false" />
+          <Property Name="cv_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Main_abilities">
+          <Key>
+            <PropertyRef Name="main_abilities_id" />
+          </Key>
+          <Property Name="main_abilities_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="main_abilities_cv">
+          <Key>
+            <PropertyRef Name="main_abilities_id" />
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="main_abilities_id" Type="int" Nullable="false" />
+          <Property Name="cv_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rank_expertise">
+          <Key>
+            <PropertyRef Name="rank_expertise_Id" />
+          </Key>
+          <Property Name="rank_expertise_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skill">
+          <Key>
+            <PropertyRef Name="skill_id" />
+          </Key>
+          <Property Name="skill_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="skill_cv">
+          <Key>
+            <PropertyRef Name="skill_id" />
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="skill_id" Type="int" Nullable="false" />
+          <Property Name="cv_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="work_experience">
+          <Key>
+            <PropertyRef Name="work_experience_id" />
+          </Key>
+          <Property Name="work_experience_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employer_name" Type="varchar" MaxLength="255" />
+          <Property Name="job_title" Type="varchar" MaxLength="255" />
+          <Property Name="role" Type="varchar" MaxLength="255" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="cv_id" Type="int" />
+        </EntityType>
+        <Association Name="cv_expertise_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="expertise_cv" Type="Self.expertise_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="expertise_cv">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cv_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="0..1" />
+          <End Role="freelancer" Type="Self.freelancer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="freelancer">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="expertise_id">
+          <End Role="expertise" Type="Self.expertise" Multiplicity="1" />
+          <End Role="expertise_cv" Type="Self.expertise_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="expertise">
+              <PropertyRef Name="expertise_id" />
+            </Principal>
+            <Dependent Role="expertise_cv">
+              <PropertyRef Name="expertise_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__work_expe__cv_id__7E37BEF6">
+          <End Role="cv" Type="Self.cv" Multiplicity="0..1" />
+          <End Role="work_experience" Type="Self.work_experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="work_experience">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="customer_freelancer" Type="Self.customer_freelancer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="customer_freelancer">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cv_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="education_cv" Type="Self.education_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="education_cv">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cv_skill_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="skill_cv" Type="Self.skill_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="skill_cv">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_education_id">
+          <End Role="education" Type="Self.education" Multiplicity="1" />
+          <End Role="education_cv" Type="Self.education_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="education">
+              <PropertyRef Name="education_id" />
+            </Principal>
+            <Dependent Role="education_cv">
+              <PropertyRef Name="education_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_freelancer">
+          <End Role="freelancer" Type="Self.freelancer" Multiplicity="1" />
+          <End Role="customer_freelancer" Type="Self.customer_freelancer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="freelancer">
+              <PropertyRef Name="freelancer_id" />
+            </Principal>
+            <Dependent Role="customer_freelancer">
+              <PropertyRef Name="freelancer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_languages_cv_ToTable">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="language_cv" Type="Self.language_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="language_cv">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_languages_cv_ToTable_1">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="language_cv" Type="Self.language_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="language_cv">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rank_expertise_id">
+          <End Role="rank_expertise" Type="Self.rank_expertise" Multiplicity="1" />
+          <End Role="expertise" Type="Self.expertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rank_expertise">
+              <PropertyRef Name="rank_expertise_Id" />
+            </Principal>
+            <Dependent Role="expertise">
+              <PropertyRef Name="rank_expertise_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_skill_id">
+          <End Role="skill" Type="Self.skill" Multiplicity="1" />
+          <End Role="skill_cv" Type="Self.skill_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skill">
+              <PropertyRef Name="skill_id" />
+            </Principal>
+            <Dependent Role="skill_cv">
+              <PropertyRef Name="skill_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="main_abilities_cv_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="1" />
+          <End Role="main_abilities_cv" Type="Self.main_abilities_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="main_abilities_cv">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="main_abilities_id">
+          <End Role="Main_abilities" Type="Self.Main_abilities" Multiplicity="1" />
+          <End Role="main_abilities_cv" Type="Self.main_abilities_cv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Main_abilities">
+              <PropertyRef Name="main_abilities_id" />
+            </Principal>
+            <Dependent Role="main_abilities_cv">
+              <PropertyRef Name="main_abilities_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjektGruppFModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer_freelancer" EntityType="Self.customer_freelancer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cv" EntityType="Self.cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="education" EntityType="Self.education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="education_cv" EntityType="Self.education_cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expertise" EntityType="Self.expertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expertise_cv" EntityType="Self.expertise_cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="freelancer" EntityType="Self.freelancer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="language" EntityType="Self.language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="language_cv" EntityType="Self.language_cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Main_abilities" EntityType="Self.Main_abilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="main_abilities_cv" EntityType="Self.main_abilities_cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rank_expertise" EntityType="Self.rank_expertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skill" EntityType="Self.skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skill_cv" EntityType="Self.skill_cv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="work_experience" EntityType="Self.work_experience" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="cv_expertise_id" Association="Self.cv_expertise_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="expertise_cv" EntitySet="expertise_cv" />
+          </AssociationSet>
+          <AssociationSet Name="cv_id" Association="Self.cv_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="freelancer" EntitySet="freelancer" />
+          </AssociationSet>
+          <AssociationSet Name="expertise_id" Association="Self.expertise_id">
+            <End Role="expertise" EntitySet="expertise" />
+            <End Role="expertise_cv" EntitySet="expertise_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK__work_expe__cv_id__7E37BEF6" Association="Self.FK__work_expe__cv_id__7E37BEF6">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="work_experience" EntitySet="work_experience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer" Association="Self.FK_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="customer_freelancer" EntitySet="customer_freelancer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cv_id" Association="Self.FK_cv_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="education_cv" EntitySet="education_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cv_skill_id" Association="Self.FK_cv_skill_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="skill_cv" EntitySet="skill_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_education_id" Association="Self.FK_education_id">
+            <End Role="education" EntitySet="education" />
+            <End Role="education_cv" EntitySet="education_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_freelancer" Association="Self.FK_freelancer">
+            <End Role="freelancer" EntitySet="freelancer" />
+            <End Role="customer_freelancer" EntitySet="customer_freelancer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_languages_cv_ToTable" Association="Self.FK_languages_cv_ToTable">
+            <End Role="language" EntitySet="language" />
+            <End Role="language_cv" EntitySet="language_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_languages_cv_ToTable_1" Association="Self.FK_languages_cv_ToTable_1">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="language_cv" EntitySet="language_cv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rank_expertise_id" Association="Self.FK_rank_expertise_id">
+            <End Role="rank_expertise" EntitySet="rank_expertise" />
+            <End Role="expertise" EntitySet="expertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_skill_id" Association="Self.FK_skill_id">
+            <End Role="skill" EntitySet="skill" />
+            <End Role="skill_cv" EntitySet="skill_cv" />
+          </AssociationSet>
+          <AssociationSet Name="main_abilities_cv_id" Association="Self.main_abilities_cv_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="main_abilities_cv" EntitySet="main_abilities_cv" />
+          </AssociationSet>
+          <AssociationSet Name="main_abilities_id" Association="Self.main_abilities_id">
+            <End Role="Main_abilities" EntitySet="Main_abilities" />
+            <End Role="main_abilities_cv" EntitySet="main_abilities_cv" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjektGruppFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phonenumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="freelancer" Relationship="Self.customer_freelancer" FromRole="customer" ToRole="freelancer" />
+        </EntityType>
+        <EntityType Name="cv">
+          <Key>
+            <PropertyRef Name="cv_id" />
+          </Key>
+          <Property Name="cv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="drivers_license" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="registration_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="freelancer" Relationship="Self.cv_id" FromRole="cv" ToRole="freelancer" />
+          <NavigationProperty Name="work_experience" Relationship="Self.FK__work_expe__cv_id__7E37BEF6" FromRole="cv" ToRole="work_experience" />
+          <NavigationProperty Name="education" Relationship="Self.education_cv" FromRole="cv" ToRole="education" />
+          <NavigationProperty Name="expertise" Relationship="Self.expertise_cv" FromRole="cv" ToRole="expertise" />
+          <NavigationProperty Name="language" Relationship="Self.language_cv" FromRole="cv" ToRole="language" />
+          <NavigationProperty Name="Main_abilities" Relationship="Self.main_abilities_cv" FromRole="cv" ToRole="Main_abilities" />
+          <NavigationProperty Name="skill" Relationship="Self.skill_cv" FromRole="cv" ToRole="skill" />
+        </EntityType>
+        <EntityType Name="education">
+          <Key>
+            <PropertyRef Name="education_id" />
+          </Key>
+          <Property Name="education_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="education_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="university_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="study_years" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cv" Relationship="Self.education_cv" FromRole="education" ToRole="cv" />
+        </EntityType>
+        <EntityType Name="expertise">
+          <Key>
+            <PropertyRef Name="expertise_id" />
+          </Key>
+          <Property Name="expertise_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="55" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="rank_expertise_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="rank_expertise" Relationship="Self.FK_rank_expertise_id" FromRole="expertise" ToRole="rank_expertise" />
+          <NavigationProperty Name="cv" Relationship="Self.expertise_cv" FromRole="expertise" ToRole="cv" />
+        </EntityType>
+        <EntityType Name="freelancer">
+          <Key>
+            <PropertyRef Name="freelancer_id" />
+          </Key>
+          <Property Name="freelancer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cv_id" Type="Int32" />
+          <NavigationProperty Name="cv" Relationship="Self.cv_id" FromRole="freelancer" ToRole="cv" />
+          <NavigationProperty Name="customer" Relationship="Self.customer_freelancer" FromRole="freelancer" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cv" Relationship="Self.language_cv" FromRole="language" ToRole="cv" />
+        </EntityType>
+        <EntityType Name="Main_abilities">
+          <Key>
+            <PropertyRef Name="main_abilities_id" />
+          </Key>
+          <Property Name="main_abilities_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cv" Relationship="Self.main_abilities_cv" FromRole="Main_abilities" ToRole="cv" />
+        </EntityType>
+        <EntityType Name="rank_expertise">
+          <Key>
+            <PropertyRef Name="rank_expertise_Id" />
+          </Key>
+          <Property Name="rank_expertise_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="expertise" Relationship="Self.FK_rank_expertise_id" FromRole="rank_expertise" ToRole="expertise" />
+        </EntityType>
+        <EntityType Name="skill">
+          <Key>
+            <PropertyRef Name="skill_id" />
+          </Key>
+          <Property Name="skill_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="cv" Relationship="Self.skill_cv" FromRole="skill" ToRole="cv" />
+        </EntityType>
+        <EntityType Name="work_experience">
+          <Key>
+            <PropertyRef Name="work_experience_id" />
+          </Key>
+          <Property Name="work_experience_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employer_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="job_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="cv_id" Type="Int32" />
+          <NavigationProperty Name="cv" Relationship="Self.FK__work_expe__cv_id__7E37BEF6" FromRole="work_experience" ToRole="cv" />
+        </EntityType>
+        <Association Name="cv_id">
+          <End Role="cv" Type="Self.cv" Multiplicity="0..1" />
+          <End Role="freelancer" Type="Self.freelancer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="freelancer">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__work_expe__cv_id__7E37BEF6">
+          <End Role="cv" Type="Self.cv" Multiplicity="0..1" />
+          <End Role="work_experience" Type="Self.work_experience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cv">
+              <PropertyRef Name="cv_id" />
+            </Principal>
+            <Dependent Role="work_experience">
+              <PropertyRef Name="cv_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rank_expertise_id">
+          <End Role="rank_expertise" Type="Self.rank_expertise" Multiplicity="1" />
+          <End Role="expertise" Type="Self.expertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rank_expertise">
+              <PropertyRef Name="rank_expertise_Id" />
+            </Principal>
+            <Dependent Role="expertise">
+              <PropertyRef Name="rank_expertise_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_freelancer">
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="freelancer" Type="Self.freelancer" Multiplicity="*" />
+        </Association>
+        <Association Name="education_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="*" />
+          <End Role="education" Type="Self.education" Multiplicity="*" />
+        </Association>
+        <Association Name="expertise_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="*" />
+          <End Role="expertise" Type="Self.expertise" Multiplicity="*" />
+        </Association>
+        <Association Name="language_cv">
+          <End Role="language" Type="Self.language" Multiplicity="*" />
+          <End Role="cv" Type="Self.cv" Multiplicity="*" />
+        </Association>
+        <Association Name="main_abilities_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="*" />
+          <End Role="Main_abilities" Type="Self.Main_abilities" Multiplicity="*" />
+        </Association>
+        <Association Name="skill_cv">
+          <End Role="cv" Type="Self.cv" Multiplicity="*" />
+          <End Role="skill" Type="Self.skill" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProjektGruppFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customer" EntityType="Self.customer" />
+          <EntitySet Name="cv" EntityType="Self.cv" />
+          <EntitySet Name="education" EntityType="Self.education" />
+          <EntitySet Name="expertise" EntityType="Self.expertise" />
+          <EntitySet Name="freelancer" EntityType="Self.freelancer" />
+          <EntitySet Name="language" EntityType="Self.language" />
+          <EntitySet Name="Main_abilities" EntityType="Self.Main_abilities" />
+          <EntitySet Name="rank_expertise" EntityType="Self.rank_expertise" />
+          <EntitySet Name="skill" EntityType="Self.skill" />
+          <EntitySet Name="work_experience" EntityType="Self.work_experience" />
+          <AssociationSet Name="cv_id" Association="Self.cv_id">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="freelancer" EntitySet="freelancer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__work_expe__cv_id__7E37BEF6" Association="Self.FK__work_expe__cv_id__7E37BEF6">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="work_experience" EntitySet="work_experience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rank_expertise_id" Association="Self.FK_rank_expertise_id">
+            <End Role="rank_expertise" EntitySet="rank_expertise" />
+            <End Role="expertise" EntitySet="expertise" />
+          </AssociationSet>
+          <AssociationSet Name="customer_freelancer" Association="Self.customer_freelancer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="freelancer" EntitySet="freelancer" />
+          </AssociationSet>
+          <AssociationSet Name="education_cv" Association="Self.education_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="education" EntitySet="education" />
+          </AssociationSet>
+          <AssociationSet Name="expertise_cv" Association="Self.expertise_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="expertise" EntitySet="expertise" />
+          </AssociationSet>
+          <AssociationSet Name="language_cv" Association="Self.language_cv">
+            <End Role="language" EntitySet="language" />
+            <End Role="cv" EntitySet="cv" />
+          </AssociationSet>
+          <AssociationSet Name="main_abilities_cv" Association="Self.main_abilities_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="Main_abilities" EntitySet="Main_abilities" />
+          </AssociationSet>
+          <AssociationSet Name="skill_cv" Association="Self.skill_cv">
+            <End Role="cv" EntitySet="cv" />
+            <End Role="skill" EntitySet="skill" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjektGruppFModelStoreContainer" CdmEntityContainer="ProjektGruppFEntities">
+          <EntitySetMapping Name="customer">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cv">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.cv">
+              <MappingFragment StoreEntitySet="cv">
+                <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="drivers_license" ColumnName="drivers_license" />
+                <ScalarProperty Name="registration_date" ColumnName="registration_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="education">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.education">
+              <MappingFragment StoreEntitySet="education">
+                <ScalarProperty Name="education_id" ColumnName="education_id" />
+                <ScalarProperty Name="education_name" ColumnName="education_name" />
+                <ScalarProperty Name="university_name" ColumnName="university_name" />
+                <ScalarProperty Name="study_years" ColumnName="study_years" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="expertise">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.expertise">
+              <MappingFragment StoreEntitySet="expertise">
+                <ScalarProperty Name="expertise_id" ColumnName="expertise_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="rank_expertise_id" ColumnName="rank_expertise_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="freelancer">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.freelancer">
+              <MappingFragment StoreEntitySet="freelancer">
+                <ScalarProperty Name="freelancer_id" ColumnName="freelancer_id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="language">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.language">
+              <MappingFragment StoreEntitySet="language">
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Main_abilities">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.Main_abilities">
+              <MappingFragment StoreEntitySet="Main_abilities">
+                <ScalarProperty Name="main_abilities_id" ColumnName="main_abilities_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rank_expertise">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.rank_expertise">
+              <MappingFragment StoreEntitySet="rank_expertise">
+                <ScalarProperty Name="rank_expertise_Id" ColumnName="rank_expertise_Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skill">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.skill">
+              <MappingFragment StoreEntitySet="skill">
+                <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_experience">
+            <EntityTypeMapping TypeName="ProjektGruppFModel.work_experience">
+              <MappingFragment StoreEntitySet="work_experience">
+                <ScalarProperty Name="work_experience_id" ColumnName="work_experience_id" />
+                <ScalarProperty Name="employer_name" ColumnName="employer_name" />
+                <ScalarProperty Name="job_title" ColumnName="job_title" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="customer_freelancer" TypeName="ProjektGruppFModel.customer_freelancer" StoreEntitySet="customer_freelancer">
+            <EndProperty Name="customer">
+              <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+            </EndProperty>
+            <EndProperty Name="freelancer">
+              <ScalarProperty Name="freelancer_id" ColumnName="freelancer_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="education_cv" TypeName="ProjektGruppFModel.education_cv" StoreEntitySet="education_cv">
+            <EndProperty Name="cv">
+              <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+            </EndProperty>
+            <EndProperty Name="education">
+              <ScalarProperty Name="education_id" ColumnName="education_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="expertise_cv" TypeName="ProjektGruppFModel.expertise_cv" StoreEntitySet="expertise_cv">
+            <EndProperty Name="cv">
+              <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+            </EndProperty>
+            <EndProperty Name="expertise">
+              <ScalarProperty Name="expertise_id" ColumnName="expertise_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="language_cv" TypeName="ProjektGruppFModel.language_cv" StoreEntitySet="language_cv">
+            <EndProperty Name="language">
+              <ScalarProperty Name="language_id" ColumnName="language_id" />
+            </EndProperty>
+            <EndProperty Name="cv">
+              <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="main_abilities_cv" TypeName="ProjektGruppFModel.main_abilities_cv" StoreEntitySet="main_abilities_cv">
+            <EndProperty Name="cv">
+              <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+            </EndProperty>
+            <EndProperty Name="Main_abilities">
+              <ScalarProperty Name="main_abilities_id" ColumnName="main_abilities_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="skill_cv" TypeName="ProjektGruppFModel.skill_cv" StoreEntitySet="skill_cv">
+            <EndProperty Name="cv">
+              <ScalarProperty Name="cv_id" ColumnName="cv_id" />
+            </EndProperty>
+            <EndProperty Name="skill">
+              <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
