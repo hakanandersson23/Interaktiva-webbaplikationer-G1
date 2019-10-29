@@ -11,6 +11,8 @@ using ProjektGruppF.Models;
 namespace ProjektGruppF.Controllers
 {
     public class freelancersController : Controller
+
+        //TESTLinda
     {
         private ProjektGruppFEntities db = new ProjektGruppFEntities();
 
