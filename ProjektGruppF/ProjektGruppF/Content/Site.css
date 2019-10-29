@@ -1,6 +1,10 @@
-﻿body {
+﻿html{
+    position: relative;
+    min-height: 100%;
+}
+body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +25,29 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.cvList {
+    float: left;
+    padding: 1%;
+    width: 100%;
+    margin-top: 1%;
+    background-color: #f2f2f2;
+    height: 200px;
+}
+.cvList2 {
+    float: left;
+    padding: 1%;
+    width: 100%;
+    margin-top: 1%;
+    background-color: #cce3f0;
+    height: 200px;
+}
+#rightSelect{
+    width: 100%;
+}
+#centerSelect{
+    float: left;
+    margin-left: 40%;
+    margin-right: 40%;
 }
