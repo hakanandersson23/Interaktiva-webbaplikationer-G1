@@ -10,114 +10,107 @@ using ProjektGruppF.Models;
 
 namespace ProjektGruppF.Controllers
 {
-    public class freelancersController : Controller
-
-        //TESTLinda
+    public class cvFreelancerController : Controller
     {
         private ProjektGruppFEntities db = new ProjektGruppFEntities();
 
-        // GET: freelancers
+        // GET: cvFreelancer
         public ActionResult Index()
         {
-            var freelancer = db.freelancer.Include(f => f.cv);
-            return View(freelancer.ToList());
+            return View(db.cv.ToList());
         }
 
-        // GET: freelancers/Details/5
+        // GET: cvFreelancer/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            freelancer freelancer = db.freelancer.Find(id);
-            if (freelancer == null)
+            cv cv = db.cv.Find(id);
+            if (cv == null)
             {
                 return HttpNotFound();
             }
-            return View(freelancer);
+            return View(cv);
         }
 
-        // GET: freelancers/Create
+        // GET: cvFreelancer/Create
         public ActionResult Create()
         {
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality");
             return View();
         }
 
-        // POST: freelancers/Create
+        // POST: cvFreelancer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,cv_id")] freelancer freelancer)
+        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
         {
             if (ModelState.IsValid)
             {
-                db.freelancer.Add(freelancer);
+                db.cv.Add(cv);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
-            return View(freelancer);
+            return View(cv);
         }
 
-        // GET: freelancers/Edit/5
+        // GET: cvFreelancer/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            freelancer freelancer = db.freelancer.Find(id);
-            if (freelancer == null)
+            cv cv = db.cv.Find(id);
+            if (cv == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
-            return View(freelancer);
+            return View(cv);
         }
 
-        // POST: freelancers/Edit/5
+        // POST: cvFreelancer/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,cv_id")] freelancer freelancer)
+        public ActionResult Edit([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(freelancer).State = EntityState.Modified;
+                db.Entry(cv).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
-            return View(freelancer);
+            return View(cv);
         }
 
-        // GET: freelancers/Delete/5
+        // GET: cvFreelancer/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            freelancer freelancer = db.freelancer.Find(id);
-            if (freelancer == null)
+            cv cv = db.cv.Find(id);
+            if (cv == null)
             {
                 return HttpNotFound();
             }
-            return View(freelancer);
+            return View(cv);
         }
 
-        // POST: freelancers/Delete/5
+        // POST: cvFreelancer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            freelancer freelancer = db.freelancer.Find(id);
-            db.freelancer.Remove(freelancer);
+            cv cv = db.cv.Find(id);
+            db.cv.Remove(cv);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
