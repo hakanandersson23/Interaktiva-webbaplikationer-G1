@@ -147,6 +147,7 @@
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
+    <Compile Include="Controllers\viewCVController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,7 @@
     <Compile Include="Models\rank_expertise.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\savedFreelancersM.cs" />
     <Compile Include="Models\skill.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,11 +273,13 @@
     <Content Include="Views\cvFreelancer\Edit.cshtml" />
     <Content Include="Views\cvFreelancer\Index.cshtml" />
     <Content Include="Views\savedFreelancers\Index.cshtml" />
+    <Content Include="Views\viewCV\Index.cshtml" />
     <Content Include="Views\CV_Freelancer\AddOrEdit.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
