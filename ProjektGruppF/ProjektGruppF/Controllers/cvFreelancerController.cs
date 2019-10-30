@@ -34,9 +34,9 @@ namespace ProjektGruppF.Controllers
             }
             return View(cv);
         }
-
-        // GET: cvFreelancer/Create
-        public ActionResult Create()
+         
+            // GET: cvFreelancer/Create
+            public ActionResult Create()
         {
            
             return View();
@@ -48,6 +48,8 @@ namespace ProjektGruppF.Controllers
         //    get { return (_returndate == DateTime.MinValue) ? DateTime.Now : _returndate; }
         //    set { _returndate = value; }
         //}
+
+
         // POST: cvFreelancer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,30 +67,11 @@ namespace ProjektGruppF.Controllers
 
 
             }
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        db.cv.Add(cv);
-            //        db.SaveChanges();
-            //        return RedirectToAction("Index");
-
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    ViewData[""] = ex.Message;
-            //}
-            //finally { }
-
-            ////ModelState.Clear(); nog niet klaar
-            ////ViewBag.SuccesMessage = "CV Registration succesfull.";
 
             return View(cv);
         }
 
+        
         // GET: cvFreelancer/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -120,6 +103,7 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
+        
         // GET: cvFreelancer/Delete/5
         public ActionResult Delete(int? id)
         {
