@@ -1,4 +1,4 @@
-﻿@model ProjektGruppF.Models.freelancer
+﻿@model List<ProjektGruppF.Models.savedFreelancersM>
 
 <h2>List with your saved freelancers</h2>
 
@@ -30,14 +30,10 @@
 </select>
 
 <section class="cvList">
-    <p>Frilansare 1</p>
-</section>
-<section class="cvList2">
-    <p>Frilansare 2</p>
-</section>
-<section class="cvList">
-    <p>Frilansare 3</p>
-</section>
-<section class="cvList2">
-    <p>Frilansare 4</p>
+    @foreach (var free in Model)
+    {
+    <p>Firstname: @free.firstname.ToUpper() Lastname: @free.lastname.ToUpper()</p>
+    <p>Adress: @free.adress Phonenumber: @free.phonenumber Email: @free.email </p>
+    }
+    <input id="viewCV" type="button" value="View CV" onclick="location.href='@Url.Action("Index", "viewCV")'" />
 </section>
