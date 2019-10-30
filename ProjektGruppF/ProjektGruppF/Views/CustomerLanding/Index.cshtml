@@ -1,0 +1,54 @@
+﻿@model List<ProjektGruppF.ViewModels.FreelanceCardVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sidan ska visa alla frilansare cvkort</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+                <img src="" class="card-img-top" alt="A picture of the freelancer">
+                <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                    <h5 class="card-title">@item.Name @item.Lastname</h5>
+                    <p class="card-text">
+                        Age: @item.Age <br>
+                        Nationality: @item.Nationality  <br>
+                        Language: @item.Language  <br>
+                        Skill: @item.Skill  <br>
+                        Expertise: @item.Expertise  <br>
+                        Rank: @item.Rank
+                    </p>
+                    <a href="#" class="btn btn-primary">View freelancer</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+@*
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <div class="card" style="background:palevioletred">
+                    <div class="card-body" style="background:cornflowerblue">
+                        <h4 class="card-title">@item.Name @item.Lastname</h4>
+                        <p class="card-text">
+                            Age: @item.Age <br>
+                            Nationality: @item.Nationality  <br>
+                            Language: @item.Language  <br>
+                            Skill: @item.Skill  <br>
+                            Expertise: @item.Expertise  <br>
+                            Rank: @item.Rank
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+*@
