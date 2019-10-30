@@ -27,8 +27,9 @@ namespace ProjektGruppF.Models
             this.Main_abilities = new HashSet<Main_abilities>();
             this.skill = new HashSet<skill>();
         }
-    
-        public virtual int cv_id { get; set; }
+
+        
+        public int cv_id { get; set; }
         //public System.DateTime birthday { get; set; }
         [DisplayName("Date of Birth")]
         public DateTime birthday { get; set; }
