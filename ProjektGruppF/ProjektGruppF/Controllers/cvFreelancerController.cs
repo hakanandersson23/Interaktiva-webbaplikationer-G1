@@ -38,6 +38,7 @@ namespace ProjektGruppF.Controllers
         // GET: cvFreelancer/Create
         public ActionResult Create()
         {
+           
             return View();
         }
 
@@ -48,6 +49,7 @@ namespace ProjektGruppF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
         {
+            cv.registration_date = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);

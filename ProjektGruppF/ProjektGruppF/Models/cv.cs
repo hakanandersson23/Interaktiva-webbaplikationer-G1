@@ -12,6 +12,7 @@ namespace ProjektGruppF.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class cv
     {
@@ -32,8 +33,11 @@ namespace ProjektGruppF.Models
         public string nationality { get; set; }
         public string drivers_license { get; set; }
         public System.DateTime registration_date { get; set; }
+       
         [DisplayName("Education")]
         public string Education { get; set; }
+        [DisplayName("Language")]
+        public string Language { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<freelancer> freelancer { get; set; }
