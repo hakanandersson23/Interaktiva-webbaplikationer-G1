@@ -29,11 +29,22 @@
     <option value="one">1</option>
 </select>
 
-<section class="cvList">
-    @foreach (var free in Model)
+<div class="row">
+    @foreach (var item in Model)
     {
-    <p>Firstname: @free.firstname.ToUpper() Lastname: @free.lastname.ToUpper()</p>
-    <p>Adress: @free.adress Phonenumber: @free.phonenumber Email: @free.email </p>
+        <div class="col-sm-3">
+            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+                <img src="" class="card-img-top" alt="A picture of the freelancer">
+                <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                    <h5 class="card-title">@item.firstname.ToUpper() @item.lastname.ToUpper()</h5>
+                    <p class="card-text">
+                        Adress: @item.adress  <br>
+                        Phonenumber: @item.phonenumber  <br>
+                        Email: @item.email  <br>
+                    </p>
+                    <a href="@Url.Action("Index", "viewCV")" class="btn btn-primary">View CV</a>
+                </div>
+            </div>
+        </div>
     }
-    <input id="viewCV" type="button" value="View CV" onclick="location.href='@Url.Action("Index", "viewCV")'" />
-</section>
+</div>
