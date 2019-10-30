@@ -144,6 +144,7 @@
     <Compile Include="Controllers\cvFreelancerController.cs" />
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,16 +262,13 @@
     <Content Include="Views\freelancers\Details.cshtml" />
     <Content Include="Views\freelancers\Edit.cshtml" />
     <Content Include="Views\freelancers\Index.cshtml" />
-
     <Content Include="Views\cvFreelancer\Create.cshtml" />
     <Content Include="Views\cvFreelancer\Delete.cshtml" />
     <Content Include="Views\cvFreelancer\Details.cshtml" />
     <Content Include="Views\cvFreelancer\Edit.cshtml" />
     <Content Include="Views\cvFreelancer\Index.cshtml" />
     <Content Include="Views\savedFreelancers\Index.cshtml" />
-
-    
-
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
