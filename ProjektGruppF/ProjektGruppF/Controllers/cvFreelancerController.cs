@@ -55,7 +55,7 @@ namespace ProjektGruppF.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
         {
-            cv.registration_date = DateTime.Now;
+            //cv.registration_date = DateTime.Now;
 
             if (ModelState.IsValid)
             {
@@ -63,10 +63,28 @@ namespace ProjektGruppF.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
-                
+
             }
-            //ModelState.Clear(); nog niet klaar
-            //ViewBag.SuccesMessage = "CV Registration succesfull.";
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        db.cv.Add(cv);
+            //        db.SaveChanges();
+            //        return RedirectToAction("Index");
+
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    ViewData[""] = ex.Message;
+            //}
+            //finally { }
+
+            ////ModelState.Clear(); nog niet klaar
+            ////ViewBag.SuccesMessage = "CV Registration succesfull.";
 
             return View(cv);
         }
