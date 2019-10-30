@@ -17,17 +17,17 @@ namespace ProjektGruppF.Controllers
             return View(cvModel);
         }
 
-        [HttpPost]
-        public ActionResult AddOrEdit(cv cvModel) //sparar värden i tabell cv
-        {
-            using(ProjektGruppFEntities dbModel = new ProjektGruppFEntities())
-            {
-                dbModel.cv.Add(cvModel);  //cvs??
-                dbModel.SaveChanges();
-            }
-            ModelState.Clear();
-            ViewBag.SuccesMessage = "CV Registration succesfull.";
-            return View("AddOrEdit", new cv()); //create new user
-        }
+       // [HttpPost]
+    //    public ActionResult AddOrEdit(cv cvModel) //sparar värden i tabell cv
+    //    {
+    //        using(ProjektGruppFEntities dbModel = new ProjektGruppFEntities())
+    //        {
+    //            dbModel.cv.Add(cvModel);  //cvs??
+    //            dbModel.SaveChanges();
+    //        }
+    //        ModelState.Clear();
+    //        ViewBag.SuccesMessage = "CV Registration succesfull.";
+    //        return View("AddOrEdit", new cv()); //create new user
+    //    }
     }
 }
