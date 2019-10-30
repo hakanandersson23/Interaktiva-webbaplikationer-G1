@@ -29,11 +29,14 @@ namespace ProjektGruppF.Models
         }
     
         public int cv_id { get; set; }
-        public System.DateTime birthday { get; set; }
+        //public System.DateTime birthday { get; set; }
+        public DateTime birthday { get; set; }
         public string nationality { get; set; }
         public string drivers_license { get; set; }
-        public System.DateTime registration_date { get; set; }
-       
+        //public System.DateTime registration_date { get; set; }
+        public DateTime registration_date { get; set; }
+
+
         [DisplayName("Education")]
         public string Education { get; set; }
         [DisplayName("Language")]

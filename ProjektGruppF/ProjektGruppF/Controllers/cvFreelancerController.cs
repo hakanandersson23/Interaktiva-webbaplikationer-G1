@@ -42,6 +42,12 @@ namespace ProjektGruppF.Controllers
             return View();
         }
 
+        //private DateTime _returndate = DateTime.MinValue;
+        //public DateTime registration_date
+        //{
+        //    get { return (_returndate == DateTime.MinValue) ? DateTime.Now : _returndate; }
+        //    set { _returndate = value; }
+        //}
         // POST: cvFreelancer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -50,12 +56,17 @@ namespace ProjektGruppF.Controllers
         public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
         {
             cv.registration_date = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
+                
             }
+            //ModelState.Clear(); nog niet klaar
+            //ViewBag.SuccesMessage = "CV Registration succesfull.";
 
             return View(cv);
         }
