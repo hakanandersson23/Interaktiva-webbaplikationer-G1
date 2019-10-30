@@ -15,5 +15,7 @@ namespace ProjektGruppF.ViewModels
         public string drivers_license { get; set; }
         //public System.DateTime registration_date { get; set; }
         public DateTime registration_date { get; set; }
+
+        public string NameOfEducationalInstitution { get; set; }
     }
 }
