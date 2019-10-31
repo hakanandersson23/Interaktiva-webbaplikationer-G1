@@ -26,17 +26,6 @@
 
 
 @*
-
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-sm-3">
-            <div class="card" style="margin-bottom:20px; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
-                <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:auto; width:100%; ">
-                <div class="card-header" >
-                    <h5 class="card-title">@item.Name @item.Lastname</h5>
-                </div>
-                <div class="card-body" style="padding:1.25rem; ">
                     <p class="card-text">
                         Age: @item.Age <br>
                         Nationality: @item.Nationality  <br>
@@ -46,25 +35,4 @@
                         Rank: @item.Rank
                     </p>
                //     <a href="#" class="btn btn-primary">View freelancer</a> //
-                </div>
-            </div>
-        </div>
-    }
-
-</div>
     *@
-
-@* ******* Alternativ2**********
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-4">
-                <div class="card" style="background:palevioletred">
-                    <div class="card-body" style="background:cornflowerblue">
-
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-*@
