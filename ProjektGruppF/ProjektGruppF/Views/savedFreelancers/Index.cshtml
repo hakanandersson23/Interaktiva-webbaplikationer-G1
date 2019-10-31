@@ -1,24 +1,24 @@
-﻿@model List<ProjektGruppF.Models.savedFreelancersM>
+﻿@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
 
-<h2>List with your saved freelancers</h2>
+<h2>These are your saved freelancers</h2>
 
 <p>Filter your search by choosing desired skill, expertise or rank in the drop-down boxes below.</p>
 <select id="leftSelect">
-    <option value="programming">Programmer</option>
-    <option value="webDeveloping">Web developer</option>
-    <option value="databases">Database administrator</option>
-    <option value="mobile_application_developing">Mobile application developer</option>
-    <option value="usability_testing">Usability expert</option>
-    <option value="logo_designing">Logo designer</option>
+    @foreach (var item in Model)
+    {
+        <option value="allSkills">@item.Skillname</option>
+    }
 </select>
 
 <select id="centerSelect">
+    
     <option value="programming">C#</option>
-    <option value="webDeveloping">Web developer</option>
+    
+    @*<option value="webDeveloping">Web developer</option>
     <option value="databases">Database administrator</option>
     <option value="mobile_application_developing">Mobile application developer</option>
     <option value="usability_testing">Usability expert</option>
-    <option value="logo_designing">Logo designer</option>
+    <option value="logo_designing">Logo designer</option>*@
 </select>
 
 <select id="rightSelect">
@@ -33,14 +33,14 @@
     @foreach (var item in Model)
     {
         <div class="col-sm-3">
-            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
                 <img src="" class="card-img-top" alt="A picture of the freelancer">
                 <div class="card-body" style="padding:1.25rem; background:lightblue;">
-                    <h5 class="card-title">@item.firstname.ToUpper() @item.lastname.ToUpper()</h5>
+                    <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
                     <p class="card-text">
-                        Adress: @item.adress  <br>
-                        Phonenumber: @item.phonenumber  <br>
-                        Email: @item.email  <br>
+                        Adress: @item.Adress  <br>
+                        Phonenumber: @item.Phonenumber  <br>
+                        Email: @item.Email  <br>
                     </p>
                     <a href="@Url.Action("Index", "viewCV")" class="btn btn-primary">View CV</a>
                 </div>
