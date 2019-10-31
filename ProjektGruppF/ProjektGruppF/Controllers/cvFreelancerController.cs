@@ -63,9 +63,50 @@ namespace ProjektGruppF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        {
+            //cv.registration_date = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                db.cv.Add(cv);
+                db.SaveChanges();             
+                //ViewBag.SuccessMessage = "Registration Successful.";
+                return RedirectToAction("Index");//conformation?
+
+
+            }
+
+            return View(cv);
+        }
+        //public ActionResult Create([Bind(Include = "freelancer, birthday,nationality,drivers_license,registration_date")] cv cv, freelancer freelancer_id)//added freelancer för att binda ihop
         //{
         //    //cv.registration_date = DateTime.Now;
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        //db.freelancer.Add(cv_id)
+                
+        //        db.cv.Add(cv);
+        //        db.SaveChanges();
+        //        ModelState.Clear();
+        //        ViewBag.SuccessMessage = "Registration Successful.";
+        //        return RedirectToAction("Index");//conformation?
+
+
+        //    }
+
+        //    return View(cv);
+        //}
+        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)//dropdown value is saved inte färdigt
+        //{
+        //    //cv.registration_date = DateTime.Now;
+        //    var model = new cvFreelancer
+        //    {
+
+        //        Drivers_licenseList = new SelectList(db.cv, "yes", "no")
+        //    };
+
 
         //    if (ModelState.IsValid)
         //    {
@@ -79,22 +120,22 @@ namespace ProjektGruppF.Controllers
         //    return View(cv);
         //}
 
-        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language) /*save in multiple tables inte färdigt*/
-        {
-            
-            if (ModelState.IsValid)
-            {
+        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language) /*save in multiple tables inte färdigt*/
+        //{
 
-                db.cv.Add(cv);
-                db.language.Add(language);
-                db.SaveChanges();
-                return RedirectToAction("Index");//conformation?
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        db.cv.Add(cv);
+        //        db.language.Add(language);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");//conformation?
 
 
-            }
+        //    }
 
-            return View(cv);
-        }
+        //    return View(cv);
+        //}
 
         // GET: cvFreelancer/Edit/5
         public ActionResult Edit(int? id)

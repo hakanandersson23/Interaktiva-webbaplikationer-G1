@@ -36,7 +36,12 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.drivers_license, new { htmlAttributes = new { @class = "form-control" } })*@
                 @*@Html.ValidationMessageFor(model => model.drivers_license, "", new { @class = "text-danger" })*@
-                <fieldset>
+
+                @*@Html.DropDownList("Drivers license Options", new List<SelectListItem>
+     { new SelectListItem { Text = "yes", Value = "1", Selected=true},
+       new SelectListItem { Text = "no", Value = "2"},
+       }, "Please select option")*@
+                <fieldset id="Drivers _license">
                     <select id="Fdrivers_license" required>
                         <option value="">-select option-</option>
                         <option value="yes">yes</option>
