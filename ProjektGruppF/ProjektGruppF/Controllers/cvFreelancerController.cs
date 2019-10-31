@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
+using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
@@ -34,57 +35,63 @@ namespace ProjektGruppF.Controllers
             }
             return View(cv);
         }
-
-        // GET: cvFreelancer/Create
-        public ActionResult Create()
+         
+            // GET: cvFreelancer/Create
+            public ActionResult Create()
         {
            
             return View();
         }
 
+        public ActionResult Conformation()
+        {
+
+            return View();
+        }
         //private DateTime _returndate = DateTime.MinValue;
         //public DateTime registration_date
         //{
         //    get { return (_returndate == DateTime.MinValue) ? DateTime.Now : _returndate; }
         //    set { _returndate = value; }
         //}
+
+
         // POST: cvFreelancer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
-        {
-            //cv.registration_date = DateTime.Now;
+        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        //{
+        //    //cv.registration_date = DateTime.Now;
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.cv.Add(cv);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");//conformation?
+
+
+        //    }
+
+        //    return View(cv);
+        //}
+
+        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language) /*save in multiple tables inte färdigt*/
+        {
+            
             if (ModelState.IsValid)
             {
+
                 db.cv.Add(cv);
+                db.language.Add(language);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index");//conformation?
 
 
             }
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        db.cv.Add(cv);
-            //        db.SaveChanges();
-            //        return RedirectToAction("Index");
-
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    ViewData[""] = ex.Message;
-            //}
-            //finally { }
-
-            ////ModelState.Clear(); nog niet klaar
-            ////ViewBag.SuccesMessage = "CV Registration succesfull.";
 
             return View(cv);
         }
@@ -120,6 +127,7 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
+        
         // GET: cvFreelancer/Delete/5
         public ActionResult Delete(int? id)
         {
