@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel;
 
 namespace ProjektGruppF.ViewModels
 {
@@ -34,7 +35,7 @@ namespace ProjektGruppF.ViewModels
        
         public string Skill { get; set; }
 
-        
+        [DisplayName("Language")]
         public string Language { get; set; }
     }
 }

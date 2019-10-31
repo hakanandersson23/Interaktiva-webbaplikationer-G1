@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
+using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
@@ -42,6 +43,11 @@ namespace ProjektGruppF.Controllers
             return View();
         }
 
+        public ActionResult Conformation()
+        {
+
+            return View();
+        }
         //private DateTime _returndate = DateTime.MinValue;
         //public DateTime registration_date
         //{
@@ -53,17 +59,36 @@ namespace ProjektGruppF.Controllers
         // POST: cvFreelancer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
-        {
-            //cv.registration_date = DateTime.Now;
+        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        //{
+        //    //cv.registration_date = DateTime.Now;
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.cv.Add(cv);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");//conformation?
+
+
+        //    }
+
+        //    return View(cv);
+        //}
+
+        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language) /*save in multiple tables inte färdigt*/
+        {
+            
             if (ModelState.IsValid)
             {
+
                 db.cv.Add(cv);
+                db.language.Add(language);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index");//conformation?
 
 
             }
@@ -71,7 +96,6 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
-        
         // GET: cvFreelancer/Edit/5
         public ActionResult Edit(int? id)
         {

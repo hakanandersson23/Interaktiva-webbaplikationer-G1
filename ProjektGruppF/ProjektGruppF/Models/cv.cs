@@ -79,7 +79,7 @@ namespace ProjektGruppF.Models
         public virtual ICollection<expertise> expertise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-        [DisplayName("Language")]
+        //[DisplayName("Language")]
         public virtual ICollection<language> language { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

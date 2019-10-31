@@ -273,6 +273,7 @@
     <Content Include="Views\cvFreelancer\Index.cshtml" />
     <Content Include="Views\savedFreelancers\Index.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
+    <Content Include="Views\cvFreelancer\Conformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
