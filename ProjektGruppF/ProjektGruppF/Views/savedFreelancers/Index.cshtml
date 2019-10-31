@@ -1,5 +1,9 @@
 ﻿@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
 
+@{ 
+    ViewBag.Title = "Index";
+}
+
 <h2>These are your saved freelancers</h2>
 
 <p>Filter your search by choosing desired skill, expertise or rank in the drop-down boxes below.</p>
@@ -13,12 +17,7 @@
 <select id="centerSelect">
     
     <option value="programming">C#</option>
-    
-    @*<option value="webDeveloping">Web developer</option>
-    <option value="databases">Database administrator</option>
-    <option value="mobile_application_developing">Mobile application developer</option>
-    <option value="usability_testing">Usability expert</option>
-    <option value="logo_designing">Logo designer</option>*@
+
 </select>
 
 <select id="rightSelect">
@@ -38,7 +37,7 @@
                 <div class="card-body" style="padding:1.25rem; background:lightblue;">
                     <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
                     <p class="card-text">
-                        Adress: @item.Adress  <br>
+                        Adress: @item.Adress)  <br>
                         Phonenumber: @item.Phonenumber  <br>
                         Email: @item.Email  <br>
                     </p>

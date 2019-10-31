@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using ProjektGruppF.Models;
@@ -15,6 +17,6 @@ namespace ProjektGruppF.ViewModels
         public string Email { get; set; }
         public string Skillname { get; set; }
         public string Expertisename { get; set; }  
-        public string ExpertiseRank { get; set; }  
+        public int ExpertiseRank { get; set; } 
     }
 }

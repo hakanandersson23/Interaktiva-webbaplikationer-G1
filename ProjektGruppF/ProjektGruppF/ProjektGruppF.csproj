@@ -196,6 +196,7 @@
     <Compile Include="Models\skill.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewCVOperations.cs" />
     <Compile Include="Models\work_experience.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
