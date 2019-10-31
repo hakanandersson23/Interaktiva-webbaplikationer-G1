@@ -16,7 +16,8 @@ namespace ProjektGruppF.Controllers
         public ActionResult Index()
         {
             FreelancerCardOperations flc = new FreelancerCardOperations();
-            return View(flc.GetCards());
+            /*return View(flc.GetCards());*/
+            return View(flc.FreelancercardVMList());
         }
     }
 }

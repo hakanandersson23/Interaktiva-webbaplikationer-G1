@@ -1,4 +1,4 @@
-﻿@model ProjektGruppF.Models.freelancer
+﻿@model List<ProjektGruppF.Models.savedFreelancersM>
 
 <h2>List with your saved freelancers</h2>
 
@@ -29,15 +29,22 @@
     <option value="one">1</option>
 </select>
 
-<section class="cvList">
-    <p>Frilansare 1</p>
-</section>
-<section class="cvList2">
-    <p>Frilansare 2</p>
-</section>
-<section class="cvList">
-    <p>Frilansare 3</p>
-</section>
-<section class="cvList2">
-    <p>Frilansare 4</p>
-</section>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+                <img src="" class="card-img-top" alt="A picture of the freelancer">
+                <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                    <h5 class="card-title">@item.firstname.ToUpper() @item.lastname.ToUpper()</h5>
+                    <p class="card-text">
+                        Adress: @item.adress  <br>
+                        Phonenumber: @item.phonenumber  <br>
+                        Email: @item.email  <br>
+                    </p>
+                    <a href="@Url.Action("Index", "viewCV")" class="btn btn-primary">View CV</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

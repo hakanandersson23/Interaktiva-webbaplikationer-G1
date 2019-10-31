@@ -6,17 +6,11 @@ using System.Web.Mvc;
 
 namespace ProjektGruppF.Controllers
 {
-    public class LoginController : Controller
+    public class viewCVController : Controller
     {
-        // GET: Login
+        // GET: viewCV
         public ActionResult Index()
         {
-            return View();
-        }
-        
-        public ActionResult Login(string message)
-        {
-            ViewBag.message = message;
             return View();
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjektGruppF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace ProjektGruppF.Controllers
         // GET: savedFreelancers
         public ActionResult Index()
         {
-            return View();
+            savedFreelancersM sf = new savedFreelancersM();
+            return View(sf.SavefreeMList());
         }
     }
 }
