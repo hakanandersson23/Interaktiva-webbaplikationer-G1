@@ -9,11 +9,7 @@ namespace ProjektGruppF.Models
 {
     public class FreelancerCardOperations
     {
-        public List<FreelanceCardVM> fc = new List<FreelanceCardVM>
-        {
-            new FreelanceCardVM{Name="Erik", Lastname="Oberg"},
-            new FreelanceCardVM{Name="Eva", Lastname="Morlind"}
-        };
+        /*
 
         public List<FreelanceCardVM> fcList = new List<FreelanceCardVM>
                 {
@@ -23,12 +19,48 @@ namespace ProjektGruppF.Models
                     new FreelanceCardVM{Name="Joe", Lastname="Jooe", Age=23 , Nationality="Swedish", Language="Swedish", Skill="Programming",Expertise="C#",Rank=4},
                     new FreelanceCardVM{Name="Ida", Lastname="Idda", Age=34 , Nationality="Finnish", Language="Finnish", Skill="Programming",Expertise="C#",Rank=1},
                     new FreelanceCardVM{Name="Ola", Lastname="Olla", Age=51 , Nationality="Norwegian", Language="Norwegian", Skill="Programming",Expertise="C#",Rank=2}
-                };
-
+                };*/
+        /*
         public List<FreelanceCardVM> GetCards()
         {
             return fcList;
+        }*/
+
+        public List<FreelanceCardVM> FreelancercardVMList() {
+            ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
+            List<FreelanceCardVM> FreelancerCardList = new List<FreelanceCardVM>();
+            var cardlist = (from fl_table in pgfe.freelancer
+                            join cv_table in pgfe.cv on fl_table.cv_id equals
+                            cv_table.cv_id
+                            select new
+                            {
+                                fl_table.firstname,
+                                fl_table.lastname,
+                                cv_table.birthday,
+                                cv_table.nationality,   
+                            }).ToList();
+        foreach(var item in cardlist)
+            {
+                DateTime birthdate = item.birthday;
+                int age = AgeConverter(birthdate);
+                FreelanceCardVM fcVM = new FreelanceCardVM();
+
+                fcVM.Name = item.firstname;
+                fcVM.Lastname = item.lastname;
+                fcVM.Age = age;
+                fcVM.Nationality = item.nationality;
+                FreelancerCardList.Add(fcVM);
+            }
+
+            return FreelancerCardList;
         }
 
+        public int AgeConverter(DateTime birthday)
+        {
+
+            DateTime todaysdate = DateTime.Today;
+            int age = Convert.ToInt32(todaysdate.Year) - Convert.ToInt32(birthday.Year);
+            return age;
+        }
     }
 }
