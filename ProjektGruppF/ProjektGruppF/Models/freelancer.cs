@@ -28,6 +28,7 @@ namespace ProjektGruppF.Models
         public string firstname { get; set; }
         [Required(ErrorMessage = " oops, seems like you forgott to type your lastname. ")]
 
+
         public string lastname { get; set; }
         [Required(ErrorMessage = " oops, seems like you forgott to type your adress. ")]
 
@@ -42,7 +43,7 @@ namespace ProjektGruppF.Models
         //[Compare("phonenumber")]
         //[Required(ErrorMessage = " oops, seems like you forgott to type your phone number. ")]
         //public int Confirmphonenumber { get; set; }
-
+        public int password { get; set; }
         public virtual cv cv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<customer> customer { get; set; }
