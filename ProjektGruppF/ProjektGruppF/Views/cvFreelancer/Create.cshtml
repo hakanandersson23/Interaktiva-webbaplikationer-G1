@@ -118,15 +118,47 @@
     <div class="form-group">
         @Html.LabelFor(model => model.skill, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.skill, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.skill, "", new { @class = "text-danger" })
+            @*@Html.EditorFor(model => model.skill, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.skill, "", new { @class = "text-danger" })*@
+            <select id="leftSelect">
+                <option value="programming">Programmer</option>
+                <option value="web_developing">Web developer</option>
+                <option value="databases">Databaseadministrator</option>
+                <option value="m_app_developing">Mobile application developer</option>
+                <option value="usability_testing">Usability tester</option>
+                <option value="logo_designing">Logo designer</option>
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.expertise, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.expertise, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.expertise, "", new { @class = "text-danger" })
+            @*@Html.EditorFor(model => model.expertise, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.expertise, "", new { @class = "text-danger" })*@
+            <select id="centerSelect">
+                <option value="programming">C#</option>
+                <option value="programming">Java</option>
+                <option value="programming">Javascript</option>
+                <option value="programming">Python</option>
+                <option value="programming">Postgres</option>
+                <option value="programming">PHP</option>
+                <option value="programming">JQuery</option>
+                <option value="programming">HTML</option>
+                <option value="programming">CSS</option>
+                <option value="programming">Android</option>
+                <option value="programming">IOS</option>
+                <option value="programming">MYSQL</option>
+                <option value="programming">Oracle</option>
+            </select>
+
+            <select id="rightSelect">
+                <option value="five">5</option>
+                <option value="four">4</option>
+                <option value="three">3</option>
+                <option value="two">2</option>
+                <option value="one">1</option>
+            </select>
         </div>
     </div>
 
