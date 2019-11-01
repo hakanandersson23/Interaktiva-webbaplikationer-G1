@@ -38,7 +38,8 @@ namespace ProjektGruppF.Models
         [DisplayName("Drivers License")]
         public string drivers_license { get; set; }
         //public System.DateTime registration_date { get; set; }
-
+        [DisplayName("Profil")]
+        public string profil { get; set; }
         public DateTime registration_date { get; set; }
 
 
