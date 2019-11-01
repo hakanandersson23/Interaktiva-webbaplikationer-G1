@@ -159,8 +159,15 @@
                 <option value="two">2</option>
                 <option value="one">1</option>
             </select>
+            
+           
         </div>
     </div>
+
+
+    @*<div> @Html.TextAreaFor(model => model., 3, 70, null)</div>*@ @*har ingen list property än*@
+
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.Main_abilities, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -169,7 +176,7 @@
             @* @Html.ValidationMessageFor(model => model.Main_abilities, "", new { @class = "text-danger" })*@
             <p margin-top: 10px> Write about your specialities</p>
 
-            @Html.TextAreaFor(model => model.language, 5, 55, null)
+            @Html.TextAreaFor(model => model.Main_abilities, 5, 55, null)
         </div>
     </div>
     <div class="form-group">
