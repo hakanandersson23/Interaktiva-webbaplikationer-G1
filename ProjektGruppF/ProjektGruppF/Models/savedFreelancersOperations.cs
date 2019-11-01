@@ -16,28 +16,33 @@ namespace ProjektGruppF.Models
             List<SavedFreelancersVM> savefreeMList = new List<SavedFreelancersVM>();
 
             var savedFreelancersList = (from free in pg.freelancer
+                                        join c in pg.cv on free.cv_id equals c.cv_id
                                         select new
                                         {
+                                            free.freelancer_id,
                                             free.firstname,
                                             free.lastname,
                                             free.adress,
                                             free.phonenumber,
                                             free.email,
+                                            c.cv_id
                                         }).ToList();
             foreach (var item in savedFreelancersList)
             {
                 SavedFreelancersVM objcvm = new SavedFreelancersVM();
+                objcvm.Freelancer_id = item.freelancer_id;
                 objcvm.Firstname = item.firstname;
                 objcvm.Lastname = item.lastname;
                 objcvm.Adress = item.adress;
                 objcvm.Phonenumber = item.phonenumber;
                 objcvm.Email = item.email;
+                objcvm.Cv_id = item.cv_id;
                 savefreeMList.Add(objcvm);
             }
             return savefreeMList;
         }
 
-        public List<SavedFreelancersVM> AllSkills()
+        /*public List<SavedFreelancersVM> AllSkills()
         {
             List<SavedFreelancersVM> allSkills = new List<SavedFreelancersVM>();
 
@@ -89,6 +94,6 @@ namespace ProjektGruppF.Models
                 allRanks.Add(objcvm);
             }
             return allRanks;
-        }
+        }*/
     }
 }
