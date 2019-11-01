@@ -5,34 +5,47 @@
 
 <h2>Sidan ska visa alla frilansare cvkort</h2>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-2 col-md-3 colsm-3 col-xs-6">
-            <div class="card" style="margin-bottom:20px; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
-                <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:auto; width:100%; ">
-                <div class="card-body" style="padding:1.25rem; ">
-                    <h5 class="card-title">@item.Name @item.Lastname</h5>
-                    <p class="card-text">
-                        Age: @item.Age <br>
-                        Nationality: @item.Nationality  <br>
-                    </p>
+
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2 col-md-3 colsm-3 col-xs-6">
+                <div class="card" style="margin-bottom:20px; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+                    <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:auto; width:100%; ">
+                    <div class="card-body" style="padding:1.25rem; ">
+                        <div class="card-title">
+                            <h5 class="card-title">@item.Name @item.Lastname</h5>
+                        </div>
+                        <p class="card-text">
+                            Age: @item.Age <br>
+                            Nationality: @item.Nationality  <br>
+                        </p>
+                        <div class="card-footer">
+                            @* <a style="float:right;" href="#" class="btn btn-primary">save</a> *@
+                            <a href="#" class="btn btn-primary">View</a>
+                            @using (Html.BeginForm("Index", "CustomerLanding", new {id = item.Freelancer_id }))
+                            {
+                                <input type="submit" value="save" onclick="location.href='@Url.Action("Index", "CustomerLanding")'" /> 
+                            }
+                            </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
 
-</div>
+    </div>
 
 
-@*
-                    <p class="card-text">
-                        Age: @item.Age <br>
-                        Nationality: @item.Nationality  <br>
-                        Language: @item.Language  <br>
-                        Skill: @item.Skill  <br>
-                        Expertise: @item.Expertise  <br>
-                        Rank: @item.Rank
-                    </p>
-               //     <a href="#" class="btn btn-primary">View freelancer</a> //
+    @*
+             <p class="card-text">
+                 Age: @item.Age <br>
+                 Nationality: @item.Nationality  <br>
+                 Language: @item.Language  <br>
+                 Skill: @item.Skill  <br>
+                 Expertise: @item.Expertise  <br>
+                 Rank: @item.Rank
+             </p>
+        //     <a href="#" class="btn btn-primary">View freelancer</a> //
     *@

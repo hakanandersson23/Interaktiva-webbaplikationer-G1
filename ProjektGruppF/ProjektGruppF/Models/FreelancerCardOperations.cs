@@ -25,7 +25,7 @@ namespace ProjektGruppF.Models
         {
             return fcList;
         }*/
-
+        ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
         public List<FreelanceCardVM> FreelancercardVMList() {
             ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
             List<FreelanceCardVM> FreelancerCardList = new List<FreelanceCardVM>();
@@ -34,6 +34,7 @@ namespace ProjektGruppF.Models
                             cv_table.cv_id
                             select new
                             {
+                                fl_table.freelancer_id,
                                 fl_table.firstname,
                                 fl_table.lastname,
                                 cv_table.birthday,
@@ -45,6 +46,7 @@ namespace ProjektGruppF.Models
                 int age = AgeConverter(birthdate);
 
                 FreelanceCardVM fcVM = new FreelanceCardVM();
+                fcVM.Freelancer_id = item.freelancer_id;
                 fcVM.Name = item.firstname;
                 fcVM.Lastname = item.lastname;
                 fcVM.Age = age;
@@ -54,26 +56,6 @@ namespace ProjektGruppF.Models
 
             return FreelancerCardList;
         }
-        public List<skill> SkillsList()
-        {
-            ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
-            List<skill> listofskills = new List<skill>();
-
-            var skills = (from skill_table in pgfe.skill
-                            select new
-                            {
-                                skill_table.name,
-                                skill_table.skill_id
-                            }).ToList();
-            foreach (var item in skills)
-            {
-                FreelanceCardVM fcVM = new FreelanceCardVM();
-                fcVM.AllSkills = item.name;
-                fcVM.AllSkills = item.skill_id;
-                FreelancerCardList.Add(fcVM);
-            }
-
-        }
 
         public int AgeConverter(DateTime birthday)
         {
@@ -82,5 +64,44 @@ namespace ProjektGruppF.Models
             int age = Convert.ToInt32(todaysdate.Year) - Convert.ToInt32(birthday.Year);
             return age;
         }
+
+        public List<FreelanceCardVM> AllSkills()
+        {
+            List<FreelanceCardVM> allSkills = new List<FreelanceCardVM>();
+                var list = (from s in pgfe.skill
+                    select new
+                   {
+                        s.name,
+                        s.skill_id
+                    }).ToList();
+                foreach (var item in list)
+                {
+                  FreelanceCardVM fcVM = new FreelanceCardVM();
+                   fcVM.Skillname = item.name;
+                    fcVM.Skill_id = item.skill_id;
+                  allSkills.Add(fcVM);
+                }
+                 return allSkills;
+        }
+
+        public List<FreelanceCardVM> AllExpertises()
+        {
+            List<FreelanceCardVM> allExpertises = new List<FreelanceCardVM>();
+            var list = (from e in pgfe.expertise
+                        select new
+                        {
+                            e.name,
+                            e.expertise_id
+                        }).ToList();
+            foreach (var item in list)
+            {
+                FreelanceCardVM fcVM = new FreelanceCardVM();
+                fcVM.Expertisename = item.name;
+                allExpertises.Add(fcVM);
+            }
+            return allExpertises;
+        }
+
+
     }
 }

@@ -8,7 +8,11 @@ namespace ProjektGruppF.ViewModels
 {
     public class FreelanceCardVM
     {
-        public List<skill> AllSkills { get; set; }
+        public string Skillname { get; set; }
+        public int Skill_id { get; set; }
+        public string Expertisename { get; set; }
+        public int Expertise_id { get; set; }
+        public int Freelancer_id { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public int Age { get; set; }
