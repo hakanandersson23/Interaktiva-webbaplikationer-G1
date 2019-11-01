@@ -19,5 +19,11 @@ namespace ProjektGruppF.Controllers
             /*return View(flc.GetCards());*/
             return View(flc.FreelancercardVMList());
         }
+
+        [HttpPost]
+        public ActionResult Index(int user_id)
+        {
+            return View();
+        }
     }
 }
