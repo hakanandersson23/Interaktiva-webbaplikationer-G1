@@ -63,7 +63,7 @@ namespace ProjektGruppF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language)
         {
             //cv.registration_date = DateTime.Now;
 
