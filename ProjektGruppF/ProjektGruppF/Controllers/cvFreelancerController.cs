@@ -63,9 +63,9 @@ namespace ProjektGruppF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language)
+        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
         {
-            //cv.registration_date = DateTime.Now;
+            
 
             if (ModelState.IsValid)
             {
@@ -79,25 +79,25 @@ namespace ProjektGruppF.Controllers
 
             return View(cv);
         }
-        //public ActionResult Create([Bind(Include = "freelancer, birthday,nationality,drivers_license,registration_date")] cv cv, freelancer freelancer_id)//added freelancer för att binda ihop
-        //{
-        //    //cv.registration_date = DateTime.Now;
+        public ActionResult Create([Bind(Include = "language")] language language)
+        {
+            
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        //db.freelancer.Add(cv_id)
+            if (ModelState.IsValid)
+            {
+               
+
+                db.language.Add(language);
+                db.SaveChanges();
                 
-        //        db.cv.Add(cv);
-        //        db.SaveChanges();
-        //        ModelState.Clear();
-        //        ViewBag.SuccessMessage = "Registration Successful.";
-        //        return RedirectToAction("Index");//conformation?
+                ViewBag.SuccessMessage = "Registration Successful.";
+                return RedirectToAction("Index");//conformation?
 
 
-        //    }
+            }
 
-        //    return View(cv);
-        //}
+            return View(language);
+        }
         //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)//dropdown value is saved inte färdigt
         //{
         //    //cv.registration_date = DateTime.Now;

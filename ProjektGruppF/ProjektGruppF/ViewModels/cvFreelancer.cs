@@ -28,7 +28,7 @@ namespace ProjektGruppF.ViewModels
         //public DateTime Birthday { get; set; }
         public string Nationality { get; set; }
         public string Drivers_license { get; set; }
-
+        public string Profil { get; set; }
         public System.DateTime Registration_date { get; set; }
         //public DateTime Registration_date { get; set; }
 
