@@ -35,7 +35,15 @@ namespace ProjektGruppF.Controllers
             ViewBag.SuccessMessage = "Registration Successful.";
             return View("AddOrEdit",new freelancer());
 
+            
 
+
+        }
+
+        [HttpPost]
+        public ActionResult Login()
+        {
+            return View();
         }
        
     }

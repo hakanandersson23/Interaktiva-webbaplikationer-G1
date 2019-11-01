@@ -40,9 +40,7 @@ namespace ProjektGruppF.Models
         [Required(ErrorMessage = " oops, seems like you forgott to type your phone number.")]
         [DataType(DataType.Password)]
         public Nullable<int> phonenumber { get; set; }
-        //[Compare("phonenumber")]
-        //[Required(ErrorMessage = " oops, seems like you forgott to type your phone number. ")]
-        //public int Confirmphonenumber { get; set; }
+       
         public int password { get; set; }
         public virtual cv cv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
