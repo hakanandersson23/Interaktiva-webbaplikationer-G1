@@ -42,6 +42,37 @@ namespace ProjektGruppF.Models
             return savefreeMList;
         }
 
+        public freelancer GetFreelancer(int id)
+        {
+            var freelancer = (from free in pg.freelancer
+                              where free.freelancer_id == id
+                              select new
+                              {
+                                  free.firstname,
+                                  free.lastname,
+                                  free.adress,
+                                  free.phonenumber,
+                                  free.email,
+
+                              }).SingleOrDefault();
+            freelancer f = new freelancer()
+            {
+
+                firstname = freelancer.firstname,
+                lastname = freelancer.lastname,
+                adress = freelancer.adress,
+                phonenumber = freelancer.phonenumber,
+                email = freelancer.email
+
+
+            };
+
+            return f;
+
+
+
+        }
+
         /*public List<SavedFreelancersVM> AllSkills()
         {
             List<SavedFreelancersVM> allSkills = new List<SavedFreelancersVM>();
