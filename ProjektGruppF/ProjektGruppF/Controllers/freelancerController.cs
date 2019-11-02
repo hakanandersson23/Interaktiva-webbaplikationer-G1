@@ -37,6 +37,16 @@ namespace ProjektGruppF.Controllers
 
 
         }
-       
+
+        public ActionResult Profile()
+        {
+            savedFreelancersOperations sfo = new savedFreelancersOperations();
+
+
+
+            return View(sfo.GetFreelancer(16));
+        }
+
+
     }
 }
