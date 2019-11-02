@@ -288,6 +288,8 @@
     <Content Include="Views\TestcvFreelancer\Index.cshtml" />
     <Content Include="Views\TestcvFreelancer\Databaseexample.cshtml" />
     <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
+    <Content Include="Views\CustomerLanding\CustomerViewFreelancerCv.cshtml" />
+    <Content Include="Views\freelancer\Profile.cshtml" />
     <Content Include="Views\freelancer\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>

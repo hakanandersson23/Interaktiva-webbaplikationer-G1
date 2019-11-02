@@ -25,16 +25,16 @@
                         <div class="card-footer">
                             @* <a style="float:right;" href="#" class="btn btn-primary">save</a>
                              <a href="#" class="btn btn-primary">View</a>*@
-                            @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { id = item.Freelancer_id }))
+                            @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id }))
                             {
                                 <input type="submit" value="View" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
                             }
 
-
+                            @**************** Knapp för att spara frilansare***************
                             @using (Html.BeginForm("Index", "CustomerLanding", new { id = item.Freelancer_id }))
                             {
                                 <input type="submit" value="save" onclick="location.href='@Url.Action("Index", "CustomerLanding")'" />
-                            }
+                            }*@
                         </div>
                     </div>
                 </div>
