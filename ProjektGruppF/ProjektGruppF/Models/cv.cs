@@ -11,8 +11,6 @@ namespace ProjektGruppF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class cv
     {
@@ -27,68 +25,27 @@ namespace ProjektGruppF.Models
             this.Main_abilities = new HashSet<Main_abilities>();
             this.skill = new HashSet<skill>();
         }
-
-
+    
         public int cv_id { get; set; }
-        //public System.DateTime birthday { get; set; }
-        [DisplayName("Date of Birth")]
-        public DateTime birthday { get; set; }
-        [DisplayName("Nationality")]
+        public System.DateTime birthday { get; set; }
         public string nationality { get; set; }
-        [DisplayName("Drivers License")]
         public string drivers_license { get; set; }
-        //public System.DateTime registration_date { get; set; }
-        [DisplayName("Profil")]
+        public System.DateTime registration_date { get; set; }
         public string profil { get; set; }
-        public DateTime registration_date { get; set; }
-
-
-        //[DisplayName("Education")]
-        //public string education { get; set; } // ge problem annars
-
-        //[DisplayName("Work experience")]
-        //public string work_experience { get; set; }
-
-        //[DisplayName("Expertise")]
-        //public string expertise { get; set; }
-
-        //[DisplayName("Main abilities")]
-        //public string Main_abilities { get; set; }
-
-        //[DisplayName("Skill")]
-        //public string skill { get; set; }
-
-        //[DisplayName("Language")]
-        //public string language { get; set; }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        
         public virtual ICollection<freelancer> freelancer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DisplayName("Work experience")]
         public virtual ICollection<work_experience> work_experience { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DisplayName("Education")]
         public virtual ICollection<education> education { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DisplayName("Expertise")]
         public virtual ICollection<expertise> expertise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        //[DisplayName("Language")]
         public virtual ICollection<language> language { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DisplayName("Main abilities")]
         public virtual ICollection<Main_abilities> Main_abilities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        [DisplayName("Skill")]
         public virtual ICollection<skill> skill { get; set; }
     }
 }
