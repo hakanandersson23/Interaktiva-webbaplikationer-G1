@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "FreelancerProfile";
+}
+
+<h2>FreelancerProfile</h2>
+
+<div class="card mb-3" style=" background:blue; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+  <div class="row no-gutters" style="background:orange;">
+    <div class="col-md-3" style="background:green;">
+      <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img" alt="An image of the freelancer" style="max-width:100%">
+    </div>
+    <div class="col-md-8" style="background:lightgreen">
+      <div class="card-body" style=" background:yellow">
+        <h5 class="card-title">Freelancer Name</h5>
+        <p class="card-text">
+            Adress: item.Adress  <br>
+            Phonenumber: item.Phonenumber  <br>
+            Email: item.Email  <br>
+            Birthday :item.Birthday  <br>
+            Nationality: item.Nationality  <br>
+            Drivers license (yes/no): item.Drivers_license  <br><br>
+            <h5 style="background: yellow; font-weight: bold;">Work experience</h5>
+            Previous/current employer: item.Employername  <br>
+            Jobtitle: item.Jobtitle  <br>
+            Role: item.Role  <br>
+            Startdate: item.Startdate  <br>
+            Enddate: item.Enddate  <br>
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+

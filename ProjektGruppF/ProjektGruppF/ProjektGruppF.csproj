@@ -287,6 +287,7 @@
     <Content Include="Views\freelancer\AddOrEdit.cshtml" />
     <Content Include="Views\TestcvFreelancer\Index.cshtml" />
     <Content Include="Views\TestcvFreelancer\Databaseexample.cshtml" />
+    <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
