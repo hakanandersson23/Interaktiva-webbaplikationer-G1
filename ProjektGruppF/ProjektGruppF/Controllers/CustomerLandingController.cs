@@ -27,9 +27,16 @@ namespace ProjektGruppF.Controllers
         }
 
       
-        public ActionResult FreelancerProfile(int id)
+        public ActionResult FreelancerProfile(int freelancer_id)
         {
-            ViewBag.Message = id.ToString();
+            FreelancerCardOperations flc = new FreelancerCardOperations();
+            ViewBag.Message = freelancer_id.ToString();
+            return View(flc.onefreelancer(freelancer_id));
+        }
+
+        public ActionResult CustomerViewFreelancerCv(int freelancer_id)
+        {
+            ViewBag.Message = freelancer_id.ToString();
             return View();
         }
     }

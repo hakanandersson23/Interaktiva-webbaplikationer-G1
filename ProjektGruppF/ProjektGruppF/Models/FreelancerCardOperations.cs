@@ -65,43 +65,41 @@ namespace ProjektGruppF.Models
             return age;
         }
 
-        public List<FreelanceCardVM> AllSkills()
-        {
-            List<FreelanceCardVM> allSkills = new List<FreelanceCardVM>();
-                var list = (from s in pgfe.skill
-                    select new
-                   {
-                        s.name,
-                        s.skill_id
-                    }).ToList();
-                foreach (var item in list)
-                {
-                  FreelanceCardVM fcVM = new FreelanceCardVM();
-                   fcVM.Skillname = item.name;
-                    fcVM.Skill_id = item.skill_id;
-                  allSkills.Add(fcVM);
-                }
-                 return allSkills;
-        }
 
-        public List<FreelanceCardVM> AllExpertises()
+        public List<SavedFreelancersVM> onefreelancer(int freelancer_id)
         {
-            List<FreelanceCardVM> allExpertises = new List<FreelanceCardVM>();
-            var list = (from e in pgfe.expertise
-                        select new
-                        {
-                            e.name,
-                            e.expertise_id
-                        }).ToList();
-            foreach (var item in list)
+            List<SavedFreelancersVM> ListofOne = new List<SavedFreelancersVM>();
+
+            var savedFreelancersList = (from free in pgfe.freelancer
+                                        join c in pgfe.cv on free.cv_id equals c.cv_id
+                                        where free.freelancer_id == freelancer_id
+                                        select new
+                                        {
+                                            free.freelancer_id,
+                                            free.firstname,
+                                            free.lastname,
+                                            free.adress,
+                                            free.phonenumber,
+                                            free.email,
+                                            c.cv_id
+                                        }).ToList();
+
+            foreach (var item in savedFreelancersList)
             {
-                FreelanceCardVM fcVM = new FreelanceCardVM();
-                fcVM.Expertisename = item.name;
-                allExpertises.Add(fcVM);
+                SavedFreelancersVM objcvm = new SavedFreelancersVM();
+                objcvm.Freelancer_id = item.freelancer_id;
+                objcvm.Firstname = item.firstname;
+                objcvm.Lastname = item.lastname;
+                objcvm.Adress = item.adress;
+                objcvm.Phonenumber = item.phonenumber;
+                objcvm.Email = item.email;
+                objcvm.Cv_id = item.cv_id;
+                ListofOne.Add(objcvm);
             }
-            return allExpertises;
+            return ListofOne;
         }
 
+       
 
     }
 }
