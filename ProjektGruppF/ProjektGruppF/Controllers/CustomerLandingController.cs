@@ -25,5 +25,12 @@ namespace ProjektGruppF.Controllers
         {
             return View();
         }
+
+      
+        public ActionResult FreelancerProfile(int id)
+        {
+            ViewBag.Message = id.ToString();
+            return View();
+        }
     }
 }
