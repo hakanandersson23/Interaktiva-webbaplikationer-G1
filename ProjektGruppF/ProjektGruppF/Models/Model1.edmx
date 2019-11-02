@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjektGruppFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProjektGruppFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="customer">
           <Key>
             <PropertyRef Name="customer_id" />
@@ -33,6 +33,7 @@
           <Property Name="nationality" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="drivers_license" Type="varchar" MaxLength="50" />
           <Property Name="registration_date" Type="datetime" Nullable="false" />
+          <Property Name="profil" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="education">
           <Key>
@@ -75,9 +76,11 @@
           <Property Name="firstname" Type="nvarchar" MaxLength="50" />
           <Property Name="lastname" Type="nvarchar" MaxLength="50" />
           <Property Name="adress" Type="nvarchar" MaxLength="50" />
-          <Property Name="phonenumber" Type="int" />
+          <Property Name="phonenumber" Type="int" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="int" />
           <Property Name="cv_id" Type="int" />
+          <Property Name="PersonalLetter" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="language">
           <Key>
@@ -88,11 +91,11 @@
         </EntityType>
         <EntityType Name="language_cv">
           <Key>
-            <PropertyRef Name="language_id" />
-            <PropertyRef Name="cv_id" />
+            <PropertyRef Name="cv_language_id" />
           </Key>
           <Property Name="language_id" Type="int" Nullable="false" />
           <Property Name="cv_id" Type="int" Nullable="false" />
+          <Property Name="cv_language_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Main_abilities">
           <Key>
@@ -401,8 +404,7 @@
             <End Role="main_abilities_cv" EntitySet="main_abilities_cv" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjektGruppFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -434,6 +436,7 @@
           <NavigationProperty Name="language" Relationship="Self.language_cv" FromRole="cv" ToRole="language" />
           <NavigationProperty Name="Main_abilities" Relationship="Self.main_abilities_cv" FromRole="cv" ToRole="Main_abilities" />
           <NavigationProperty Name="skill" Relationship="Self.skill_cv" FromRole="cv" ToRole="skill" />
+          <Property Name="profil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="education">
           <Key>
@@ -463,11 +466,13 @@
           <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="phonenumber" Type="Int32" />
+          <Property Name="phonenumber" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cv_id" Type="Int32" />
           <NavigationProperty Name="cv" Relationship="Self.cv_id" FromRole="freelancer" ToRole="cv" />
           <NavigationProperty Name="customer" Relationship="Self.customer_freelancer" FromRole="freelancer" ToRole="customer" />
+          <Property Name="Password" Type="Int32" />
+          <Property Name="PersonalLetter" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="language">
           <Key>
@@ -643,6 +648,7 @@
           <EntitySetMapping Name="cv">
             <EntityTypeMapping TypeName="ProjektGruppFModel.cv">
               <MappingFragment StoreEntitySet="cv">
+                <ScalarProperty Name="profil" ColumnName="profil" />
                 <ScalarProperty Name="cv_id" ColumnName="cv_id" />
                 <ScalarProperty Name="birthday" ColumnName="birthday" />
                 <ScalarProperty Name="nationality" ColumnName="nationality" />
@@ -673,6 +679,8 @@
           <EntitySetMapping Name="freelancer">
             <EntityTypeMapping TypeName="ProjektGruppFModel.freelancer">
               <MappingFragment StoreEntitySet="freelancer">
+                <ScalarProperty Name="PersonalLetter" ColumnName="PersonalLetter" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="freelancer_id" ColumnName="freelancer_id" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />

@@ -53,8 +53,12 @@ namespace ProjektGruppF.Models
                                   free.adress,
                                   free.phonenumber,
                                   free.email,
+                                  free.PersonalLetter,
+                                  free.cv_id,
+                                  free.Password
 
-                              }).SingleOrDefault();
+
+                              }).FirstOrDefault();
             freelancer f = new freelancer()
             {
 
@@ -62,7 +66,10 @@ namespace ProjektGruppF.Models
                 lastname = freelancer.lastname,
                 adress = freelancer.adress,
                 phonenumber = freelancer.phonenumber,
-                email = freelancer.email
+                email = freelancer.email,
+                Password = freelancer.Password,
+                PersonalLetter = freelancer.PersonalLetter,
+                
 
 
             };

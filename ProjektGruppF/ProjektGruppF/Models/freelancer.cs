@@ -11,10 +11,7 @@ namespace ProjektGruppF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
-
+    
     public partial class freelancer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,26 +21,16 @@ namespace ProjektGruppF.Models
         }
     
         public int freelancer_id { get; set; }
-        [Required(ErrorMessage =" oops, seems like you forgott to type your name. ")]
         public string firstname { get; set; }
-        [Required(ErrorMessage = " oops, seems like you forgott to type your lastname. ")]
-
         public string lastname { get; set; }
-        [Required(ErrorMessage = " oops, seems like you forgott to type your adress. ")]
-
         public string adress { get; set; }
-        [Required(ErrorMessage = " oops, seems like you forgott to type your email. ")]
-
+        public Nullable<int> phonenumber { get; set; }
         public string email { get; set; }
         public Nullable<int> cv_id { get; set; }
-        [Required(ErrorMessage = " oops, seems like you forgott to type your phone number.")]
-        [DataType(DataType.Password)]
-        public Nullable<int> phonenumber { get; set; }
-        //[Compare("phonenumber")]
-        //[Required(ErrorMessage = " oops, seems like you forgott to type your phone number. ")]
-        //public int Confirmphonenumber { get; set; }
-
         public virtual cv cv { get; set; }
+        public int Password { get; set; }
+        public string PersonalLetter { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<customer> customer { get; set; }
     }
