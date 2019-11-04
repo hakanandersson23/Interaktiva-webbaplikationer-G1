@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="53baaa5953774907b2b8423df1f37abf" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjektGruppFModel2.customer" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.customer_freelancer" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.cv" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.education" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.education_cv" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.expertise" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.expertise_cv" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.freelancer" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.language" Width="1.5" PointX="3.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.language_cv" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.Main_abilities" Width="1.5" PointX="5.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.rank_expertise" Width="1.5" PointX="1.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.skill" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.skill_cv" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.work_experience" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjektGruppFModel2.main_abilities_cv" Width="1.5" PointX="8.25" PointY="13.875" IsExpanded="true" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_freelancer" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.cv_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK__education__cv_id__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK__language___cv_id__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK__work_expe__cv_id__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_cv" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_cv_skill_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.main_abilities_cv_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK__education__educa__5CA1C101" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_expertise" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_rank_expertise_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK__language___langu__40058253" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.main_abilities_id" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjektGruppFModel2.FK_skill_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

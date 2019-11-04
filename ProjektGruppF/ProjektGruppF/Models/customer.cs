@@ -17,7 +17,7 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public customer()
         {
-            this.freelancer = new HashSet<freelancer>();
+            this.customer_freelancer = new HashSet<customer_freelancer>();
         }
     
         public int customer_id { get; set; }
@@ -28,6 +28,6 @@ namespace ProjektGruppF.Models
         public string phonenumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<freelancer> freelancer { get; set; }
+        public virtual ICollection<customer_freelancer> customer_freelancer { get; set; }
     }
 }

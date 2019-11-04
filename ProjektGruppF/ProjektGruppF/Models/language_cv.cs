@@ -12,18 +12,13 @@ namespace ProjektGruppF.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class skill
+    public partial class language_cv
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public skill()
-        {
-            this.skill_cv = new HashSet<skill_cv>();
-        }
+        public Nullable<int> cv_id { get; set; }
+        public Nullable<int> language_id { get; set; }
+        public int language_cv_id { get; set; }
     
-        public int skill_id { get; set; }
-        public string name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<skill_cv> skill_cv { get; set; }
+        public virtual cv cv { get; set; }
+        public virtual language language { get; set; }
     }
 }

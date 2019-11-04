@@ -17,15 +17,15 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public expertise()
         {
-            this.cv = new HashSet<cv>();
+            this.expertise_cv = new HashSet<expertise_cv>();
         }
     
         public int expertise_id { get; set; }
         public string name { get; set; }
         public int rank_expertise_id { get; set; }
     
-        public virtual rank_expertise rank_expertise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cv> cv { get; set; }
+        public virtual ICollection<expertise_cv> expertise_cv { get; set; }
+        public virtual rank_expertise rank_expertise { get; set; }
     }
 }

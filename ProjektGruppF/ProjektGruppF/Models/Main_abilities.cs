@@ -17,13 +17,13 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Main_abilities()
         {
-            this.cv = new HashSet<cv>();
+            this.main_abilities_cv = new HashSet<main_abilities_cv>();
         }
     
         public int main_abilities_id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cv> cv { get; set; }
+        public virtual ICollection<main_abilities_cv> main_abilities_cv { get; set; }
     }
 }

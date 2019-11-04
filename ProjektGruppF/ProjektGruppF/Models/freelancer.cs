@@ -17,21 +17,21 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public freelancer()
         {
-            this.customer = new HashSet<customer>();
+            this.customer_freelancer = new HashSet<customer_freelancer>();
         }
     
         public int freelancer_id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string adress { get; set; }
-        public Nullable<int> phonenumber { get; set; }
+        public int phonenumber { get; set; }
         public string email { get; set; }
+        public Nullable<int> Password { get; set; }
         public Nullable<int> cv_id { get; set; }
-        public virtual cv cv { get; set; }
-        public int Password { get; set; }
         public string PersonalLetter { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<customer> customer { get; set; }
+        public virtual ICollection<customer_freelancer> customer_freelancer { get; set; }
+        public virtual cv cv { get; set; }
     }
 }

@@ -17,13 +17,13 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public language()
         {
-            this.cv = new HashSet<cv>();
+            this.language_cv = new HashSet<language_cv>();
         }
     
         public int language_id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cv> cv { get; set; }
+        public virtual ICollection<language_cv> language_cv { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public education()
         {
-            this.cv = new HashSet<cv>();
+            this.education_cv = new HashSet<education_cv>();
         }
     
         public int education_id { get; set; }
@@ -26,6 +26,6 @@ namespace ProjektGruppF.Models
         public int study_years { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cv> cv { get; set; }
+        public virtual ICollection<education_cv> education_cv { get; set; }
     }
 }
