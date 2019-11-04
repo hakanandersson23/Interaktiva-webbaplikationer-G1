@@ -11,7 +11,8 @@ namespace ProjektGruppF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class cv
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,10 +28,18 @@ namespace ProjektGruppF.Models
         }
     
         public int cv_id { get; set; }
+        [DisplayName ("Date of Birth")]
         public System.DateTime birthday { get; set; }
+        [DisplayName("Nationality")]
+
         public string nationality { get; set; }
+        [DisplayName("Drivers License")]
+
         public string drivers_license { get; set; }
+
         public Nullable<System.DateTime> registration_date { get; set; }
+        [DisplayName("Profile")]
+
         public string profil { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
