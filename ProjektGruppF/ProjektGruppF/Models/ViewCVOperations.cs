@@ -10,9 +10,9 @@ namespace ProjektGruppF.Models
     {
         ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
 
-        public List<cvFreelancer> CVFreelancer(cv cvv)
+        public List<Freelancer> CVFreelancer(cv cvv)
         {
-            List<cvFreelancer> cvfreelancer = new List<cvFreelancer>();
+            List<Freelancer> cvfreelancer = new List<Freelancer>();
 
             var freelancersCV = (from c in pg.cv
                                  join f in pg.freelancer on c.cv_id equals f.cv_id
@@ -39,7 +39,7 @@ namespace ProjektGruppF.Models
                                         }).ToList();
             foreach (var item in freelancersCV)
             {
-                cvFreelancer cv = new cvFreelancer();
+                Freelancer cv = new Freelancer();
                 cv.Freelancer_id = item.freelancer_id;
                 cv.Cv_id = item.cv_id;
                 cv.Firstname = item.firstname;
