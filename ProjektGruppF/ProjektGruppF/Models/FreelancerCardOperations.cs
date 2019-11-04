@@ -26,9 +26,9 @@ namespace ProjektGruppF.Models
             return fcList;
         }*/
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-        public List<FreelanceCardVM> FreelancercardVMList() {
+        public List<SavedFreelancersVM> FreelancercardVMList() {
             ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-            List<FreelanceCardVM> FreelancerCardList = new List<FreelanceCardVM>();
+            List<SavedFreelancersVM> FreelancerCardList = new List<SavedFreelancersVM>();
             var cardlist = (from fl_table in pgfe.freelancer
                             join cv_table in pgfe.cv on fl_table.cv_id equals
                             cv_table.cv_id
@@ -45,9 +45,9 @@ namespace ProjektGruppF.Models
                 DateTime birthdate = item.birthday;
                 int age = AgeConverter(birthdate);
 
-                FreelanceCardVM fcVM = new FreelanceCardVM();
+                SavedFreelancersVM fcVM = new SavedFreelancersVM();
                 fcVM.Freelancer_id = item.freelancer_id;
-                fcVM.Name = item.firstname;
+                fcVM.Firstname = item.firstname;
                 fcVM.Lastname = item.lastname;
                 fcVM.Age = age;
                 fcVM.Nationality = item.nationality;
