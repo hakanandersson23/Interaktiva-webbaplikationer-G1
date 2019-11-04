@@ -2,10 +2,10 @@
     position: relative;
     min-height: 100%;
 }
-body {
+/*body {
     padding-top: 50px;
     padding-bottom: 50px;
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -48,6 +48,10 @@ textarea {
     font-size:40px;
 
 
+}
+.freeText dd {
+    font-size:30px;
+    
 }
 /*#loginField p {
 
