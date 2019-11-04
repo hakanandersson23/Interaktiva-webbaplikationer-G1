@@ -1,4 +1,4 @@
-﻿@model List<ProjektGruppF.ViewModels.FreelanceCardVM>
+﻿@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
 @{
     ViewBag.Title = "Index";
 }
@@ -12,11 +12,11 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-2 col-md-3 colsm-3 col-xs-6">
-                <div class="card text-white bg-primary mb-3"  style="margin-bottom:20px; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
+                <div class="card bg-light mb-3"  style="margin-bottom:20px;">
                     <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:auto; width:100%; ">
-                    <div class="card-body" style="padding:1.25rem; ">
-                        <div class="card-title">
-                            <h5 class="card-title">@item.Name @item.Lastname</h5>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h5 class="card-title">@item.Firstname @item.Lastname</h5>
                         </div>
                         <p class="card-text">
                             Age: @item.Age <br>
