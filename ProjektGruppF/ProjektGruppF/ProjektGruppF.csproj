@@ -143,6 +143,7 @@
     <Compile Include="Controllers\CustomerLandingController.cs" />
     <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Controllers\cvFreelancerController.cs" />
+    <Compile Include="Controllers\CV_Controller.cs" />
     <Compile Include="Controllers\freelancerController.cs" />
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -298,6 +299,11 @@
     <Content Include="Views\CustomerLanding\Index.cshtml" />
     <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
     <Content Include="Views\CustomerLanding\CustomerViewFreelancerCv.cshtml" />
+    <Content Include="Views\CV_\Create.cshtml" />
+    <Content Include="Views\CV_\Delete.cshtml" />
+    <Content Include="Views\CV_\Details.cshtml" />
+    <Content Include="Views\CV_\Edit.cshtml" />
+    <Content Include="Views\CV_\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
