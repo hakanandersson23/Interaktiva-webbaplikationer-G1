@@ -3,11 +3,12 @@
 @{
     ViewBag.Title = "Freelancer profile";
 }
+<section id="First">
 
-<h2>Welcome @Model.firstname</h2>
+
+<h2 style="font-style:oblique">Welcome @Model.firstname</h2>
 
 <div>
-    <h4>freelancer</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -59,13 +60,37 @@
         </dd>
 
     </dl>
+    <div id="Third">
+        <p>This is what you know</p>
+        @Html.DropDownList("Skill", "Registered skills")
+     
+        
+    </div>
+
+    
+
 </div>
-<h3>Your personal Letter.</h3>
+</section>
+<div id="second">
+
+<h3 >Your personal Letter.</h3>
 <p>@Html.DisplayFor(model => model.PersonalLetter)</p>
-<p>Wanna update you personal info? <br /> Click below.</p>
+<p style="color:blueviolet">Wanna update you personal info? <br /> Click below.</p>
 
 <input type="submit" value="Edit" onclick="location.href='@Url.Action("Edit", "freelancers")'" />
-<p>
+<p style="color:blueviolet">Take a look at you CV here</p>
+<input type="submit" value="Edit" onclick="location.href='@Url.Action("CV", "freelancers")'" />
+</div>
+
+
+
+
+
+
+
+
+
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.freelancer_id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

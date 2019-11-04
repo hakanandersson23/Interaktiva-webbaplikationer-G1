@@ -26,6 +26,8 @@ namespace ProjektGruppF.Controllers
         // GET: freelancers/Details/5
         public ActionResult Start(int? id=8)
         {
+
+            ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,6 +38,19 @@ namespace ProjektGruppF.Controllers
                 return HttpNotFound();
             }
             return View(freelancer);
+        }
+        public ActionResult CV(int? id = 7)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            cv cv = db.cv.Find(id);
+            if (cv == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cv);
         }
 
         // GET: freelancers/Create
@@ -90,7 +105,7 @@ namespace ProjektGruppF.Controllers
             {
                 db.Entry(freelancer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Start");
             }
             ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
             return View(freelancer);
