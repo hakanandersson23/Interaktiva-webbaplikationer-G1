@@ -9,38 +9,32 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-3" style="background:green;">
-            <div class="card" style=" background:blue;">
+        <div class="col-md-3" >
+            <div class="card border-secondary mb-3">
                 <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="An image of the freelancer" style="max-width:100%">
-                <div class="card-body" style=" background:yellow">
+                <div class="card-body">
                     <h5 class="card-title">@item.Firstname @item.Lastname</h5>
                     <p class="card-text">
                         Adress: @item.Adress  <br>
                         Phonenumber: @item.Phonenumber  <br>
                         Email: @item.Email  <br>
-                        @*  Birthday:@item.Birthday  <br>
-                            Nationality: @item.Nationality  <br>
-                            Drivers license (yes/no): @item.Drivers_license  <br><br>
-                            <h5 style="background: yellow; font-weight: bold;">Work experience</h5>
-                            Previous/current employer: @item.Employername  <br>
-                            Jobtitle: @item.Jobtitle  <br>
-                            Role: @item.Role  <br>
-                            Startdate:@item.Startdate  <br>
-                            Enddate: @item.Enddate  <br>*@
                     </p>
                     <div>
                         @using (Html.BeginForm("CustomerViewFreelancerCv", "CustomerLanding", new { freelancer_id = item.Freelancer_id }))
                         {
-                            <input type="submit" value="View CV" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
+                            <input class="btn btn-primary" type="submit" value="View CV" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
                         }
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-9" style="background:green;">
-            <div class="card" style=" background:blue;">
-                <div class="card-body" style=" background:yellow">
+        <div class="col-md-9" >
+            <div class="card border-secondary mb-3">
+                <div class=" card-header">
+                    <h5 style="text-align:center">Curriculum Vitae</h5>
+                </div>
+                <div class="card-body">
                     <h5 class="card-title">@item.Firstname @item.Lastname</h5>
                     <p class="card-text">
                         Adress:item.Adress  <br>
@@ -57,7 +51,8 @@
                         Enddate: item.Enddate  <br>
                     </p>
                     <div>
-                            <input type="button" value="Print cv" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
+                        <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()"  />
+                        <input class="btn btn-primary" type="button" value="Download cv"  />
                     </div>
                 </div>
             </div>
@@ -66,3 +61,8 @@
     }
 </div>
 
+<script>
+    function myFunction() {
+        window.print();
+    }
+</script>
