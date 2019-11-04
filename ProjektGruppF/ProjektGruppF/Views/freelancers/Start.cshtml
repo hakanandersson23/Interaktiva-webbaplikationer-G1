@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.firstname)
         </dt>
 
-        <dd>
+        <dd class="freeText">
             @Html.DisplayFor(model => model.firstname)
         </dd>
 
@@ -60,6 +60,9 @@
 
     </dl>
 </div>
+<h3>Your personal Letter.</h3>
+<p>@Html.DisplayFor(model => model.PersonalLetter)</p>
+<input type="submit" value="View" onclick="location.href='@Url.Action("Edit", "freelancers")'" />
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.freelancer_id }) |
     @Html.ActionLink("Back to List", "Index")
