@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjektGruppF.ViewModels
 {
-    public class cvFreelancer
+    public class Freelancer
     {
 
         public virtual int freelancer_id { get;set; }

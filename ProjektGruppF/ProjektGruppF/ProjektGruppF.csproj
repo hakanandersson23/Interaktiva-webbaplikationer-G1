@@ -143,7 +143,6 @@
     <Compile Include="Controllers\CustomerLandingController.cs" />
     <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Controllers\cvFreelancerController.cs" />
-    <Compile Include="Controllers\freelancerController.cs" />
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
@@ -220,10 +219,9 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\cvFreelancer.cs" />
+    <Compile Include="ViewModels\Freelancer.cs" />
     <Compile Include="ViewModels\FreelanceCardVM.cs" />
     <Compile Include="ViewModels\SavedFreelancersVM.cs" />
-    <Compile Include="ViewModels\ViewCVVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

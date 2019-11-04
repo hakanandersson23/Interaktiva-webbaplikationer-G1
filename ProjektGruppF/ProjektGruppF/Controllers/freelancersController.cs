@@ -20,11 +20,11 @@ namespace ProjektGruppF.Controllers
         public ActionResult Index()
         {
             var freelancer = db.freelancer.Include(f => f.cv);
-            return View(freelancer.ToList());
+            return View(freelancer);
         }
 
         // GET: freelancers/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id=8)
         {
             if (id == null)
             {
