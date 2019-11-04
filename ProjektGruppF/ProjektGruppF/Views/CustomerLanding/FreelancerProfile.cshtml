@@ -6,40 +6,63 @@
 
 <h2>@ViewBag.Message</h2>
 
-@foreach (var item in Model)
-{
-<div class="card mb-3" style=" background:blue; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem;">
-    <div class="row no-gutters" style="background:orange;">
+<div class="row">
+    @foreach (var item in Model)
+    {
         <div class="col-md-3" style="background:green;">
-            <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img" alt="An image of the freelancer" style="max-width:100%">
-        </div>
-        <div class="col-md-8" style="background:lightgreen">
-            <div class="card-body" style=" background:yellow">
-                <h5 class="card-title">@item.Firstname @item.Lastname</h5>
-                <p class="card-text">
-                    Adress: @item.Adress  <br>
-                    Phonenumber: @item.Phonenumber  <br>
-                    Email: @item.Email  <br>
-              @*      Birthday:@item.Birthday  <br>
-                    Nationality: @item.Nationality  <br>
-                    Drivers license (yes/no): @item.Drivers_license  <br><br>
-                    <h5 style="background: yellow; font-weight: bold;">Work experience</h5>
-                    Previous/current employer: @item.Employername  <br>
-                    Jobtitle: @item.Jobtitle  <br>
-                    Role: @item.Role  <br>
-                    Startdate:@item.Startdate  <br>
-                    Enddate: @item.Enddate  <br>*@
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <div>
-                    @using (Html.BeginForm("CustomerViewFreelancerCv", "CustomerLanding", new { freelancer_id = item.Freelancer_id }))
-                    {
-                        <input type="submit" value="View CV" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
-                    }
+            <div class="card" style=" background:blue;">
+                <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="An image of the freelancer" style="max-width:100%">
+                <div class="card-body" style=" background:yellow">
+                    <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                    <p class="card-text">
+                        Adress: @item.Adress  <br>
+                        Phonenumber: @item.Phonenumber  <br>
+                        Email: @item.Email  <br>
+                        @*  Birthday:@item.Birthday  <br>
+                            Nationality: @item.Nationality  <br>
+                            Drivers license (yes/no): @item.Drivers_license  <br><br>
+                            <h5 style="background: yellow; font-weight: bold;">Work experience</h5>
+                            Previous/current employer: @item.Employername  <br>
+                            Jobtitle: @item.Jobtitle  <br>
+                            Role: @item.Role  <br>
+                            Startdate:@item.Startdate  <br>
+                            Enddate: @item.Enddate  <br>*@
+                    </p>
+                    <div>
+                        @using (Html.BeginForm("CustomerViewFreelancerCv", "CustomerLanding", new { freelancer_id = item.Freelancer_id }))
+                        {
+                            <input type="submit" value="View CV" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="col-md-9" style="background:green;">
+            <div class="card" style=" background:blue;">
+                <div class="card-body" style=" background:yellow">
+                    <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                    <p class="card-text">
+                        Adress:item.Adress  <br>
+                        Phonenumber: item.Phonenumber  <br>
+                        Email: item.Email  <br>
+                        Birthday:item.Birthday  <br>
+                        Nationality: item.Nationality  <br>
+                        Drivers license (yes/no): item.Drivers_license  <br><br>
+                        <h5 style="background: yellow; font-weight: bold;">Work experience</h5>
+                        Previous/current employer: item.Employername  <br>
+                        Jobtitle: item.Jobtitle  <br>
+                        Role: item.Role  <br>
+                        Startdate: item.Startdate  <br>
+                        Enddate: item.Enddate  <br>
+                    </p>
+                    <div>
+                            <input type="button" value="Print cv" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
 </div>
-}
 
