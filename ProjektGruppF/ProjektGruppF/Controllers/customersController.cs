@@ -12,7 +12,7 @@ namespace ProjektGruppF.Controllers
 {
     public class customersController : Controller
     {
-        private ProjektGruppFEntities db = new ProjektGruppFEntities();
+        private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: customers
         public ActionResult Index()

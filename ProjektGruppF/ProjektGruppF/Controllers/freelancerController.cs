@@ -19,7 +19,7 @@ namespace ProjektGruppF.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(freelancer free)
         {
-            using (ProjektGruppFEntities f = new ProjektGruppFEntities())
+            using (ProjektGruppFEntities1 f = new ProjektGruppFEntities1())
             {
 
                 if (f.freelancer.Any(x => x.firstname == free.firstname))

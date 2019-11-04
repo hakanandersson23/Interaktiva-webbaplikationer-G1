@@ -14,7 +14,7 @@ namespace ProjektGruppF.Controllers
 
         //TESTLinda
     {
-        private ProjektGruppFEntities db = new ProjektGruppFEntities();
+        private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: freelancers
         public ActionResult Index()

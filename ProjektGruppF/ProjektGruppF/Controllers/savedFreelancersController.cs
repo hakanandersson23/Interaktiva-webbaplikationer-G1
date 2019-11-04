@@ -13,7 +13,7 @@ namespace ProjektGruppF.Controllers
         // GET: savedFreelancers
         public ActionResult Index()
         {
-            ProjektGruppFEntities pg = new ProjektGruppFEntities();
+            ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
             savedFreelancersOperations sOP = new savedFreelancersOperations();
 
             return View(sOP.AllFreelancers());

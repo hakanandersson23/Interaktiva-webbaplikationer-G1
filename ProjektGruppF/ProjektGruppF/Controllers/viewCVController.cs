@@ -14,7 +14,7 @@ namespace ProjektGruppF.Controllers
         // GET: viewCV
         public ActionResult Index(int? cv_id)
         {
-            ProjektGruppFEntities pg = new ProjektGruppFEntities();
+            ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
             ViewCVOperations vcv = new ViewCVOperations();
 
             cv cv = pg.cv.Find(cv_id);

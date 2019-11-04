@@ -9,7 +9,7 @@ namespace ProjektGruppF.Models
 {
     public class savedFreelancersOperations
     {
-        ProjektGruppFEntities pg = new ProjektGruppFEntities();
+        ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
 
         public List<SavedFreelancersVM> AllFreelancers()
         {

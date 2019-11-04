@@ -8,7 +8,7 @@ namespace ProjektGruppF.Models
 {
     public class ViewCVOperations
     {
-        ProjektGruppFEntities pg = new ProjektGruppFEntities();
+        ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
 
         public List<cvFreelancer> CVFreelancer(cv cvv)
         {
@@ -28,7 +28,7 @@ namespace ProjektGruppF.Models
                                             f.email,
                                             c.birthday,
                                             c.nationality,
-                                            c.language,
+                                            //c.language,
                                             c.drivers_license,
                                             c.cv_id,
                                             w.employer_name,
@@ -49,7 +49,7 @@ namespace ProjektGruppF.Models
                 cv.Email = item.email;
                 cv.Birthday = item.birthday;
                 cv.Nationality = item.nationality;
-                cv.Language = item.language.ToString();
+                //cv.Language = item.language_cv.ToString();
                 cv.Drivers_license = item.drivers_license;
                 cv.Employername = item.employer_name;
                 cv.Jobtitle = item.job_title;

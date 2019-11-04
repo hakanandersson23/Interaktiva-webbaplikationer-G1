@@ -13,7 +13,7 @@ namespace ProjektGruppF.Controllers
 {
     public class cvFreelancerController : Controller
     {
-        private ProjektGruppFEntities db = new ProjektGruppFEntities();
+        private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: cvFreelancer
         public ActionResult Index()

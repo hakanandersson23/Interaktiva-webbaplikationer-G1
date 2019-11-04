@@ -25,9 +25,9 @@ namespace ProjektGruppF.Models
         {
             return fcList;
         }*/
-        ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
+        ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
         public List<FreelanceCardVM> FreelancercardVMList() {
-            ProjektGruppFEntities pgfe = new ProjektGruppFEntities();
+            ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
             List<FreelanceCardVM> FreelancerCardList = new List<FreelanceCardVM>();
             var cardlist = (from fl_table in pgfe.freelancer
                             join cv_table in pgfe.cv on fl_table.cv_id equals
