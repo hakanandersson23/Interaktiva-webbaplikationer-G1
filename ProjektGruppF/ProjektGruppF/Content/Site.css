@@ -53,6 +53,22 @@ textarea {
     font-size:30px;
     
 }
+#second h3{
+
+   color:black;
+}
+#First{
+    float:left;
+
+}
+#second{
+
+    float:right;
+}
+
+#Third p {
+    color: blueviolet;
+}
 /*#loginField p {
 
    
