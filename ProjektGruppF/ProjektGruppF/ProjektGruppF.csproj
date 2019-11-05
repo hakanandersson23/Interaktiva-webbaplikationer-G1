@@ -221,7 +221,6 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\cvFreelancer.cs" />
     <Compile Include="ViewModels\FreelanceCardVM.cs" />
     <Compile Include="ViewModels\Language.cs" />
     <Compile Include="ViewModels\SavedFreelancersVM.cs" />
