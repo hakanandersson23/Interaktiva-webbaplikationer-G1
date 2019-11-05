@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using ProjektGruppF.Models;
 
 namespace ProjektGruppF.ViewModels
 {
@@ -11,7 +12,7 @@ namespace ProjektGruppF.ViewModels
     {
 
         public virtual int freelancer_id { get;set; }
-      public int Freelancer_id { get; set; }
+        public int Freelancer_id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Adress { get; set; }
@@ -25,10 +26,11 @@ namespace ProjektGruppF.ViewModels
 
         public virtual int Cv_id { get; set; }
         public System.DateTime Birthday { get; set; }
+        public int Age { get; set; }
         //public DateTime Birthday { get; set; }
         public string Nationality { get; set; }
         public string Drivers_license { get; set; }
-        public string Profil { get; set; }
+        public string CoverLetter { get; set; }
         public System.DateTime Registration_date { get; set; }
         //public DateTime Registration_date { get; set; }
 
@@ -53,5 +55,7 @@ namespace ProjektGruppF.ViewModels
 
         [ForeignKey("language")]
         public string Language { get; set; }
+
+        public List<work_experience> Work_Experience_List { get; set; }
     }
 }

@@ -9,26 +9,10 @@ namespace ProjektGruppF.Models
 {
     public class FreelancerCardOperations
     {
-        /*
-
-        public List<FreelanceCardVM> fcList = new List<FreelanceCardVM>
-                {
-                    new FreelanceCardVM{Name="Erik", Lastname="Oberg", Age=40 , Nationality="Swedish", Language="Swedish", Skill="Programming",Expertise="C#",Rank=5},
-                    new FreelanceCardVM{Name="Sabrina", Lastname="Thao", Age=21 , Nationality="Swedish", Language="Swedish", Skill="Programming",Expertise="html",Rank=2},
-                    new FreelanceCardVM{Name="Eva", Lastname="Evva", Age=42 , Nationality="English", Language="English", Skill="Programming",Expertise="C#",Rank=3},
-                    new FreelanceCardVM{Name="Joe", Lastname="Jooe", Age=23 , Nationality="Swedish", Language="Swedish", Skill="Programming",Expertise="C#",Rank=4},
-                    new FreelanceCardVM{Name="Ida", Lastname="Idda", Age=34 , Nationality="Finnish", Language="Finnish", Skill="Programming",Expertise="C#",Rank=1},
-                    new FreelanceCardVM{Name="Ola", Lastname="Olla", Age=51 , Nationality="Norwegian", Language="Norwegian", Skill="Programming",Expertise="C#",Rank=2}
-                };*/
-        /*
-        public List<FreelanceCardVM> GetCards()
-        {
-            return fcList;
-        }*/
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-        public List<FreelanceCardVM> FreelancercardVMList() {
+        public List<SavedFreelancersVM> FreelancercardVMList() {
             ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-            List<FreelanceCardVM> FreelancerCardList = new List<FreelanceCardVM>();
+            List<SavedFreelancersVM> FreelancerCardList = new List<SavedFreelancersVM>();
             var cardlist = (from fl_table in pgfe.freelancer
                             join cv_table in pgfe.cv on fl_table.cv_id equals
                             cv_table.cv_id
@@ -45,9 +29,9 @@ namespace ProjektGruppF.Models
                 DateTime birthdate = item.birthday;
                 int age = AgeConverter(birthdate);
 
-                FreelanceCardVM fcVM = new FreelanceCardVM();
+                SavedFreelancersVM fcVM = new SavedFreelancersVM();
                 fcVM.Freelancer_id = item.freelancer_id;
-                fcVM.Name = item.firstname;
+                fcVM.Firstname = item.firstname;
                 fcVM.Lastname = item.lastname;
                 fcVM.Age = age;
                 fcVM.Nationality = item.nationality;
@@ -66,13 +50,11 @@ namespace ProjektGruppF.Models
         }
 
 
-        public List<SavedFreelancersVM> onefreelancer(int freelancer_id)
+        public Freelancer ViewFreelancer(int freelancer_id)
         {
-            List<SavedFreelancersVM> ListofOne = new List<SavedFreelancersVM>();
-
-            var savedFreelancersList = (from free in pgfe.freelancer
-                                        join c in pgfe.cv on free.cv_id equals c.cv_id
-                                        where free.freelancer_id == freelancer_id
+            var freelancer = (from free in pgfe.freelancer
+                              join c in pgfe.cv on free.cv_id equals c.cv_id
+                              where free.freelancer_id == freelancer_id
                                         select new
                                         {
                                             free.freelancer_id,
@@ -81,25 +63,59 @@ namespace ProjektGruppF.Models
                                             free.adress,
                                             free.phonenumber,
                                             free.email,
-                                            c.cv_id
-                                        }).ToList();
-
-            foreach (var item in savedFreelancersList)
+                                            free.PersonalLetter,
+                                            c.drivers_license,
+                                            c.cv_id,
+                                            c.birthday,
+                                            c.nationality,
+                                        }).FirstOrDefault();
+            var fwe = (from c in pgfe.cv
+                       join we in pgfe.work_experience on c.cv_id equals we.cv_id
+                       where c.cv_id == freelancer_id
+                       select new
+                       {
+                           we.employer_name,
+                           we.job_title,
+                           we.role,
+                           we.start_date,
+                           we.end_date
+                       }).ToList();
+            List<work_experience> weL = new List<work_experience>();
+            foreach(var item in fwe)
             {
-                SavedFreelancersVM objcvm = new SavedFreelancersVM();
-                objcvm.Freelancer_id = item.freelancer_id;
-                objcvm.Firstname = item.firstname;
-                objcvm.Lastname = item.lastname;
-                objcvm.Adress = item.adress;
-                objcvm.Phonenumber = item.phonenumber;
-                objcvm.Email = item.email;
-                objcvm.Cv_id = item.cv_id;
-                ListofOne.Add(objcvm);
-            }
-            return ListofOne;
+                work_experience we2 = new work_experience();
+                we2.employer_name = item.employer_name;
+                we2.job_title = item.job_title;
+                we2.role = item.role;
+                we2.start_date = item.start_date;
+                we2.end_date = item.end_date;
+                weL.Add(we2);
+            };
+            Freelancer fl = new Freelancer()
+            {
+                Freelancer_id = freelancer.freelancer_id,
+                Firstname = freelancer.firstname,
+                Lastname = freelancer.lastname,
+                Adress = freelancer.adress,
+                Phonenumber = freelancer.phonenumber,
+                Email = freelancer.email,
+                CoverLetter = freelancer.PersonalLetter,
+                Drivers_license = freelancer.drivers_license,
+                Cv_id = freelancer.cv_id,
+                Age = AgeConverter(freelancer.birthday),
+                Nationality = freelancer.nationality,
+                Work_Experience_List = weL
+            };
+            return fl;
         }
-
-       
-
     }
 }
+
+/*
+
+
+                Employername = freelancer.employer_name,
+                Jobtitle = freelancer.job_title,
+                Role = freelancer.role,
+                Startdate = freelancer.start_date,
+                Enddate = freelancer.end_date  */

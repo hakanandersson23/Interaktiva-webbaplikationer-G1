@@ -24,8 +24,10 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: freelancers/Details/5
-        public ActionResult Details(int? id=8)
+        public ActionResult Start(int? id=8)
         {
+
+            ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,6 +38,19 @@ namespace ProjektGruppF.Controllers
                 return HttpNotFound();
             }
             return View(freelancer);
+        }
+        public ActionResult CV(int? id = 7)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            cv cv = db.cv.Find(id);
+            if (cv == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cv);
         }
 
         // GET: freelancers/Create
@@ -64,7 +79,7 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: freelancers/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id=8)
         {
             if (id == null)
             {
@@ -84,13 +99,13 @@ namespace ProjektGruppF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,cv_id")] freelancer freelancer)
+        public ActionResult Edit([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,PersonalLetter")] freelancer freelancer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(freelancer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Start");
             }
             ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
             return View(freelancer);

@@ -31,7 +31,7 @@ namespace ProjektGruppF.Controllers
         {
             FreelancerCardOperations flc = new FreelancerCardOperations();
             ViewBag.Message = freelancer_id.ToString();
-            return View(flc.onefreelancer(freelancer_id));
+            return View(flc.ViewFreelancer(freelancer_id));
         }
 
         public ActionResult CustomerViewFreelancerCv(int freelancer_id)

@@ -282,7 +282,7 @@
     <Content Include="Views\customers\Index.cshtml" />
     <Content Include="Views\freelancers\Create.cshtml" />
     <Content Include="Views\freelancers\Delete.cshtml" />
-    <Content Include="Views\freelancers\Details.cshtml" />
+    <Content Include="Views\freelancers\Start.cshtml" />
     <Content Include="Views\freelancers\Edit.cshtml" />
     <Content Include="Views\freelancers\Index.cshtml" />
     <Content Include="Views\cvFreelancer\Create.cshtml" />
@@ -303,6 +303,7 @@
     <Content Include="Views\CV_\Index.cshtml" />
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <Content Include="Views\CustomerLanding\_ViewStart.cshtml" />
+    <Content Include="Views\freelancers\CV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
