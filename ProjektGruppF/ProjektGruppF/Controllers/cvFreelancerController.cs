@@ -16,11 +16,17 @@ namespace ProjektGruppF.Controllers
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: cvFreelancer
+        //public ActionResult Index()
+        //{
+        //    return View(db.cv.ToList());
+        //}
+
         public ActionResult Index()
         {
-            return View(db.cv.ToList());
-        }
+            CvFreelancerOperations cvfO = new CvFreelancerOperations();
 
+            return View(cvfO.languageList());
+        }
         // GET: cvFreelancer/Details/5
         public ActionResult Details(int? id)
         {
@@ -79,78 +85,33 @@ namespace ProjektGruppF.Controllers
 
             return View(cv);
         }
-        //public ActionResult Create([Bind(Include = "language_cv")] language_cv language_cv)
-        //{
+        
 
-
-        //    if (ModelState.IsValid)
-        //    {
-
-
-        //        db.language_cv.Add(language_cv);
-        //        db.SaveChanges();
-
-        //        ViewBag.SuccessMessage = "Registration Successful.";
-        //        return RedirectToAction("Index");//conformation?
-
-
-        //    }
-
-        //    return View(language_cv);
-        //}
-        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)//dropdown value is saved inte färdigt
-        //{
-        //    //cv.registration_date = DateTime.Now;
-        //    var model = new cvFreelancer
-        //    {
-
-        //        Drivers_licenseList = new SelectList(db.cv, "yes", "no")
-        //    };
-
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.cv.Add(cv);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");//conformation?
-
-
-        //    }
-
-        //    return View(cv);
-        //}
-
-        //public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date, language")] cv cv, language language) /*save in multiple tables inte färdigt*/
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        db.cv.Add(cv);
-        //        db.language.Add(language);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");//conformation?
-
-
-        //    }
-
-        //    return View(cv);
-        //}
+       
 
         // GET: cvFreelancer/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            cv cv = db.cv.Find(id);
-            if (cv == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cv);
-        }
+
+
+        //    //inte färdigt 
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+        //    var languageViewModel = new language
+        //    { Cv = db.cv.Include(i => i.Language).First(i => i.cv_id == id), };
+
+        //    if (languageViewModel.Cv == null)
+        //        return HttpNotFound();
+
+
+        //    var languagesList = db.language.ToList();
+        //    languageViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
+
+        //    ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", languageViewModel.Cv.freelancer_id);
+
+        //    return View(languageViewModel);
+        //}
 
         // POST: cvFreelancer/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

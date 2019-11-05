@@ -56,5 +56,7 @@ namespace ProjektGruppF.Models
         public virtual ICollection<skill_cv> skill_cv { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<main_abilities_cv> main_abilities_cv { get; set; }
+
+        public string language { get; set; }
     }
 }
