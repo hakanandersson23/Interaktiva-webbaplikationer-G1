@@ -22,6 +22,10 @@
                         Linkedin: <a href="https://se.linkedin.com/" target="_blank">https://se.linkedin.com/</a>
                         Github:<a href="https://github.com/" target="_blank">https://github.com/</a>
                     </p>
+                    <div style="margin-top:3rem" >
+                        <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
+                        <input class="btn btn-primary" type="button" value="Download cv" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,17 +39,17 @@
                     <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
                     <p class="card-text">
                         @Model.CoverLetter <br>
-                        Adress:item.Adress  <br>
-                        Phonenumber: item.Phonenumber  <br>
-                        Email: item.Email  <br>
-                        Birthday:item.Birthday  <br>
-                        Nationality: item.Nationality  <br>
+                        Adress:@Model.Adress  <br>
+                        Phonenumber: @Model.Phonenumber  <br>
+                        Email: @Model.Email  <br>
+                        Birthday:@Model.Birthday  <br>
+                        Nationality: @Model.Nationality  <br>
                         Drivers license: @Model.Drivers_license  <br><br>
                         <hr>
                         <h5 class="card-title" font-weight: bold;">Work experience</h5>
                         @foreach (var item in Model.Work_Experience_List)
                         {
-                            <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6><br>
+                            <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
                             @item.job_title<br>
                             @item.role<br><br>
                         }
@@ -53,7 +57,7 @@
                         <h5 class="card-title" font-weight: bold;">Education</h5>
                         @foreach (var item in Model.EducationList)
                         {
-                            @item.education_name @item.university_name @item.study_years<br>
+                            @item.university_name <span>, </span> @item.education_name <span>, </span> @item.study_years <span> years</span><br>
                         }
                         <hr>
                         <h5 class="card-title" font-weight: bold;">Skills</h5>
@@ -80,10 +84,6 @@
                             @item.name<br />
                         }
                     </p>
-                        <div>
-                            <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
-                            <input class="btn btn-primary" type="button" value="Download cv" />
-                        </div>
                     </div>
             </div>
         </div>
