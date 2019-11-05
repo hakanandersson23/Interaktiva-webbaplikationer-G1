@@ -22,12 +22,6 @@
                         Linkedin: <a href="https://se.linkedin.com/" target="_blank">https://se.linkedin.com/</a>
                         Github:<a href="https://github.com/" target="_blank">https://github.com/</a>
                     </p>
-                    <div>
-                        @using (Html.BeginForm("CustomerViewFreelancerCv", "CustomerLanding", new { freelancer_id = Model.Freelancer_id }))
-                        {
-                            <input class="btn btn-primary" type="submit" value="View CV" onclick="location.href='@Url.Action("CustomerViewFreelancerCv", "CustomerLanding")'" />
-                        }
-                    </div>
                 </div>
             </div>
         </div>
@@ -47,17 +41,45 @@
                         Birthday:item.Birthday  <br>
                         Nationality: item.Nationality  <br>
                         Drivers license: @Model.Drivers_license  <br><br>
+                        <hr>
                         <h5 class="card-title" font-weight: bold;">Work experience</h5>
                         @foreach (var item in Model.Work_Experience_List)
                         {
-                        <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6><br/>
+                            <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6><br>
                             @item.job_title<br>
                             @item.role<br><br>
                         }
+                        <hr>
                         <h5 class="card-title" font-weight: bold;">Education</h5>
+                        @foreach (var item in Model.EducationList)
+                        {
+                            @item.education_name @item.university_name @item.study_years<br>
+                        }
+                        <hr>
                         <h5 class="card-title" font-weight: bold;">Skills</h5>
+                        @foreach (var item in Model.SkillList)
+                        {
+                            @item.name<br />
+                        }
+                        <hr>
                         <h5 class="card-title" font-weight: bold;">Expertise</h5>
-                  </p>
+                        @foreach (var item in Model.ExpertiseList)
+                        {
+                            @item.expertise_id @item.name<br />
+                        }
+                        <hr>
+                        <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
+                        @foreach (var item in Model.MainAbilitiesList)
+                        {
+                            @item.name <br />
+                        }
+                        <hr>
+                        <h5 class="card-title" font-weight: bold;">Languages</h5>
+                        @foreach (var item in Model.LanguageList)
+                        {
+                            @item.name<br />
+                        }
+                    </p>
                         <div>
                             <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
                             <input class="btn btn-primary" type="button" value="Download cv" />

@@ -24,7 +24,7 @@
                         <div class="card-footer">
                             @* <a style="float:right;" href="#" class="btn btn-primary">save</a>
         <a href="#" class="btn btn-primary">View</a>*@
-                            @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id }))
+                            @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
                             {
                                 <input class="btn btn-primary" type="submit" value="View" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
                             }

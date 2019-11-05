@@ -294,7 +294,6 @@
     <Content Include="Views\cvFreelancer\Conformation.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
     <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
-    <Content Include="Views\CustomerLanding\CustomerViewFreelancerCv.cshtml" />
     <Content Include="Views\CV_\Create.cshtml" />
     <Content Include="Views\CV_\Delete.cshtml" />
     <Content Include="Views\CV_\Details.cshtml" />
