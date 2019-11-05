@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using ProjektGruppF.Models;
+using System.Web.Mvc;
 
 namespace ProjektGruppF.ViewModels
 {
@@ -37,12 +39,23 @@ namespace ProjektGruppF.ViewModels
        
         public string Education { get; set; } // ge problem annars
 
+        //public IEnumerable<SelectListItem> NameOfEducationalInstitution { get; set; }
+
+        //private List<int> listOfSchoolnames;
+        //public List<int> ListOfSchoolNames
+        //{ get { if (ListOfSchoolNames == null)
+        //        { ListOfSchoolNames = Education.university_name.Select(m => m.Id).ToList(); }
+        //        return ListOfSchoolNames; }
+        //    set { ListOfSchoolNames = value; }
+        //}
+    
+
         public int StudyYears { get; set; }
  
         
         public string Work_experience { get; set; }
 
-        
+       
         public string Expertise { get; set; }
 
         
@@ -50,8 +63,24 @@ namespace ProjektGruppF.ViewModels
 
        
         public string Skill { get; set; }
+       
+        //[ForeignKey("language")]
+       public string Language { get; set; }
 
-        [ForeignKey("language")]
-        public string Language { get; set; }
+        public cv Cv { get; set; }
+        public IEnumerable<SelectListItem> AllLanguages { get; set; }
+
+        private List<int> listOflanguages;
+        //public List<int> ListOfLanguages
+        //{
+        //    get
+        //    {
+        //        if (ListOfLanguages == null)
+        //            //{ ListOfLanguages = Cv.Language.Select(m => m.Id).ToList(); }
+        //            return ListOfLanguages;
+        //    }
+        //    set { ListOfLanguages = value; }
+        //}
+
     }
 }

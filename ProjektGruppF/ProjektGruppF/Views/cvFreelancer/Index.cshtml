@@ -41,10 +41,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.registration_date)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cv_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cv_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cv_id })
+
+        
+            @Html.ActionLink("Edit", "Edit", new { id = item.cv_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.cv_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.cv_id })
         </td>
     </tr>
 }

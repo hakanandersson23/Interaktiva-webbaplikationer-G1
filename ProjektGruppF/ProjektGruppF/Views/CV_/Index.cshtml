@@ -47,10 +47,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.profil)
         </td>
+        <th>@Html.DisplayNameFor(model => model.language) </th>
+
+        <td>        
+        @Html.ListBox("Id", new SelectList(item.language, "Id", "CourseName"))     
+        </td>
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.cv_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.cv_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.cv_id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.cv_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.cv_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.cv_id })
         </td>
     </tr>
 }

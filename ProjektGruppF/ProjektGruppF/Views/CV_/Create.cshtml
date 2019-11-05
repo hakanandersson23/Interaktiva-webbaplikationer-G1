@@ -1,4 +1,5 @@
-﻿@model ProjektGruppF.Models.cv
+﻿@*@model ProjektGruppF.Models.cv*@
+@model ProjektGruppF.ViewModels.cvFreelancer
 
 @{
     ViewBag.Title = "Create";
@@ -7,46 +8,53 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>cv</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.nationality, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.nationality, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.drivers_license, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Drivers_license, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <p margin-top: 10px> Type A/B/none</p>
-            @Html.EditorFor(model => model.drivers_license, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.drivers_license, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Drivers_license, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Drivers_license, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.language_cv, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
 
 
-            @Html.EditorFor(model => model.language_cv, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.language_cv, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AllLanguages, "CourseName", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.ListBoxFor(m => m.ListOfLanguages, Model.AllLanguages)
         </div>
     </div>
     @*<div class="form-group">
@@ -58,12 +66,12 @@
         </div>*@
 
     <div class="form-group">
-        @Html.LabelFor(model => model.profil, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Profil, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <p margin-top: 10px> 3 words about yourself as a person</p>
 
-            @Html.EditorFor(model => model.profil, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.profil, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Profil, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Profil, "", new { @class = "text-danger" })
         </div>
     </div>
 

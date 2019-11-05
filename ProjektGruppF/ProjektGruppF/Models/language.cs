@@ -11,7 +11,8 @@ namespace ProjektGruppF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class language
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,5 +26,20 @@ namespace ProjektGruppF.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<language_cv> language_cv { get; set; }
+
+        public cv Cv { get; set; }
+        public IEnumerable<SelectListItem> AllLanguages { get; set; }
+
+        private List<int> listOflanguages;
+        //public List<int> ListOfLanguages
+        //{
+        //    get
+        //    {
+        //        if (ListOfLanguages == null)
+        //        //{ ListOfLanguages = Cv.language.Select(m => m.Id).ToList(); }
+        //        return ListOfLanguages;
+        //    }
+        //    set { ListOfLanguages = value; }
+        //}
     }
 }
