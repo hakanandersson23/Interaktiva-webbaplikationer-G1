@@ -58,5 +58,9 @@ namespace ProjektGruppF.ViewModels
 
         public List<work_experience> Work_Experience_List { get; set; }
         public List<skill> SkillList { get; set; }
+        public List<expertise> ExpertiseList { get; set; }
+        public List<education> EducationList { get; set; }
+        public List<Main_abilities> MainAbilitiesList { get; set; }
+        public List<language> LanguageList { get; set; }
     }
 }

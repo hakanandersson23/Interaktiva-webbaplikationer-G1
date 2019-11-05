@@ -19,25 +19,12 @@ namespace ProjektGruppF.Controllers
             /*return View(flc.GetCards());*/
             return View(flc.FreelancercardVMList());
         }
-
-        [HttpPost]
-        public ActionResult Index(int user_id)
-        {
-            return View();
-        }
-
       
-        public ActionResult FreelancerProfile(int freelancer_id)
+        public ActionResult FreelancerProfile(int freelancer_id, int cv_id)
         {
             FreelancerCardOperations flc = new FreelancerCardOperations();
             ViewBag.Message = freelancer_id.ToString();
-            return View(flc.ViewFreelancer(freelancer_id));
-        }
-
-        public ActionResult CustomerViewFreelancerCv(int freelancer_id)
-        {
-            ViewBag.Message = freelancer_id.ToString();
-            return View();
+            return View(flc.ViewFreelancer(freelancer_id, cv_id));
         }
     }
 }
