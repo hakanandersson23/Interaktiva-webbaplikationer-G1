@@ -10,9 +10,9 @@ namespace ProjektGruppF.Models
     public class FreelancerCardOperations
     {
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-        public List<SavedFreelancersVM> FreelancercardVMList() {
+        public List<Freelancer> FreelancercardVMList() {
             ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-            List<SavedFreelancersVM> FreelancerCardList = new List<SavedFreelancersVM>();
+            List<Freelancer> FreelancerCardList = new List<Freelancer>();
             var cardlist = (from fl_table in pgfe.freelancer
                             join cv_table in pgfe.cv on fl_table.cv_id equals
                             cv_table.cv_id
@@ -30,7 +30,7 @@ namespace ProjektGruppF.Models
                 DateTime birthdate = item.birthday;
                 int age = AgeConverter(birthdate);
 
-                SavedFreelancersVM fcVM = new SavedFreelancersVM();
+                Freelancer fcVM = new Freelancer();
                 fcVM.Freelancer_id = item.freelancer_id;
                 fcVM.Firstname = item.firstname;
                 fcVM.Lastname = item.lastname;
@@ -148,7 +148,8 @@ namespace ProjektGruppF.Models
                               select new
                            {
                                   ex.expertise_id,
-                                  ex.name 
+                                  ex.name, 
+                                  ex.rank_expertise_id
                            }).ToList();
             List<expertise> expertiseL = new List<expertise>();
             foreach (var item in fexpertise)
@@ -156,6 +157,8 @@ namespace ProjektGruppF.Models
                 expertise expertise2 = new expertise();
                 expertise2.expertise_id = item.expertise_id;
                 expertise2.name = item.name;
+                expertise2.rank_expertise_id = item.rank_expertise_id;
+                expertiseL.Add(expertise2);
             };
             return expertiseL;
         }
