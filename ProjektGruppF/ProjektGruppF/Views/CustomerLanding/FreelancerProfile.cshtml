@@ -7,86 +7,96 @@
 <h2>@Model.Firstname @Model.Lastname</h2>
 
 <div class="row">
-        <div class="col-md-3" >
-            <div class="card border-secondary mb-3">
-                <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="An image of the freelancer" style="max-width:100%">
-                <div class="card-body">
-                    <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
-                    <p class="card-text">
-                        Age: @Model.Age <br>
-                        Nationality: @Model.Nationality <br>
-                        <hr />
-                        Adress: @Model.Adress  <br>
-                        Phonenumber: @Model.Phonenumber  <br>
-                        Email: @Model.Email  <br>
-                        Linkedin: <a href="https://se.linkedin.com/" target="_blank">https://se.linkedin.com/</a>
-                        Github:<a href="https://github.com/" target="_blank">https://github.com/</a>
-                    </p>
-                    <div style="margin-top:3rem" >
-                        <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
-                        <input class="btn btn-primary" type="button" value="Download cv" />
-                    </div>
+    <div class="col-md-3">
+        <div class="card border-secondary mb-3">
+            <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="An image of the freelancer" style="max-width:100%">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
+                <p class="card-text">
+                    Age: @Model.Age <br>
+                    Nationality: @Model.Nationality <br>
+                    <hr />
+                    Adress: @Model.Adress  <br>
+                    Phonenumber: @Model.Phonenumber  <br>
+                    Email: @Model.Email  <br>
+                    Linkedin: <a href="https://se.linkedin.com/" target="_blank">https://se.linkedin.com/</a>
+                    Github:<a href="https://github.com/" target="_blank">https://github.com/</a>
+                </p>
+                <div style="margin-top:3rem">
+                    <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
+                    <input class="btn btn-primary" type="button" value="Download cv" />
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-9" >
-            <div class="card border-secondary mb-3">
-                <div class=" card-header">
-                    <h5 style="text-align:center">Curriculum Vitae</h5>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
-                    <p class="card-text">
-                        @Model.CoverLetter <br>
-                        Adress:@Model.Adress  <br>
-                        Phonenumber: @Model.Phonenumber  <br>
-                        Email: @Model.Email  <br>
-                        Birthday:@Model.Birthday  <br>
-                        Nationality: @Model.Nationality  <br>
-                        Drivers license: @Model.Drivers_license  <br><br>
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Work experience</h5>
-                        @foreach (var item in Model.Work_Experience_List)
-                        {
-                            <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
-                            @item.job_title<br>
-                            @item.role<br><br>
-                        }
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Education</h5>
-                        @foreach (var item in Model.EducationList)
-                        {
-                            @item.university_name <span>, </span> @item.education_name <span>, </span> @item.study_years <span> years</span><br>
-                        }
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Skills</h5>
-                        @foreach (var item in Model.SkillList)
-                        {
-                            @item.name<br />
-                        }
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Expertise</h5>
-                        @foreach (var item in Model.ExpertiseList)
-                        {
-                            @item.expertise_id @item.name<br />
-                        }
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
-                        @foreach (var item in Model.MainAbilitiesList)
-                        {
-                            @item.name <br />
-                        }
-                        <hr>
-                        <h5 class="card-title" font-weight: bold;">Languages</h5>
-                        @foreach (var item in Model.LanguageList)
-                        {
-                            @item.name<br />
-                        }
-                    </p>
-                    </div>
+    <div class="col-md-9">
+        <div class="card border-secondary mb-3">
+            <div class=" card-header">
+                <h5 style="text-align:center">Curriculum Vitae</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
+                <p class="card-text">
+                    @Model.CoverLetter <br>
+                    Adress:@Model.Adress  <br>
+                    Phonenumber: @Model.Phonenumber  <br>
+                    Email: @Model.Email  <br>
+                    Birthday:@Model.Birthday  <br>
+                    Nationality: @Model.Nationality  <br>
+                    Drivers license: @Model.Drivers_license  <br><br>
+                    <hr>
+                    <h5 class="card-title" font-weight: bold;">Work experience</h5>
+                    @foreach (var item in Model.Work_Experience_List)
+                    {
+                        <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
+                        @item.job_title<br>
+                        @item.role<br><br>
+                    }
+                    <hr>
+                    <h5 class="card-title" font-weight: bold;">Education</h5>
+                    @foreach (var item in Model.EducationList)
+                    {
+                        @item.university_name <span>, </span> @item.education_name <span>, </span> @item.study_years <span> years</span><br>
+                    }
+                    <hr>
+                    <h5 class="card-title" font-weight: bold;">Skills</h5>
+                    @foreach (var item in Model.SkillList)
+                    {
+                        @item.name<br />
+                    }
+                    <hr>
+
+                    <h5 class="card-title" font-weight: bold;">Expertise</h5>
+                 @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+                     Gör att glyphiconerna fungerar men då skriver den över all annan css*@
+                    @foreach (var item in Model.ExpertiseList)
+                    {
+                        @item.name @item.rank_expertise_id@*ska ta bort id*@<br /> 
+                        <div>
+                            @for (int i = 0; i < Convert.ToInt32(item.rank_expertise_id); i++)
+                            {
+                                <span class="glyphicon glyphicon-star">+</span>
+                            }
+                        </div>
+                    }
+
+                    <hr>
+                    <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
+                    @foreach (var item in Model.MainAbilitiesList)
+                    {
+                        @item.name <br />
+                    }
+                    <hr>
+                    <h5 class="card-title" font-weight: bold;">Languages</h5>
+                    @foreach (var item in Model.LanguageList)
+                    {
+                        @item.name<br />
+                    }
+                </p>
             </div>
         </div>
+    </div>
 </div>
 
 <script>
