@@ -5,110 +5,91 @@
 }
 
 <h2>These are your saved freelancers</h2>
-<p>Filter your search by choosing desired skill, expertise or rank in the drop-down boxes below.</p>
-<div>
-    <label for="expertises">Expertise</label>
-    <select id="expertise"></select>
-    <label for="rank">Rank</label>
-    <select id="rank"></select>
-</div>
+<p>Filter your search by choosing desired skill, expertise and rank in the drop-down boxes below and then clicking on "Filter".</p>
 
-<select id="leftSelect">
-    <option value="programming">Programmer</option>
-    <option value="web_developing">Web developer</option>
-    <option value="databases">Databaseadministrator</option>
-    <option value="m_app_developing">Mobile application developer</option>
-    <option value="usability_testing">Usability tester</option>
-    <option value="logo_designing">Logo designer</option>
-</select>
-
-<select id="centerSelect">
-    <option value="programming">C#</option>
-    <option value="programming">Java</option>
-    <option value="programming">Javascript</option>
-    <option value="programming">Python</option>
-    <option value="programming">Postgres</option>
-    <option value="programming">PHP</option>
-    <option value="programming">JQuery</option>
-    <option value="programming">HTML</option>
-    <option value="programming">CSS</option>
-    <option value="programming">Android</option>
-    <option value="programming">IOS</option>
-    <option value="programming">MYSQL</option>
-    <option value="programming">Oracle</option>
-</select>
-
-<select id="rightSelect">
-    <option value="five">5</option>
-    <option value="four">4</option>
-    <option value="three">3</option>
-    <option value="two">2</option>
-    <option value="one">1</option>
-</select>
-
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-sm-3">
-            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
-                <img src="" class="card-img-top" alt="A picture of the freelancer">
-                <div class="card-body" style="padding:1.25rem; background:lightblue;">
-                    <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
-                    <p class="card-text">
-                        Adress: @item.Adress  <br>
-                        Phonenumber: @item.Phonenumber  <br>
-                        Email: @item.Email  <br>
-                    </p>
-                    <a href=@Url.Action("Index", "ViewCV", new { cv_id = item.Freelancer_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
+@using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
+{
+    @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
+}
+<br />
+<select id="expertise" class="centerSelect"></select>
+<br /><br />
+<select id="rank" class="rightSelect"></select>
+<br /><br />
+<input type="submit" value="Filter" />
+@*@<div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
+                    <img src="" class="card-img-top" alt="A picture of the freelancer">
+                    <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                        <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
+                        <p class="card-text">
+                            Adress: @item.Adress  <br>
+                            Phonenumber: @item.Phonenumber  <br>
+                            Email: @item.Email  <br>
+                        </p>
+                        <a href=@Url.Action("Index", "ViewCV", new { cv_id = item.Freelancer_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
-@section scripts {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Get a list of categories and a list of products of the first category.
-            $.getJSON('/savedFreelancers/Index', null, function (data) {
-                $.each(data, function () {
-                    $('#expertise').append('<option value=' +
-                        this.ExpertiseID + '>' + this.ExpertiseName + '</option>');
-                });
-                $.getJSON('/savedFreelancers/Index', { expertises: $('#expertise').val() }, function (data) {
-                    $.each(data, function () {
-                        $('#rank').append('<option value=' +
-                            this.RankID + '>' + this.RankName + '</option>');
-                    });
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    alert('Error getting ranks!');
-                });
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-                alert('Error getting expertises!');
-            });
+        }
+    </div>*@
 
-            // Dropdown list change event.
-            $('#expertise').change(function () {
-                $('#rank option').remove();
-                $.getJSON('/savedFreelancers/Index', { expertises: $('#expertise').val() }, function (data) {
-                    $.each(data, function () {
-                        $('#rank').append('<option value=' +
-                            this.RankID + '>' + this.RankName + '</option>');
-                    });
-                }).fail(function (jqXHR, textStatus, errorThrown) {
-                    alert('Error getting ranks!');
-                });
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#expertise").prop("disabled", true);
+            $("#skillsList").change(function () {
+                if ($("#skillsList").val() != "Skill") {
+                    var options = {};
+                    options.url = "/savedFreelancers/GetExpertises";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ skills: $("#skillsList").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (expertise) {
+                        $("#expertise").empty();
+                        for (var i = 0; i < expertise.length; i++) {
+                            $("#expertise").append("<option>" + expertise[i] + "</option>");
+                        }
+                        $("#expertise").prop("disabled", false);
+                    };
+                    options.error = function () { alert("Error retrieving expertises!"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#expertise").empty();
+                    $("#expertise").prop("disabled", true);
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#rank").prop("disabled", true);
+            $("#expertise").change(function () {
+                if ($("#expertise").val() != null) {
+                    var options = {};
+                    options.url = "/savedFreelancers/GetRanks";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ expertises: $("#expertise").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (rank) {
+                        $("#rank").empty();
+                        for (var i = 0; i < rank.length; i++) {
+                            $("#rank").append("<option>" + rank[i] + "</option>");
+                        }
+                        $("#rank").prop("disabled", false);
+                    };
+                    options.error = function () { alert("Error retrieving ranks!"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#rank").empty();
+                    $("#rank").prop("disabled", true);
+                }
             });
         });
     </script>
 }
-@*@<script>src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</script>
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#searchField *").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>*@

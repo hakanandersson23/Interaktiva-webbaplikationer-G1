@@ -10,46 +10,152 @@ namespace ProjektGruppF.Controllers
 {
     public class savedFreelancersController : Controller
     {
-        // GET: savedFreelancers
-        ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
+        public ActionResult Index()
+        {
+            List<string> skills = new List<string>();
+            skills.Add("Skill");
+            skills.Add("Programming");
+            skills.Add("Web developing");
+            skills.Add("Databases");
+            skills.Add("Mobile applications");
+            SelectList skillsList = new SelectList(skills);
+            ViewData["skillsList"] = skillsList;
+            return View();
+        }
+        public JsonResult GetExpertises(string skills)
+        {
+            List<string> expertises = new List<string>();
+            switch (skills)
+            {
+                case "Programming":
+                    expertises.Add("C#");
+                    expertises.Add("Java");
+                    expertises.Add("Python");
+                    break;
+                case "Web developing":
+                    expertises.Add("HTML");
+                    expertises.Add("CSS");
+                    expertises.Add("Javascript");
+                    expertises.Add("JQuery");
+                    expertises.Add("PHP");
+                    break;
+                case "Databases":
+                    expertises.Add("Postgres");
+                    expertises.Add("Oracle");
+                    expertises.Add("MySQL");
+                    break;
+                case "Mobile applications":
+                    expertises.Add("Android");
+                    expertises.Add("IOS");
+                    break;
+            }
+            return Json(expertises);
+        }
+        public JsonResult GetRanks(string expertises)
+        {
+            List<int> ranks = new List<int>();
+            switch (expertises)
+            {
+                case "C#":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Java":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Python":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "HTML":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "CSS":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Javascript":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "JQuery":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "PHP":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Postgres":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Oracle":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "MySQL":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "Android":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+                case "IOS":
+                    ranks.Add(5);
+                    ranks.Add(4);
+                    ranks.Add(3);
+                    ranks.Add(2);
+                    ranks.Add(1);
+                    break;
+            }
+            return Json(ranks);
+        }
+
+        /*ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
         savedFreelancersOperations sOP = new savedFreelancersOperations();
         public ActionResult Index()
         {
             return View(sOP.AllFreelancers());
-        }
-        public JsonResult GetExpertises()
-        {
-            return Json(pg.expertise.Select(e => new { ExpertiseName = e.name, ExpertiseID = e.expertise_id }), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetRanks(int? expertises)
-        {
-            var ranks = pg.rank_expertise.AsQueryable();
-
-            if (expertises != null)
-            {
-                ranks = ranks.Where(r => r.rank_expertise_Id == expertises);
-            }
-
-            return Json(ranks.Select(r => new { RankName = r.name, RankID = r.rank_expertise_Id }), JsonRequestBehavior.AllowGet);
-
-            /*var expertises = (from ex in pg.expertise
-                              join excv in pg.expertise_cv on ex.expertise_id equals excv.expertise_id
-                              join c in pg.cv on excv.cv_id equals c.cv_id
-                              join s in pg.skill_cv on c.cv_id equals s.cv_id
-                              join sk in pg.skill on s.skill_id equals sk.skill_id
-                              where excv.cv_id == c.cv_id  
-                              
-                              select new
-                              {
-                                  sk.skill_id,
-                                  sk.name,
-                                  ex.expertise_id
-                              }).AsQueryable();
-            if (skills != null)
-            {
-
-            }*/
-        }
+        }*/
     }
 }
