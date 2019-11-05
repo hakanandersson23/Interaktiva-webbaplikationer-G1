@@ -9,6 +9,30 @@ namespace ProjektGruppF.Models
     {
 
 
+        public List<language> languageList()
+        {
+            ProjektGruppFEntities1 p = new ProjektGruppFEntities1();
+            List<language> languagesList = new List<language>();
+            var språklist = (from l_table in p.language
+
+                             select new
+                             {
+                                 l_table.language_id,
+                                 l_table.name,
+
+                             }).ToList();
+            foreach (var item in språklist)
+            {
+
+                language l = new language();
+                l.language_id = item.language_id;
+                l.name = item.name;
+
+                languagesList.Add(l);
+            }
+
+            return languagesList;
+        }
         //public void AddCv(cv cv)
 
         ////trycatch

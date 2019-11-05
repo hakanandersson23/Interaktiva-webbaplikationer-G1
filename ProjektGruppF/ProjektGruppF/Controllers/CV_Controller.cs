@@ -15,9 +15,22 @@ namespace ProjektGruppF.Controllers
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: CV_
+        //public ActionResult Index()
+        //{
+        //    return View(db.cv.ToList());
+        //}
+
         public ActionResult Index()
         {
+
             return View(db.cv.ToList());
+        }
+
+        public ActionResult Index()
+        {
+            CvFreelancerOperations cvfO = new CvFreelancerOperations();
+            
+            return View(cvfO.FreelancercardVMList());
         }
 
         // GET: CV_/Details/5

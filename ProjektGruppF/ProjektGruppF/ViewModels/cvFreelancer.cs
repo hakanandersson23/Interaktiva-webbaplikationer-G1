@@ -76,8 +76,8 @@ namespace ProjektGruppF.ViewModels
         //    get
         //    {
         //        if (ListOfLanguages == null)
-        //            //{ ListOfLanguages = Cv.Language.Select(m => m.Id).ToList(); }
-        //            return ListOfLanguages;
+        //        { ListOfLanguages = Cv.language; }
+        //        return ListOfLanguages;
         //    }
         //    set { ListOfLanguages = value; }
         //}
