@@ -57,5 +57,6 @@ namespace ProjektGruppF.ViewModels
         public string Language { get; set; }
 
         public List<work_experience> Work_Experience_List { get; set; }
+        public List<skill> SkillList { get; set; }
     }
 }
