@@ -143,10 +143,6 @@
     <Compile Include="Controllers\CustomerLandingController.cs" />
     <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Controllers\cvFreelancerController.cs" />
-
-
-   
-
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
@@ -305,6 +301,8 @@
     <Content Include="Views\CV_\Details.cshtml" />
     <Content Include="Views\CV_\Edit.cshtml" />
     <Content Include="Views\CV_\Index.cshtml" />
+    <Content Include="Views\Shared\_CustomerLayout.cshtml" />
+    <Content Include="Views\CustomerLanding\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
