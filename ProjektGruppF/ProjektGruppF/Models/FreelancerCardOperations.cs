@@ -12,23 +12,67 @@ namespace ProjektGruppF.Models
 
         public void UppdateSkill_cv(int id, List<string> name)
         {
-            int nr = 2;
-            ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-            var uppdateSkill_cv = from s_c in pgfe.skill_cv
-                                  join s in pgfe.skill on s_c.cv_id
-                                  equals s.skill_id
-                                  where s_c.cv_id == id
-                                  where s.skill_id == 1
-                                  select s_c;
-
-            foreach (var item in uppdateSkill_cv)
+            int nr = 0;
+            List<string> L = new List<string>();
+            L.Add("Programming");
+            L.Add("Web developing");
+            L.Add("Databases");
+            L.Add("Mobile applications developing");
+            foreach (var item in L)
             {
+                if (item== "Programming")
+                {
+                    nr = 1;
+                }
+                else if (item == "Web developing")
+                {
+                    nr = 2;
+                }
+                else if (item == "Databases")
+                {
+                    nr = 3;
+                }
+                else if (item == "Mobile applications developing")
+                {
+                    nr = 4;
+                }
+            }
+            
+            var query =
+               from sc in pgfe.skill_cv
+               where sc.skill_id == 1 && sc.cv_id == id
+               select sc;
 
-                item.cv_id = id;
-                item.skill_id = nr;
+            foreach (skill_cv sc in query)
+            {
+                if (sc.skill_id== nr)
+                {
+                    sc.skill_id = nr;
+                }
+                else
+                {
+                sc.skill_id = nr;
 
+                }
             }
             pgfe.SaveChanges();
+            //int nr = 2;
+            //ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
+            //var uppdateSkill_cv = from s_c in pgfe.skill_cv
+            //                      join s in pgfe.skill on s_c.cv_id
+            //                      equals s.skill_id
+            //                      where s_c.cv_id == id
+            //                      where s.skill_id == 1
+            //                      select s_c;
+
+            //foreach (var item in uppdateSkill_cv)
+            //{
+
+            //    item.cv_id = id;
+            //    item.skill_id = nr;
+
+            //}
+            //pgfe.SaveChanges();
             //foreach (var skill in uppdateSkill_cv)
             //{
             //    foreach (var names in name)
