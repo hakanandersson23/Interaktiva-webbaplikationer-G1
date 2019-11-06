@@ -37,6 +37,8 @@ namespace ProjektGruppF.Models
                 fcVM.Age = age;
                 fcVM.Nationality = item.nationality;
                 fcVM.Cv_id = item.cv_id;
+                fcVM.SkillList = GetSkills(item.cv_id);
+                fcVM.ExpertiseList = GetExpertiseList(item.cv_id);
                 FreelancerCardList.Add(fcVM);
             }
 
