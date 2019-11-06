@@ -17,16 +17,22 @@ namespace ProjektGruppF.Controllers
 
         public ActionResult Index()
         {
+            savedFreelancersOperations sOP = new savedFreelancersOperations();
             List<string> skills = new List<string>();
-            skills.Add("Skill");
+            skills.Add("All Skills");
             skills.Add("Programming");
             skills.Add("Web developing");
             skills.Add("Databases");
-            skills.Add("Mobile applications");
+            skills.Add("Mobile applications developing");
+            skills.Add("Sesuna");
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
 
-            return View();
+
+            
+
+            return View(sOP.AllFreelancers());
+
         }
         public JsonResult GetExpertises(string skills)
         {
@@ -54,7 +60,7 @@ namespace ProjektGruppF.Controllers
                     expertises.Add("Oracle");
                     expertises.Add("MySQL");
                     break;
-                case "Mobile applications":
+                case "Mobile applications developing":
                     expertises.Add("Android");
                     expertises.Add("IOS");
                     break;
@@ -162,19 +168,8 @@ namespace ProjektGruppF.Controllers
             return Json(ranks);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditSkills([Bind(Include = "skill_id,name")] skill skill)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(skill).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Start");
-            }
-            ViewBag.cv_id = new SelectList(db.skill, "skill_id", "name", skill);
-            return View(skill);
-        }
+
+        
 
         /*ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
         savedFreelancersOperations sOP = new savedFreelancersOperations();
@@ -182,5 +177,7 @@ namespace ProjektGruppF.Controllers
         {
             return View(sOP.AllFreelancers());
         }*/
+
+
     }
 }

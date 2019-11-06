@@ -69,6 +69,8 @@ namespace ProjektGruppF.Models
                 fcVM.Age = age;
                 fcVM.Nationality = item.nationality;
                 fcVM.Cv_id = item.cv_id;
+                fcVM.SkillList = GetSkills(item.cv_id);
+                fcVM.ExpertiseList = GetExpertiseList(item.cv_id);
                 FreelancerCardList.Add(fcVM);
             }
 
@@ -121,7 +123,7 @@ namespace ProjektGruppF.Models
                 ExpertiseList = GetExpertiseList(cv_id),
                 EducationList = GetEducations(cv_id),
                 MainAbilitiesList = GetMain_Abilities(cv_id),
-                LanguageList = GetLanguages(cv_id)
+                FreelancerLanguageList = GetLanguages(cv_id)
             };
             return fl;
         }
@@ -258,8 +260,6 @@ namespace ProjektGruppF.Models
             };
             return languageL;
         }
-
-
     }
 }
    

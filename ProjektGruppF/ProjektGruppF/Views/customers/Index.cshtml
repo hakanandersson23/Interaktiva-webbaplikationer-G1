@@ -1,14 +1,11 @@
-﻿@model IEnumerable<ProjektGruppF.Models.customer>
+﻿@model ProjektGruppF.Models.customer
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profile";
 }
 
-<h2>Index</h2>
+<h2>Your customer profile</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -29,29 +26,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.firstname)
+            @Html.DisplayFor(model => model.firstname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.lastname)
+            @Html.DisplayFor(model => model.lastname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.adress)
+            @Html.DisplayFor(model => model.adress)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @Html.DisplayFor(model => model.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.phonenumber)
+            @Html.DisplayFor(model => model.phonenumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.customer_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.customer_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.customer_id })
+            @Html.ActionLink("Edit", "Edit", new { id= Model.customer_id }) 
+         @*   @Html.ActionLink("Delete", "Delete", new { id= Model.customer_id })*@
         </td>
     </tr>
-}
+
 
 </table>

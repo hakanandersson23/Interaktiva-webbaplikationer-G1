@@ -13,15 +13,31 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-3 col-md-3 colsm-3 col-xs-6">
-                <div class="card text-white bg-dark mb-3" style="margin-bottom:20px;">
+                <div class="card bg-light mb-3" style="margin-bottom:20px;">
                     <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:180px; width:100%; ">
                     <div class="card-body">
                         <h5 class="card-title">@item.Firstname @item.Lastname</h5>
                         <p class="card-text">
                             Age: @item.Age <br>
                             Nationality: @item.Nationality  <br>
+                            @foreach (var skill in item.SkillList)
+                            {
+                                @skill.name<br />
+                            }
+                            @foreach (var expertise in item.ExpertiseList)
+                            {
+                                <div>
+                                    @expertise.name
+                                    <span>
+                                        @for (int i = 0; i < Convert.ToInt32(expertise.rank_expertise_id); i++)
+                                        {
+                                            <span class="glyphicon glyphicon-star">+</span>
+                                        }
+                                    </span>
+                                </div>
+                            }
                         </p>
-                        <div class="card-footer">
+                        <div>
                             @* <a style="float:right;" href="#" class="btn btn-primary">save</a>
         <a href="#" class="btn btn-primary">View</a>*@
                             @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
@@ -42,12 +58,3 @@
 
     </div>
 </div>
-    @*
-             <p class="card-text">
-                 Language: @item.Language  <br>
-                 Skill: @item.Skill  <br>
-                 Expertise: @item.Expertise  <br>
-                 Rank: @item.Rank
-             </p>
-        //     <a href="#" class="btn btn-primary">View freelancer</a> //
-    *@
