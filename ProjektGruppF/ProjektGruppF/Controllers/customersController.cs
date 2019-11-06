@@ -17,7 +17,7 @@ namespace ProjektGruppF.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            int id = 9;
+            int id = 11;
             customer customer = db.customer.Find(id);
             return View(customer);
         }
