@@ -2,14 +2,19 @@
 using ProjektGruppF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace ProjektGruppF.Controllers
 {
     public class savedFreelancersController : Controller
     {
+        FreelancerCardOperations fk = new FreelancerCardOperations();
+        private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
+
         public ActionResult Index()
         {
             List<string> skills = new List<string>();
@@ -20,14 +25,19 @@ namespace ProjektGruppF.Controllers
             skills.Add("Mobile applications");
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
+
             return View();
         }
         public JsonResult GetExpertises(string skills)
         {
             List<string> expertises = new List<string>();
+                    List<string> s = new List<string>();
+            s.Add(skills);
+                    fk.UppdateSkill(7, s);
             switch (skills)
             {
                 case "Programming":
+                    
                     expertises.Add("C#");
                     expertises.Add("Java");
                     expertises.Add("Python");
@@ -148,7 +158,22 @@ namespace ProjektGruppF.Controllers
                     ranks.Add(1);
                     break;
             }
+
             return Json(ranks);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSkills([Bind(Include = "skill_id,name")] skill skill)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(skill).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Start");
+            }
+            ViewBag.cv_id = new SelectList(db.skill, "skill_id", "name", skill);
+            return View(skill);
         }
 
         /*ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();

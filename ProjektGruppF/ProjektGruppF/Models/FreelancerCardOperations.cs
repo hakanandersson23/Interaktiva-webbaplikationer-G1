@@ -9,6 +9,27 @@ namespace ProjektGruppF.Models
 {
     public class FreelancerCardOperations
     {
+
+        public void UppdateSkill_cv(int id, List<string> name)
+        {
+            ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
+            var uppdateSkill_cv = from skills_table in pgfe.skill_cv                              
+                               join skill_table in pgfe.skill_cv on skills_table.skill_id
+                               equals cv_table.cv_id
+                               select skills_table;
+
+            foreach (var skill in uppdateSkill_cv)
+            {
+                foreach (var names in name)
+                {
+                    skill.name = names;
+                }
+            }
+            pgfe.SaveChanges();
+
+
+
+        }
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
         public List<Freelancer> FreelancercardVMList() {
             ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
@@ -230,3 +251,4 @@ namespace ProjektGruppF.Models
 
     }
 }
+   
