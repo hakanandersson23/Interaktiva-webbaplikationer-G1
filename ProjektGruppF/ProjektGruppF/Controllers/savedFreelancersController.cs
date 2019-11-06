@@ -10,6 +10,7 @@ namespace ProjektGruppF.Controllers
 {
     public class savedFreelancersController : Controller
     {
+        FreelancerCardOperations fc = new FreelancerCardOperations();
         public ActionResult Index()
         {
             savedFreelancersOperations sOP = new savedFreelancersOperations();
@@ -26,6 +27,9 @@ namespace ProjektGruppF.Controllers
         public JsonResult GetExpertises(string skills)
         {
             List<string> expertises = new List<string>();
+            List<string> s = new List<string>();
+            s.Add(skills);
+            fc.UppdateSkill_cv(12, s);
             switch (skills)
             {
                 case "Programming":

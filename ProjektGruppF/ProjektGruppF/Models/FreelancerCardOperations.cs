@@ -14,10 +14,8 @@ namespace ProjektGruppF.Models
         {
             int nr = 0;
             List<string> L = new List<string>();
-            L.Add("Programming");
-            L.Add("Web developing");
-            L.Add("Databases");
-            L.Add("Mobile applications developing");
+            
+            L = name;
             foreach (var item in L)
             {
                 if (item== "Programming")
@@ -40,7 +38,7 @@ namespace ProjektGruppF.Models
             
             var query =
                from sc in pgfe.skill_cv
-               where sc.skill_id == 1 && sc.cv_id == id
+               where sc.skill_id == 4 && sc.cv_id == id
                select sc;
 
             foreach (skill_cv sc in query)
