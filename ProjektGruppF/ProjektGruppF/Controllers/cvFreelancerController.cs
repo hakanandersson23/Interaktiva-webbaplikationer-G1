@@ -87,23 +87,23 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
-        public ActionResult Create([Bind(Include = "language")] language language)
-        {
+        //public ActionResult Create([Bind(Include = "language")] language language)
+        //{
 
 
-            if (ModelState.IsValid)
-            {
+        //    if (ModelState.IsValid)
+        //    {
 
-                db.language.Add(language);
-                db.SaveChanges();
-                //ViewBag.SuccessMessage = "Registration Successful.";
-                return RedirectToAction("Index");//conformation?
+        //        db.language.Add(language);
+        //        db.SaveChanges();
+        //        //ViewBag.SuccessMessage = "Registration Successful.";
+        //        return RedirectToAction("Index");//conformation?
 
 
-            }
+        //    }
 
-            return View(language);
-        }
+        //    return View(language);
+        //}
 
 
 
