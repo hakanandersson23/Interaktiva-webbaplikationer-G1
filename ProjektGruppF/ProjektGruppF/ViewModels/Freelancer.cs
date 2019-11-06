@@ -62,8 +62,11 @@ namespace ProjektGruppF.ViewModels
         public List<expertise> ExpertiseList { get; set; }
         public List<education> EducationList { get; set; }
         public List<Main_abilities> MainAbilitiesList { get; set; }
+        public List<language> FreelancerLanguageList { get; set; }
+
         public List<language> LanguageList { get; set; }
         public cv Cv { get; set; }
+
         public IEnumerable<SelectListItem> AllLanguages { get; set; }
         private List<int> languageList;
         public List<int> TotalLanguageList

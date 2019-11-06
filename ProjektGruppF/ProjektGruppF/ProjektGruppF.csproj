@@ -154,6 +154,7 @@
     <Compile Include="Models\customer.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerOperations.cs" />
     <Compile Include="Models\customer_freelancer.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>

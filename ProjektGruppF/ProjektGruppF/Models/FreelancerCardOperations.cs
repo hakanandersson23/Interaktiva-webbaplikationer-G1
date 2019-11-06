@@ -91,7 +91,7 @@ namespace ProjektGruppF.Models
                 ExpertiseList = GetExpertiseList(cv_id),
                 EducationList = GetEducations(cv_id),
                 MainAbilitiesList = GetMain_Abilities(cv_id),
-                LanguageList = GetLanguages(cv_id)
+                FreelancerLanguageList = GetLanguages(cv_id)
             };
             return fl;
         }
@@ -228,7 +228,5 @@ namespace ProjektGruppF.Models
             };
             return languageL;
         }
-
-
     }
 }
