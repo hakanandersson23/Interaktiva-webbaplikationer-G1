@@ -2,14 +2,19 @@
 using ProjektGruppF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace ProjektGruppF.Controllers
 {
     public class savedFreelancersController : Controller
     {
+        FreelancerCardOperations fk = new FreelancerCardOperations();
+        private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
+
         public ActionResult Index()
         {
             savedFreelancersOperations sOP = new savedFreelancersOperations();
@@ -22,14 +27,23 @@ namespace ProjektGruppF.Controllers
             skills.Add("Sesuna");
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
+
+
+            
+
             return View(sOP.AllFreelancers());
+
         }
         public JsonResult GetExpertises(string skills)
         {
             List<string> expertises = new List<string>();
+                    List<string> s = new List<string>();
+            s.Add(skills);
+                    fk.UppdateSkill_cv(12, s);
             switch (skills)
             {
                 case "Programming":
+                    
                     expertises.Add("C#");
                     expertises.Add("Java");
                     expertises.Add("Python");
@@ -150,7 +164,20 @@ namespace ProjektGruppF.Controllers
                     ranks.Add(1);
                     break;
             }
+
             return Json(ranks);
         }
+
+
+        
+
+        /*ProjektGruppFEntities1 pg = new ProjektGruppFEntities1();
+        savedFreelancersOperations sOP = new savedFreelancersOperations();
+        public ActionResult Index()
+        {
+            return View(sOP.AllFreelancers());
+        }*/
+
+
     }
 }

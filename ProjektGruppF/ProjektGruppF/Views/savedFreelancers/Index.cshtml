@@ -16,6 +16,24 @@
 <br /><br />
 <select id="rank" class="rightSelect"></select>
 <br /><br />
+
+
+@*@<div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
+                    <img src="" class="card-img-top" alt="A picture of the freelancer">
+                    <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                        <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
+                        <p class="card-text">
+                            Adress: @item.Adress  <br>
+                            Phonenumber: @item.Phonenumber  <br>
+                            Email: @item.Email  <br>
+                        </p>
+                        <a href=@Url.Action("Index", "ViewCV", new { cv_id = item.Freelancer_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
+                    </div>
+
 <input id="input" type="text" class="myInput" />
 <div class="row">
     @foreach (var item in Model)
@@ -31,6 +49,7 @@
                         Email: @item.Email  <br>
                     </p>
                     <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
+
                 </div>
             </div>
         </div>
