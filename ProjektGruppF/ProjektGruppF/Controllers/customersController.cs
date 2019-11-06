@@ -17,7 +17,7 @@ namespace ProjektGruppF.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            int id = 4;
+            int id = 9;
             customer customer = db.customer.Find(id);
             return View(customer);
         }
@@ -73,8 +73,8 @@ namespace ProjektGruppF.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             customer customer = db.customer.Find(id);
-            customer_freelancer cf = db.customer_freelancer.Find(id);
-            db.customer_freelancer.Remove(cf);
+            /*customer_freelancer cf = db.customer_freelancer.Find(id);
+            db.customer_freelancer.Remove(cf);*/
             db.customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
