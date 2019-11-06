@@ -87,23 +87,23 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
-        public ActionResult Create([Bind(Include = "language")] language language)
-        {
+        //public ActionResult Create([Bind(Include = "language")] language language)
+        //{
 
 
-            if (ModelState.IsValid)
-            {
+        //    if (ModelState.IsValid)
+        //    {
 
-                db.language.Add(language);
-                db.SaveChanges();
-                //ViewBag.SuccessMessage = "Registration Successful.";
-                return RedirectToAction("Index");//conformation?
+        //        db.language.Add(language);
+        //        db.SaveChanges();
+        //        //ViewBag.SuccessMessage = "Registration Successful.";
+        //        return RedirectToAction("Index");//conformation?
 
 
-            }
+        //    }
 
-            return View(language);
-        }
+        //    return View(language);
+        //}
 
 
 
@@ -117,9 +117,9 @@ namespace ProjektGruppF.Controllers
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
 
             var FreelancerViewModel = new Freelancer
-            { cv = db.cv.Include(i => i.language).First(i => i.cv_id == id), };
+            { Cv = db.cv.Include(i => i.language).First(i => i.cv_id == id), };
 
-            if (FreelancerViewModel.cv == null)
+            if (FreelancerViewModel.Cv == null)
                 return HttpNotFound();
 
 
@@ -127,7 +127,7 @@ namespace ProjektGruppF.Controllers
             FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
 
             //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
-            ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer);
+            ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
 
 
             return View(FreelancerViewModel);

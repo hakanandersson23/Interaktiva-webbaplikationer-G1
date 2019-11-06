@@ -32,10 +32,10 @@ namespace ProjektGruppF.Models
 
         //    return languagesList;
 
-            public List<language> languageList() //kopie stor L
+            public List<ViewModels.Freelancer> languageList() //kopie stor L
             {
                 ProjektGruppFEntities1 p = new ProjektGruppFEntities1();
-                List<language> LanguageList = new List<language>();
+                List<ViewModels.Freelancer> TotalLanguageList = new List<ViewModels.Freelancer>();
                 var språklist = (from l_table in p.language
 
                                  select new
@@ -47,14 +47,14 @@ namespace ProjektGruppF.Models
                 foreach (var item in språklist)
                 {
 
-                    language l = new language();
+                    ViewModels.Freelancer l = new ViewModels.Freelancer();
                     l.language_id = item.language_id;
-                    l.name = item.name;
+                    l.languageName = item.name;
 
-                    LanguageList.Add(l);
+                    TotalLanguageList.Add(l);
                 }
 
-                return LanguageList;
+                return TotalLanguageList;
                 //public void AddCv(cv cv)
 
                 ////trycatch
