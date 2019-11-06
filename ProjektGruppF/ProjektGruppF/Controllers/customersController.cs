@@ -22,45 +22,6 @@ namespace ProjektGruppF.Controllers
             return View(customer);
         }
 
-        // GET: customers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            customer customer = db.customer.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
-/*
-        // GET: customers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "customer_id,firstname,lastname,adress,Email,phonenumber")] customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.customer.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(customer);
-        }
-*/
-        // GET: customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -112,6 +73,8 @@ namespace ProjektGruppF.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             customer customer = db.customer.Find(id);
+            customer_freelancer cf = db.customer_freelancer.Find(id);
+            db.customer_freelancer.Remove(cf);
             db.customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
