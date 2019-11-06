@@ -14,9 +14,22 @@
 <br />
 <select id="expertise" class="centerSelect"></select>
 <br /><br />
-<select id="rank" class="rightSelect"></select>
-<br /><br />
-<input id="input" type="text" class="myInput" />
+
+<input id="input" type="text" />
+
+<div class="searchField">
+    <p>Jag heter Charlie</p>
+</div>
+<div class="searchField">
+    <p>hallå där</p>
+</div>
+<div class="searchField">
+    <p>absolut!!!!</p>
+</div>
+<div class="searchField">
+    <p>wowwowowowowow wowowow</p>
+</div>
+
 <div class="row">
     @foreach (var item in Model)
     {
@@ -61,61 +74,23 @@
                 }
                 else {
                     $("#expertise").empty();
-                    $("#rank").empty();
                     $("#expertise").prop("disabled", true);
-                    $("#rank").prop("disabled", true);
-                }
-            });
-        });
-
-        $(document).ready(function () {
-            $("#rank").prop("disabled", true);
-            $("#expertise").change(function () {
-                if ($("#expertise").val() != null) {
-                    var options = {};
-                    options.url = "/savedFreelancers/GetRanks";
-                    options.type = "POST";
-                    options.data = JSON.stringify({ expertises: $("#expertise").val() });
-                    options.dataType = "json";
-                    options.contentType = "application/json";
-                    options.success = function (rank) {
-                        $("#rank").empty();
-                        for (var i = 0; i < rank.length; i++) {
-                            $("#rank").append("<option>" + rank[i] + "</option>");
-                        }
-                        $("#rank").prop("disabled", false);
-                    };
-                    options.error = function () { alert("Error retrieving ranks!"); };
-                    $.ajax(options);
-                }
-                else {
-                    $("#rank").empty();
-                    $("#rank").prop("disabled", true);
                 }
             });
         });
 
         $('select').on('change', function () {
-            $('.myInput').val($(this).val());
+            $('#input').val($(this).val());
         });
 
-        $(document).ready(function () {
-            $(".myInput").on("keyup", function () {
+        $(document).ready(function filter() {
+            $('#input').on('keyup', function () {
                 var value = $(this).val().toLowerCase();
-                $(".searchField *").filter(function () {
+                $('.searchField *').filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
-
-        @*$(document).ready(function () {
-            $('#input').on('keyup', function () {
-                //$('.card').show();
-                var filter = $(this).val().toLowerCase(); // get the value of the input, which we filter on
-                $('.row').find(".card-text:not(:contains(" + filter + "))").parent().css('display', 'none');
-            });
-        }*@
-        
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 }
