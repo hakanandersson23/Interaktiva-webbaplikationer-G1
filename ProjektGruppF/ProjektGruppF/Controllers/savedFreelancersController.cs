@@ -33,7 +33,7 @@ namespace ProjektGruppF.Controllers
             List<string> expertises = new List<string>();
                     List<string> s = new List<string>();
             s.Add(skills);
-                    fk.UppdateSkill(7, s);
+                    fk.UppdateSkill_cv(12, s);
             switch (skills)
             {
                 case "Programming":
