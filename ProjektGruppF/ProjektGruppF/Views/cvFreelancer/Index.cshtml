@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ProjektGruppF.Models.cv>
+﻿@*@model IEnumerable<ProjektGruppF.Models.cv>*@
+@model IEnumerable<ProjektGruppF.ViewModels.Freelancer>
 
 @*@model ProjektGruppF.ViewModels.Freelancer*@
 
@@ -15,18 +16,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.birthday)
+            @Html.DisplayNameFor(model => model.Birthday)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nationality)
+            @Html.DisplayNameFor(model => model.Nationality)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.drivers_license)
+            @Html.DisplayNameFor(model => model.Drivers_license)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.registration_date)
+            @Html.DisplayNameFor(model => model.Registration_date)
         </th>
-        <th>@Html.DisplayNameFor(model => model.language) </th>
+        <th>@Html.DisplayNameFor(model => model.Language) </th>
         <th></th>
     </tr>
 
@@ -34,24 +35,30 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.birthday)
+                @Html.DisplayFor(modelItem => item.Birthday)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nationality)
+                @Html.DisplayFor(modelItem => item.Nationality)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.drivers_license)
+                @Html.DisplayFor(modelItem => item.Drivers_license)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.registration_date)
+                @Html.DisplayFor(modelItem => item.Registration_date)
             </td>
             <td>
-                @Html.ListBox("Id", new SelectList(item.language, "Id", "CourseName"))
+               
+                @for (int i = 0; i < item.TotalLanguageList.Count; i++)
+                {
+                    @Html.ListBox("language", new SelectList(item.Language, "language_id", "name"))
+                    @Html.DisplayFor(modelItem => item.TotalLanguageList[i])
+
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.cv_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.cv_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.cv_id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Cv_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Cv_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Cv_id })
             </td>
         </tr>
     }

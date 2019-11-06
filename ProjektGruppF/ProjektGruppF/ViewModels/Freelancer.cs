@@ -5,13 +5,14 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjektGruppF.Models;
+using System.Web.Mvc;
 
 namespace ProjektGruppF.ViewModels
 {
     public class Freelancer
     {
 
-        public virtual int freelancer_id { get;set; }
+        public virtual int freelancer_id { get; set; }
         public int Freelancer_id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -36,24 +37,24 @@ namespace ProjektGruppF.ViewModels
 
         public string NameOfEducationalInstitution { get; set; }
 
-       
+
         public string Education { get; set; } // ge problem annars
 
         public int StudyYears { get; set; }
- 
-        
+
+
         public string Work_experience { get; set; }
 
-        
+
         public string Expertise { get; set; }
 
-        
+
         public string main_abilities { get; set; }
 
-       
+
         public string Skill { get; set; }
 
-        [ForeignKey("language")]
+        //[ForeignKey("language")]
         public string Language { get; set; }
 
         public List<work_experience> Work_Experience_List { get; set; }
@@ -61,6 +62,33 @@ namespace ProjektGruppF.ViewModels
         public List<expertise> ExpertiseList { get; set; }
         public List<education> EducationList { get; set; }
         public List<Main_abilities> MainAbilitiesList { get; set; }
+        public List<language> FreelancerLanguageList { get; set; }
+
         public List<language> LanguageList { get; set; }
+        public cv Cv { get; set; }
+
+        public IEnumerable<SelectListItem> AllLanguages { get; set; }
+        private List<int> languageList;
+        public List<int> TotalLanguageList
+        {
+            get
+            {
+                if (languageList == null)
+                {
+
+                    //listOfCourses = Program.Course.Select(m => m.Id).ToList();
+                    //cv Cv = new cv();
+
+                    //languageList = cv.language.Select(m => m.language_id).ToList();
+                   // languageList = Cv.language.Select(m => m.language_id).ToList();
+                    
+
+                }
+                return languageList;
+            }
+            set { languageList = value; }
+        }
+        public string languageName { get; set; }
+        public int language_id { get; set; }
     }
 }

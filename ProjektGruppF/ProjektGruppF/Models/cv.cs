@@ -12,6 +12,7 @@ namespace ProjektGruppF.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
 
     public partial class cv
     {
@@ -58,5 +59,7 @@ namespace ProjektGruppF.Models
         public virtual ICollection<main_abilities_cv> main_abilities_cv { get; set; }
 
         public string language { get; set; }
+
+       
     }
 }

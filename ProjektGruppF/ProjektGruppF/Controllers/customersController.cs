@@ -17,48 +17,11 @@ namespace ProjektGruppF.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            return View(db.customer.ToList());
-        }
-
-        // GET: customers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            int id = 11;
             customer customer = db.customer.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
             return View(customer);
         }
 
-        // GET: customers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: customers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "customer_id,firstname,lastname,adress,Email,phonenumber")] customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.customer.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(customer);
-        }
-
-        // GET: customers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,7 +51,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(customer);
         }
-
+/*
         // GET: customers/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -114,7 +77,7 @@ namespace ProjektGruppF.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+*/
         protected override void Dispose(bool disposing)
         {
             if (disposing)
