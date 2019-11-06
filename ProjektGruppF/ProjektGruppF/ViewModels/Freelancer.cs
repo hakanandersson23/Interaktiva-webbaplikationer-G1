@@ -72,13 +72,17 @@ namespace ProjektGruppF.ViewModels
             {
                 if (languageList == null)
                 {
-                    //languageList = cv.language.Select(m => m.Cv_id).ToList();
-                    languageList = cv.language.Select(model => model.cv.Cv_id).ToList();
+                   
+                    //listOfCourses = Program.Course.Select(m => m.Id).ToList();
+                   
+                    languageList = cv.language.Select(m => m.language_id).ToList();
 
                 }
                 return languageList;
             }
             set { languageList = value; }
         }
+        //public language name { get; set; }
+        //public language language_id { get; set; }
     }
 }
