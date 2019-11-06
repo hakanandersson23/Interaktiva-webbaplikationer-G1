@@ -51,7 +51,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(customer);
         }
-
+/*
         // GET: customers/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -73,13 +73,11 @@ namespace ProjektGruppF.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             customer customer = db.customer.Find(id);
-            /*customer_freelancer cf = db.customer_freelancer.Find(id);
-            db.customer_freelancer.Remove(cf);*/
             db.customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+*/
         protected override void Dispose(bool disposing)
         {
             if (disposing)
