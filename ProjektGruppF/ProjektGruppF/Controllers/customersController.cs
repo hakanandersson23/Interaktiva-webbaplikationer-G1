@@ -17,7 +17,9 @@ namespace ProjektGruppF.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            return View(db.customer.ToList());
+            int id = 4;
+            customer customer = db.customer.Find(id);
+            return View(customer);
         }
 
         // GET: customers/Details/5
@@ -34,7 +36,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(customer);
         }
-
+/*
         // GET: customers/Create
         public ActionResult Create()
         {
@@ -57,7 +59,7 @@ namespace ProjektGruppF.Controllers
 
             return View(customer);
         }
-
+*/
         // GET: customers/Edit/5
         public ActionResult Edit(int? id)
         {
