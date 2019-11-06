@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>These are your saved freelancers</h2>
+<h2>These are your saved freelancers programming</h2>
 <p>Filter your search by choosing desired skill, expertise and rank in the drop-down boxes below and then clicking on "Filter".</p>
 
 @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
@@ -16,33 +16,33 @@
 <br /><br />
 <select id="rank" class="rightSelect"></select>
 <br /><br />
-<input type="submit" value="Filter" />
-@*@<div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-sm-3">
-                <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
-                    <img src="" class="card-img-top" alt="A picture of the freelancer">
-                    <div class="card-body" style="padding:1.25rem; background:lightblue;">
-                        <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
-                        <p class="card-text">
-                            Adress: @item.Adress  <br>
-                            Phonenumber: @item.Phonenumber  <br>
-                            Email: @item.Email  <br>
-                        </p>
-                        <a href=@Url.Action("Index", "ViewCV", new { cv_id = item.Freelancer_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
-                    </div>
+<input id="input" type="text" class="myInput" />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
+                <img src="" class="card-img-top" alt="A picture of the freelancer">
+                <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                    <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
+                    <p id="filter" class="card-text">
+                        Adress: @item.Adress  <br>
+                        Phonenumber: @item.Phonenumber  <br>
+                        Email: @item.Email  <br>
+                    </p>
+                    <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
                 </div>
             </div>
-        }
-    </div>*@
+        </div>
+    }
+</div>
 
 @section scripts {
     <script>
         $(document).ready(function () {
             $("#expertise").prop("disabled", true);
             $("#skillsList").change(function () {
-                if ($("#skillsList").val() != "Skill") {
+                if ($("#skillsList").val() != "All Skills") {
                     var options = {};
                     options.url = "/savedFreelancers/GetExpertises";
                     options.type = "POST";
@@ -61,10 +61,13 @@
                 }
                 else {
                     $("#expertise").empty();
+                    $("#rank").empty();
                     $("#expertise").prop("disabled", true);
+                    $("#rank").prop("disabled", true);
                 }
             });
         });
+
         $(document).ready(function () {
             $("#rank").prop("disabled", true);
             $("#expertise").change(function () {
@@ -91,5 +94,28 @@
                 }
             });
         });
+
+        $('select').on('change', function () {
+            $('.myInput').val($(this).val());
+        });
+
+        $(document).ready(function () {
+            $(".myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".searchField *").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        @*$(document).ready(function () {
+            $('#input').on('keyup', function () {
+                //$('.card').show();
+                var filter = $(this).val().toLowerCase(); // get the value of the input, which we filter on
+                $('.row').find(".card-text:not(:contains(" + filter + "))").parent().css('display', 'none');
+            });
+        }*@
+        
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 }
