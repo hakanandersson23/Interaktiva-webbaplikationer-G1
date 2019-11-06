@@ -24,7 +24,7 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: freelancers/Details/5
-        public ActionResult Start(int? id=8)
+        public ActionResult Start(int? id=11)
         {
 
             ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
@@ -39,18 +39,19 @@ namespace ProjektGruppF.Controllers
             }
             return View(freelancer);
         }
-        public ActionResult CV(int? id = 7)
+        public ActionResult CV(int freelancer_id=11, int cv_id=12)
         {
-            if (id == null)
+            if (freelancer_id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            cv cv = db.cv.Find(id);
-            if (cv == null)
+            FreelancerCardOperations flc = new FreelancerCardOperations();
+
+            if (cv_id == 0)
             {
                 return HttpNotFound();
             }
-            return View(cv);
+            return View(flc.ViewFreelancer(freelancer_id, cv_id));
         }
 
         // GET: freelancers/Create
