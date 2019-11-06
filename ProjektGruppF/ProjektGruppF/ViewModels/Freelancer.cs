@@ -63,7 +63,7 @@ namespace ProjektGruppF.ViewModels
         public List<education> EducationList { get; set; }
         public List<Main_abilities> MainAbilitiesList { get; set; }
         public List<language> LanguageList { get; set; }
-        public cv cv { get; set; }
+        public cv Cv { get; set; }
         public IEnumerable<SelectListItem> AllLanguages { get; set; }
         private List<int> languageList;
         public List<int> TotalLanguageList
@@ -74,9 +74,10 @@ namespace ProjektGruppF.ViewModels
                 {
 
                     //listOfCourses = Program.Course.Select(m => m.Id).ToList();
+                    //cv Cv = new cv();
 
                     //languageList = cv.language.Select(m => m.language_id).ToList();
-                    languageList = cv.language_cv.Select(m => m.language_cv_id).ToList();
+                    languageList = Cv.language.Select(m => m.language_id).ToList();
                     
 
                 }

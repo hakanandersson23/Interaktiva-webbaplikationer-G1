@@ -47,7 +47,13 @@
                 @Html.DisplayFor(modelItem => item.Registration_date)
             </td>
             <td>
-                @Html.ListBox("Id", new SelectList(item.Language, "Id", "CourseName"))
+               
+                @for (int i = 0; i < item.TotalLanguageList.Count; i++)
+                {
+                    @Html.ListBox("language", new SelectList(item.Language, "language_id", "name"))
+                    @Html.DisplayFor(modelItem => item.TotalLanguageList[i])
+
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Cv_id }) |
