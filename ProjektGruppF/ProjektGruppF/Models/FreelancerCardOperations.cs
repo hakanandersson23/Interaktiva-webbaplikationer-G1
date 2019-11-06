@@ -36,7 +36,7 @@ namespace ProjektGruppF.Models
             //        skill.name = names;
             //    }
             //}
-            //pgfe.SaveChanges();
+            //pgfe.SaveChanges();dsdsa
 
 
 
