@@ -1,6 +1,7 @@
-﻿@model ProjektGruppF.Models.cv
+﻿@*@model ProjektGruppF.Models.cv*@
 @*@model IEnumerable<ProjektGruppF.ViewModels.Freelancer>*@
 @*@model IEnumerable<ProjektGruppF.Models.cv>*@
+@model ProjektGruppF.ViewModels.Freelancer
 
 
 @{
@@ -19,28 +20,28 @@
         <hr>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "YYYY-MM-DD" } })
-                @Html.ValidationMessageFor(model => model.birthday, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", placeholder = "YYYY-MM-DD" } })
+                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.nationality, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nationality, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.drivers_license, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Drivers_license, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <p margin-top: 10px> Write your divers licensetype A/B/none</p>
 
-                @Html.EditorFor(model => model.drivers_license, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.drivers_license, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Drivers_license, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Drivers_license, "", new { @class = "text-danger" })
 
                 @*@Html.DropDownList("Drivers license Options", new List<SelectListItem>
                     { new SelectListItem { Text = "yes", Value = "1", Selected=true},
@@ -187,7 +188,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
@@ -195,14 +196,14 @@
                 @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        @*<div class="form-group">
+        <div class="form-group">
                 @Html.LabelFor(model => model.AllLanguages, "CourseName", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.ListBoxFor(m => m.ListOfLanguages, Model.AllLanguages)
+                    @Html.ListBoxFor(m => m.LanguageList, Model.AllLanguages)
                 </div>
-            </div>*@
+            </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
