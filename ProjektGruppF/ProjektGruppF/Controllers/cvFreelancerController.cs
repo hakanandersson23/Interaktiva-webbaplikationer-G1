@@ -75,6 +75,7 @@ namespace ProjektGruppF.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 db.cv.Add(cv);
                 db.SaveChanges();             
                 //ViewBag.SuccessMessage = "Registration Successful.";
@@ -86,6 +87,23 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
+        public ActionResult Create([Bind(Include = "language")] language language)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                db.language.Add(language);
+                db.SaveChanges();
+                //ViewBag.SuccessMessage = "Registration Successful.";
+                return RedirectToAction("Index");//conformation?
+
+
+            }
+
+            return View(language);
+        }
 
 
 
