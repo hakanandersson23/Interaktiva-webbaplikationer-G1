@@ -5,13 +5,14 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjektGruppF.Models;
+using System.Web.Mvc;
 
 namespace ProjektGruppF.ViewModels
 {
     public class Freelancer
     {
 
-        public virtual int freelancer_id { get;set; }
+        public virtual int freelancer_id { get; set; }
         public int Freelancer_id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -36,24 +37,24 @@ namespace ProjektGruppF.ViewModels
 
         public string NameOfEducationalInstitution { get; set; }
 
-       
+
         public string Education { get; set; } // ge problem annars
 
         public int StudyYears { get; set; }
- 
-        
+
+
         public string Work_experience { get; set; }
 
-        
+
         public string Expertise { get; set; }
 
-        
+
         public string main_abilities { get; set; }
 
-       
+
         public string Skill { get; set; }
 
-        [ForeignKey("language")]
+        //[ForeignKey("language")]
         public string Language { get; set; }
 
         public List<work_experience> Work_Experience_List { get; set; }
@@ -61,6 +62,23 @@ namespace ProjektGruppF.ViewModels
         public List<expertise> ExpertiseList { get; set; }
         public List<education> EducationList { get; set; }
         public List<Main_abilities> MainAbilitiesList { get; set; }
-        public List<language> LanguageList { get; set; }
+
+        public cv cv { get; set; }
+        public IEnumerable<SelectListItem> AllLanguages { get; set; }
+        public List<string> languageList { get; set; }
+        public List<string> LanguageList
+        {
+            get
+            {
+                if (languageList == null)
+                {
+                    //languageList = cv.language.Select(m => m.Cv_id).ToList();
+                    languageList = cv.language.Select(model => model.cv.Cv_id).ToList();
+
+                }
+                return languageList;
+            }
+            set { languageList = value; }
+        }
     }
 }
