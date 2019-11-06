@@ -154,7 +154,6 @@
     <Compile Include="Models\customer.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerOperations.cs" />
     <Compile Include="Models\customer_freelancer.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
@@ -275,9 +274,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\customers\Create.cshtml" />
     <Content Include="Views\customers\Delete.cshtml" />
-    <Content Include="Views\customers\Details.cshtml" />
     <Content Include="Views\customers\Edit.cshtml" />
     <Content Include="Views\customers\Index.cshtml" />
     <Content Include="Views\freelancers\Create.cshtml" />

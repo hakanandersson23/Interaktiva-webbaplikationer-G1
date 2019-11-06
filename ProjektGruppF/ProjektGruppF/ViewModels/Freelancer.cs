@@ -80,7 +80,7 @@ namespace ProjektGruppF.ViewModels
                     //cv Cv = new cv();
 
                     //languageList = cv.language.Select(m => m.language_id).ToList();
-                    languageList = Cv.language.Select(m => m.language_id).ToList();
+                   // languageList = Cv.language.Select(m => m.language_id).ToList();
                     
 
                 }

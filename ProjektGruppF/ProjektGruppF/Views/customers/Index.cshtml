@@ -5,11 +5,7 @@
 }
 
 <h2>Your customer profile</h2>
-@*
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-*@
+
 <table class="table">
     <tr>
         <th>
@@ -48,8 +44,8 @@
             @Html.DisplayFor(model => model.phonenumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id= Model.customer_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id= Model.customer_id })
+            @Html.ActionLink("Edit", "Edit", new { id= Model.customer_id }) 
+         @*   @Html.ActionLink("Delete", "Delete", new { id= Model.customer_id })*@
         </td>
     </tr>
 
