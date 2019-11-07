@@ -1,0 +1,61 @@
+﻿@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
+
+@{
+    ViewBag.Title = "skills_Expertiser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>skills_Expertiser</h2>
+
+@using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
+{
+    @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
+}
+<br />
+<select id="expertise"></select>
+<br /><br />
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#expertise").prop("disabled", true);
+            $("#skillsList").change(function () {
+                if ($("#skillsList").val() != "All Skills") {
+                    var options = {};
+                    options.url = "/savedFreelancers/GetExpertises";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ skills: $("#skillsList").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (expertise) {
+                        $("#expertise").empty();
+                        for (var i = 0; i < expertise.length; i++) {
+                            $("#expertise").append("<option>" + expertise[i] + "</option>");
+                        }
+                        $("#expertise").prop("disabled", false);
+                    };
+                    options.error = function () { alert("Error retrieving expertises!"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#expertise").empty();
+                    $("#expertise").prop("disabled", true);
+                }
+            });
+        });
+
+        $('select').on('change', function () {
+            $('#input').val($(this).val());
+        });
+
+        $(document).ready(function filter() {
+            $('#input').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('.searchField *').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    }

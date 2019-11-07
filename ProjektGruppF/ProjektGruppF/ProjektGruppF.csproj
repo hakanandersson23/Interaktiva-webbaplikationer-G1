@@ -302,6 +302,7 @@
     <Content Include="Views\freelancers\CV.cshtml" />
     <Content Include="Views\savedFreelancers\_ViewStart.cshtml" />
     <Content Include="Views\customers\_ViewStart.cshtml" />
+    <Content Include="Views\freelancers\skills_Expertiser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
