@@ -146,18 +146,35 @@ namespace ProjektGruppF.Controllers
             }
             return View(ed);
         }
-        public ActionResult MainAbilities(int id=2)
+        public ActionResult MainAbilities()
         {
 
-            Main_abilities ma = db.Main_abilities.Find(id);
+            FreelancerCardOperations fc = new FreelancerCardOperations();
+           // Main_abilities ma = db.Main_abilities.Find(id);
+            return View(fc.ViewFreelancer(9,7));
+        }
+        [HttpPost]
+        public ActionResult MainAbilities([Bind(Include = "main_abilities_id,name")] freelancer ma)
+        {
+
+            FreelancerCardOperations fc = new FreelancerCardOperations();
+            if (ModelState.IsValid)
+            {
+                db.Entry(ma).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
             return View(ma);
         }
+
+
         public ActionResult MainAbilitiesL()
         {
 
+            FreelancerCardOperations fc = new FreelancerCardOperations();
             //Main_abilities ma = db.Main_abilities.Find(id);
-            Main_abilities ma = new Main_abilities();
-            return View(ma);
+            return View(fc.freeMainAbilities(9,7));
         }
 
         // GET: CVversion3/Delete/5
