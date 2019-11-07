@@ -21,10 +21,12 @@
                         <p class="card-text" style=" flex:1;">
                             Age: @item.Age <br>
                             Nationality: @item.Nationality  <br>
+                            <hr />
                             @foreach (var skill in item.SkillList)
                             {
                                 @skill.name<br />
                             }
+                            <hr />
                             @foreach (var expertise in item.ExpertiseList)
                             {
                                 @expertise.name
