@@ -7,27 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
-using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
-    public class cvFreelancerController : Controller
+    public class CVversion3Controller : Controller
     {
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
-        // GET: cvFreelancer
-        //public ActionResult Index()
-        //{
-        //    return View(db.cv.ToList());
-        //}
-
+        // GET: CVversion3
         public ActionResult Index()
         {
-            CvFreelancerOperations cvfO = new CvFreelancerOperations();
-
-            return View(cvfO.languageList());
+            return View(db.cv.ToList());
         }
-        // GET: cvFreelancer/Details/5
+
+        // GET: CVversion3/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,82 +34,50 @@ namespace ProjektGruppF.Controllers
             }
             return View(cv);
         }
-         
-            // GET: cvFreelancer/Create
-            public ActionResult Create()
+
+        // GET: CVversion3/Create
+        public ActionResult Create()
         {
-           
             return View();
         }
 
-        public ActionResult Conformation()
-        {
-
-            return View();
-        }
-        //private DateTime _returndate = DateTime.MinValue;
-        //public DateTime registration_date
-        //{
-        //    get { return (_returndate == DateTime.MinValue) ? DateTime.Now : _returndate; }
-        //    set { _returndate = value; }
-        //}
-
-
-        // POST: cvFreelancer/Create
+        // POST: CVversion3/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "birthday,nationality,drivers_license,registration_date")] cv cv)
+        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] cv cv)
         {
-            
-
             if (ModelState.IsValid)
             {
-               
                 db.cv.Add(cv);
-                db.SaveChanges();             
-                //ViewBag.SuccessMessage = "Registration Successful.";
-                return RedirectToAction("Index");//conformation?
-
-
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(cv);
         }
 
-        //public ActionResult Create([Bind(Include = "language")] language language)
+        // GET: CVversion3/Edit/5
+        //public ActionResult Edit(int? id)
         //{
-
-
-        //    if (ModelState.IsValid)
+        //    if (id == null)
         //    {
-
-        //        db.language.Add(language);
-        //        db.SaveChanges();
-        //        //ViewBag.SuccessMessage = "Registration Successful.";
-        //        return RedirectToAction("Index");//conformation?
-
-
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         //    }
-
-        //    return View(language);
+        //    cv cv = db.cv.Find(id);
+        //    if (cv == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(cv);
         //}
-
-
-
-        // GET: cvFreelancer/Edit/5
-
-
-        //    //inte färdigt 
         public ActionResult Edit(int? id)
         {
             if (id == null)
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
 
-            var FreelancerViewModel = new Freelancer
+            var FreelancerViewModel = new ViewModels.Freelancer
             { Cv = db.cv.Include(i => i.language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
 
 
@@ -134,12 +95,12 @@ namespace ProjektGruppF.Controllers
             return View(FreelancerViewModel);
         }
 
-        // POST: cvFreelancer/Edit/5
+        // POST: CVversion3/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date")] cv cv)
+        public ActionResult Edit([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] cv cv)
         {
             if (ModelState.IsValid)
             {
@@ -150,8 +111,7 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
-        
-        // GET: cvFreelancer/Delete/5
+        // GET: CVversion3/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,7 +126,7 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
-        // POST: cvFreelancer/Delete/5
+        // POST: CVversion3/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

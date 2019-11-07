@@ -59,7 +59,6 @@ namespace ProjektGruppF.Models
         public virtual ICollection<main_abilities_cv> main_abilities_cv { get; set; }
 
         public string language { get; set; }
-
-       
+        public int? language_id { get; internal set; }
     }
 }
