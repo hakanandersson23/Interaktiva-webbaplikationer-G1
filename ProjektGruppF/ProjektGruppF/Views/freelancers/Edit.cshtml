@@ -24,7 +24,7 @@
             @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
         </div>
     </div>
-
+   
     <div class="form-group">
         @Html.LabelFor(model => model.lastname, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -67,7 +67,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-         <p><a href=@Url.Action("Start", "freelancers") class="btn btn-primary btn-lg" style="width: 30%;">Update &raquo;</a></p>
+        <input type="submit" value="Update" class="btn btn-default" />
         </div>
     </div>
 </div>

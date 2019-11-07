@@ -111,7 +111,7 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: freelancers/Edit/5
-        public ActionResult Edit(int? id=11)
+        public ActionResult Edit(int? id=9)
         {
             if (id == null)
             {
