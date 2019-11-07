@@ -82,9 +82,9 @@ namespace ProjektGruppF.Models
         //}
 
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-        public void UppdateSkill_cv(int id, List<string> name)
+        public void UppdateLanguage_cv(int id, List<string> name)
         {
-            int skill_ID = GetLanguageID(id);
+            int language_ID = GetLanguageID(id);
             int nr = 0;
             List<string> L = new List<string>();
 
@@ -111,7 +111,7 @@ namespace ProjektGruppF.Models
 
             var query =
                from sc in pgfe.language_cv
-               where sc.language_id == skill_ID && sc.cv_id == id
+               where sc.language_id == language_ID && sc.cv_id == id
                select sc;
 
             foreach (language_cv sc in query)
@@ -127,33 +127,6 @@ namespace ProjektGruppF.Models
                 }
             }
             pgfe.SaveChanges();
-            //int nr = 2;
-            //ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
-            //var uppdateSkill_cv = from s_c in pgfe.skill_cv
-            //                      join s in pgfe.skill on s_c.cv_id
-            //                      equals s.skill_id
-            //                      where s_c.cv_id == id
-            //                      where s.skill_id == 1
-            //                      select s_c;
-
-            //foreach (var item in uppdateSkill_cv)
-            //{
-
-            //    item.cv_id = id;
-            //    item.skill_id = nr;
-
-            //}
-            //pgfe.SaveChanges();
-            //foreach (var skill in uppdateSkill_cv)
-            //{
-            //    foreach (var names in name)
-            //    {
-            //        skill.name = names;
-            //    }
-            //}
-            //pgfe.SaveChanges();dsdsa
-
-
 
         }
 
@@ -171,8 +144,68 @@ namespace ProjektGruppF.Models
 
             return nr;
 
-            
-          
+        }
+
+        public void UppdateMainAbilities_cv(int id, List<string> name)
+        {
+            int mainAbilities_ID = GetMainAbilitiesID(id);
+            int nr = 0;
+            List<string> L = new List<string>();
+
+            L = name;
+            foreach (var item in L)
+            {
+                if (item == "Teamplayer")
+                {
+                    nr = 1;
+                }
+                else if (item == "Effective")
+                {
+                    nr = 2;
+                }
+                else if (item == "Quick learner")
+                {
+                    nr = 3;
+                }
+                else if (item == "Positive")
+                {
+                    nr = 4;
+                }
+            }
+
+            var query =
+               from sc in pgfe.main_abilities_cv
+               where sc.main_abilities_id == mainAbilities_ID && sc.cv_id == id
+               select sc;
+
+            foreach (main_abilities_cv sc in query)
+            {
+                if (sc.main_abilities_id == nr)
+                {
+                    sc.main_abilities_id = nr;
+                }
+                else
+                {
+                    sc.main_abilities_id = nr;
+
+                }
+            }
+            pgfe.SaveChanges();
+
+        }
+        public int GetMainAbilitiesID(int cv_id)
+        {
+            int nr = 0;
+            var query =
+                     (from sc in pgfe.main_abilities_cv
+                      where sc.cv_id == cv_id
+                      select new
+                      {
+                          sc.main_abilities_id
+                      }).FirstOrDefault();
+            nr = query.main_abilities_id;
+
+            return nr;
 
         }
         //public void AddCv(cv cv)
