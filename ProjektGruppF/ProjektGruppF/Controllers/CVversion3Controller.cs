@@ -76,7 +76,7 @@ namespace ProjektGruppF.Controllers
         }
         
         // GET: CVversion3/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id=7)
         {
             if (id == null)
             {
