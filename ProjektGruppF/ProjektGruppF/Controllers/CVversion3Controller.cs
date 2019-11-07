@@ -128,6 +128,38 @@ namespace ProjektGruppF.Controllers
             return View(cv);
         }
 
+        public ActionResult EditEducation(int id =2)
+        {
+            education ed = db.education.Find(id);
+            return View(ed);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEducation([Bind(Include = "education_id,education_name,university_name,study_years")] education ed)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(ed).State = EntityState.Modified;
+                
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
+            return View(ed);
+        }
+        public ActionResult MainAbilities(int id=2)
+        {
+
+            Main_abilities ma = db.Main_abilities.Find(id);
+            return View(ma);
+        }
+        public ActionResult MainAbilitiesL()
+        {
+
+            //Main_abilities ma = db.Main_abilities.Find(id);
+            Main_abilities ma = new Main_abilities();
+            return View(ma);
+        }
+
         // GET: CVversion3/Delete/5
         public ActionResult Delete(int? id)
         {

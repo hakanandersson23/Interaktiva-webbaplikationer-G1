@@ -22,7 +22,7 @@ namespace ProjektGruppF.Controllers
             return View(customer);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id =11)
         {
             if (id == null)
             {
