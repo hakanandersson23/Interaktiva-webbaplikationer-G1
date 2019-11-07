@@ -56,30 +56,30 @@ namespace ProjektGruppF.Models
 
         //    return TotalLanguageList;
 
-        public List<cv> LanguageList()
-        {
-            ProjektGruppFEntities1 p = new ProjektGruppFEntities1();
-            List<cv> TotalLanguageList = new List<cv>();
-            var språklist = (from l_table in p.language
+        //public List<cv> LanguageList()
+        //{
+        //    ProjektGruppFEntities1 p = new ProjektGruppFEntities1();
+        //    List<cv> TotalLanguageList = new List<cv>();
+        //    var språklist = (from l_table in p.language
 
-                             select new
-                             {
-                                 l_table.language_id,
-                                 l_table.name,
+        //                     select new
+        //                     {
+        //                         l_table.language_id,
+        //                         l_table.name,
 
-                             }).ToList();
-            foreach (var item in språklist)
-            {
+        //                     }).ToList();
+        //    foreach (var item in språklist)
+        //    {
 
-                cv l = new cv();
-                l.language_id = item.language_id;
-                l.name = item.name;
+        //        cv l = new cv();
+        //        l.language_id = item.language_id;
+        //        l.name = item.name;
 
-                TotalLanguageList.Add(l);
-            }
+        //        TotalLanguageList.Add(l);
+        //    }
 
-            return TotalLanguageList;
-        }
+        //    return TotalLanguageList;
+        //}
 
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
         public void UppdateSkill_cv(int id, List<string> name)
@@ -110,19 +110,19 @@ namespace ProjektGruppF.Models
             }
 
             var query =
-               from sc in pgfe.laguage_cv
-               where sc.skill_id == skill_ID && sc.cv_id == id
+               from sc in pgfe.language_cv
+               where sc.language_id == skill_ID && sc.cv_id == id
                select sc;
 
-            foreach (skill_cv sc in query)
+            foreach (language_cv sc in query)
             {
-                if (sc.skill_id == nr)
+                if (sc.language_id == nr)
                 {
-                    sc.skill_id = nr;
+                    sc.language_id = nr;
                 }
                 else
                 {
-                    sc.skill_id = nr;
+                    sc.language_id = nr;
 
                 }
             }

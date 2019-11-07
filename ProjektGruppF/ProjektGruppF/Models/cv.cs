@@ -63,7 +63,7 @@ namespace ProjektGruppF.Models
         //public language name { get; set; }
         //public string Language { get; set; }
         //public string name { get; set; }
-        //public int language_id { get; set; }
+        public int language_id { get; set; }
 
         //public int? language_id { get; internal set; }
     }

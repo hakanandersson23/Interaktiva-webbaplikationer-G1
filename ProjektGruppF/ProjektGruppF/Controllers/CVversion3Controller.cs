@@ -20,12 +20,12 @@ namespace ProjektGruppF.Controllers
             return View(db.cv.ToList());
         }
 
-        public ActionResult Index(string language)
-        {
-            CvFreelancerOperations cvfO = new CvFreelancerOperations();
+        //public ActionResult Index(string language)
+        //{
+        //    CvFreelancerOperations cvfO = new CvFreelancerOperations();
 
-            return View(cvfO.LanguageList());
-        }
+        //    return View(cvfO.LanguageList());
+        //}
 
         // GET: CVversion3/Details/5
         public ActionResult Details(int? id)

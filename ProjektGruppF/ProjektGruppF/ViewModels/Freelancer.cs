@@ -65,7 +65,7 @@ namespace ProjektGruppF.ViewModels
         public List<language> FreelancerLanguageList { get; set; }
 
         //public List<language> LanguageList { get; set; } //liger nu in cv.cs
-        public cv Cv { get; set; }
+        //public cv Cv { get; set; }
 
         //public IEnumerable<SelectListItem> AllLanguages { get; set; }
         //private List<int> languageList;
