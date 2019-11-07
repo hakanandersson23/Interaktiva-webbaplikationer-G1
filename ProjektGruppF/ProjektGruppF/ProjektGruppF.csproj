@@ -142,13 +142,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerLandingController.cs" />
     <Compile Include="Controllers\customersController.cs" />
-    <Compile Include="Controllers\cvFreelancerController.cs" />
     <Compile Include="Controllers\CVversion3Controller.cs" />
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
-    <Compile Include="Controllers\TestcvFreelancerController.cs" />
-    <Compile Include="Controllers\viewCVController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -283,21 +280,10 @@
     <Content Include="Views\freelancers\Start.cshtml" />
     <Content Include="Views\freelancers\Edit.cshtml" />
     <Content Include="Views\freelancers\Index.cshtml" />
-    <Content Include="Views\cvFreelancer\Create.cshtml" />
-    <Content Include="Views\cvFreelancer\Delete.cshtml" />
-    <Content Include="Views\cvFreelancer\Details.cshtml" />
-    <Content Include="Views\cvFreelancer\Edit.cshtml" />
-    <Content Include="Views\cvFreelancer\Index.cshtml" />
     <Content Include="Views\savedFreelancers\Index.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
-    <Content Include="Views\cvFreelancer\Conformation.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
     <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
-    <Content Include="Views\CV_\Create.cshtml" />
-    <Content Include="Views\CV_\Delete.cshtml" />
-    <Content Include="Views\CV_\Details.cshtml" />
-    <Content Include="Views\CV_\Edit.cshtml" />
-    <Content Include="Views\CV_\Index.cshtml" />
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <Content Include="Views\CustomerLanding\_ViewStart.cshtml" />
     <Content Include="Views\freelancers\CV.cshtml" />

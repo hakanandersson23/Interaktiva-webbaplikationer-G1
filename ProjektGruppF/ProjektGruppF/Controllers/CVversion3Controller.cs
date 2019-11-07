@@ -20,6 +20,13 @@ namespace ProjektGruppF.Controllers
             return View(db.cv.ToList());
         }
 
+        //public ActionResult Index(string language)
+        //{
+        //    CvFreelancerOperations cvfO = new CvFreelancerOperations();
+
+        //    return View(cvfO.LanguageList());
+        //}
+
         // GET: CVversion3/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,54 +53,64 @@ namespace ProjektGruppF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] cv cv)
+        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] ViewModels.Freelancer freelancer)
         {
+            cv cv = new cv();
+            language language = new language();
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);
+                List<string> languages = new List<string>();
+                languages.Add("Swedish");
+                languages.Add("English");
+                languages.Add("Spanish");
+                languages.Add("French");
+                SelectList languagesList = new SelectList(languages);
+                ViewData["languagesList"] = languagesList;
+                db.language.Add(language);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cv);
+            return View(freelancer);
         }
-
+        
         // GET: CVversion3/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    cv cv = db.cv.Find(id);
-        //    if (cv == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(cv);
-        //}
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-
-            var FreelancerViewModel = new ViewModels.Freelancer
-            { Cv = db.cv.Include(i => i.language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
-
-
-            if (FreelancerViewModel.Cv == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            cv cv = db.cv.Find(id);
+            if (cv == null)
+            {
                 return HttpNotFound();
-
-
-            var languagesList = db.language.ToList();
-            FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
-
-            //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
-            ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
-
-
-            return View(FreelancerViewModel);
+            }
+            return View(cv);
         }
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+        //    var FreelancerViewModel = new ViewModels.Freelancer
+        //    { Cv = db.cv.Include(i => i.Language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
+
+
+        //    if (FreelancerViewModel.Cv == null)
+        //        return HttpNotFound();
+
+
+        //    var languagesList = db.language.ToList();
+        //    FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
+
+        //    //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
+        //    ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
+
+
+        //    return View(FreelancerViewModel);
+        //}
 
         // POST: CVversion3/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

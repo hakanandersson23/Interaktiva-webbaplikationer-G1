@@ -14,8 +14,8 @@ namespace ProjektGruppF.Models
     
     public partial class language_cv
     {
-        public Nullable<int> cv_id { get; set; }
-        public Nullable<int> language_id { get; set; }
+        public int cv_id { get; set; }
+        public int language_id { get; set; }
         public int language_cv_id { get; set; }
     
         public virtual cv cv { get; set; }
