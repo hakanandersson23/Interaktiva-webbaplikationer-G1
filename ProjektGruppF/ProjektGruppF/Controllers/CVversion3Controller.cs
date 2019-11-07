@@ -53,18 +53,28 @@ namespace ProjektGruppF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] cv cv)
+        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] ViewModels.Freelancer freelancer)
         {
+            cv cv = new cv();
+            language language = new language();
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);
+                List<string> languages = new List<string>();
+                languages.Add("Swedish");
+                languages.Add("English");
+                languages.Add("Spanish");
+                languages.Add("French");
+                SelectList languagesList = new SelectList(languages);
+                ViewData["languagesList"] = languagesList;
+                db.language.Add(language);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cv);
+            return View(freelancer);
         }
-
+        
         // GET: CVversion3/Edit/5
         public ActionResult Edit(int? id)
         {
