@@ -18,6 +18,7 @@ namespace ProjektGruppF.Controllers
 
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
+            savedFreelancersOperations sOP = new savedFreelancersOperations();
         // GET: freelancers
         public ActionResult Index()
         {
@@ -26,7 +27,6 @@ namespace ProjektGruppF.Controllers
         }
         public ActionResult skills_Expertiser()
         {
-            savedFreelancersOperations sOP = new savedFreelancersOperations();
             List<string> skills = new List<string>();
             skills.Add("All Skills");
             skills.Add("Programming");
@@ -35,6 +35,18 @@ namespace ProjektGruppF.Controllers
             skills.Add("Mobile applications developing");
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
+            return View(sOP.AllFreelancers());
+
+        }
+        [HttpPost]
+        public ActionResult skills_ExpertiserCreate([Bind(Include = "expertise_id,cv_id")] expertise_cv expertise)
+        {
+            if (ModelState.IsValid)
+            {
+                db.expertise_cv.Add(expertise);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View(sOP.AllFreelancers());
 
         }
@@ -74,7 +86,7 @@ namespace ProjektGruppF.Controllers
         // GET: freelancers/Create
         public ActionResult Create()
         {
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality");
+           // ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality");
             return View();
         }
 
@@ -92,12 +104,12 @@ namespace ProjektGruppF.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
+            //ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
             return View(freelancer);
         }
 
         // GET: freelancers/Edit/5
-        public ActionResult Edit(int? id=8)
+        public ActionResult Edit(int? id=11)
         {
             if (id == null)
             {
