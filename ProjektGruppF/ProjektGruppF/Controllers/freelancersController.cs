@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
+using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
@@ -19,6 +20,7 @@ namespace ProjektGruppF.Controllers
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
             savedFreelancersOperations sOP = new savedFreelancersOperations();
+        SavedFreelancersVM sf = new SavedFreelancersVM();
         // GET: freelancers
         public ActionResult Index()
         {
@@ -35,19 +37,19 @@ namespace ProjektGruppF.Controllers
             skills.Add("Mobile applications developing");
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
-            return View(sOP.AllFreelancers());
+            return View(sf);
 
         }
         [HttpPost]
-        public ActionResult skills_ExpertiserCreate([Bind(Include = "expertise_id,cv_id")] expertise_cv expertise)
+        public ActionResult skills_Expertiser([Bind(Include = "expertise_id,cv_id")] expertise_cv expertise)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 db.expertise_cv.Add(expertise);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("start");
             }
-            return View(sOP.AllFreelancers());
+            return View();
 
         }
 

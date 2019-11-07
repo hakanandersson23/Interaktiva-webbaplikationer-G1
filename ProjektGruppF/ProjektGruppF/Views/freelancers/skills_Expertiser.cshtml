@@ -1,19 +1,34 @@
 ﻿@model ProjektGruppF.ViewModels.SavedFreelancersVM
 
-    @{
-        ViewBag.Title = "skills_Expertiser";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-    <h2>skills_Expertiser</h2>
+@{
+    ViewBag.Title = "skills_Expertiser";
+    Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
+}
+<h2>skills_Expertiser</h2>
 
-    @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
-    {
-        @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
+@using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
+{
+    @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
+}
+<br />
+<select id="expertise"></select>
+<br /><br />
+<input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;" />
 
-    <br />
-    <select id="expertise"></select>
-    <br /><br />
-    <input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;" />
+
+
+}
+@using (Html.BeginForm("skills_Expertiser", "freelancers"))
+{
+    
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Expertise_id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Expertise_id, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Expertise_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Cv_id, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -22,57 +37,52 @@
             @Html.ValidationMessageFor(model => model.Cv_id, "", new { @class = "text-danger" })
         </div>
     </div>
+    <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("skills_Expertiser", "freelancers")'" />
+}
+@*<input type="submit" value="Add expertise" class="btn btn-default" onclick="location.href='@Url.Action("skills_Expertiser", "freelancers")'" />*@
 
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Add expertise" class="btn btn-default" />
-        </div>
-    </div>
-    }
-    @section scripts {
-        <script>
-            $(document).ready(function () {
-                $("#expertise").prop("disabled", true);
-                $("#skillsList").change(function () {
-                    if ($("#skillsList").val() != "All Skills") {
-                        var options = {};
-                        options.url = "/savedFreelancers/GetExpertises";
-                        options.type = "POST";
-                        options.data = JSON.stringify({ skills: $("#skillsList").val() });
-                        options.dataType = "json";
-                        options.contentType = "application/json";
-                        options.success = function (expertise) {
-                            $("#expertise").empty();
-                            for (var i = 0; i < expertise.length; i++) {
-                                $("#expertise").append("<option>" + expertise[i] + "</option>");
-                            }
-                            $("#expertise").prop("disabled", false);
-                        };
-                        options.error = function () { alert("Error retrieving expertises!"); };
-                        $.ajax(options);
-                    }
-                    else {
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#expertise").prop("disabled", true);
+            $("#skillsList").change(function () {
+                if ($("#skillsList").val() != "All Skills") {
+                    var options = {};
+                    options.url = "/savedFreelancers/GetExpertises";
+                    options.type = "POST";
+                    options.data = JSON.stringify({ skills: $("#skillsList").val() });
+                    options.dataType = "json";
+                    options.contentType = "application/json";
+                    options.success = function (expertise) {
                         $("#expertise").empty();
-                        $("#expertise").prop("disabled", true);
-                    }
+                        for (var i = 0; i < expertise.length; i++) {
+                            $("#expertise").append("<option>" + expertise[i] + "</option>");
+                        }
+                        $("#expertise").prop("disabled", false);
+                    };
+                    options.error = function () { alert("Error retrieving expertises!"); };
+                    $.ajax(options);
+                }
+                else {
+                    $("#expertise").empty();
+                    $("#expertise").prop("disabled", true);
+                }
+            });
+        });
+
+        $('select').on('change', function () {
+            $('#input').val($(this).val());
+        });
+
+        $(document).ready(function filter() {
+            $('#input').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('.searchField *').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+}
 
-            $('select').on('change', function () {
-                $('#input').val($(this).val());
-            });
-
-            $(document).ready(function filter() {
-                $('#input').on('keyup', function () {
-                    var value = $(this).val().toLowerCase();
-                    $('.searchField *').filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    }
-    
