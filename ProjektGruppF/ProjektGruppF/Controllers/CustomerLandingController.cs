@@ -25,5 +25,12 @@ namespace ProjektGruppF.Controllers
             ViewBag.Message = freelancer_id.ToString();
             return View(flc.ViewFreelancer(freelancer_id, cv_id));
         }
+
+        public ActionResult Testing(int cusID, int freeID)
+        {
+            FreelancerCardOperations flc = new FreelancerCardOperations();
+            flc.SavefreeToCus(cusID, freeID);
+            return RedirectToAction("Index");
+        }
     }
 }
