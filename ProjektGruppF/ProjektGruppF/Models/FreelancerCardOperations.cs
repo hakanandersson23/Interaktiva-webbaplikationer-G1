@@ -144,6 +144,21 @@ namespace ProjektGruppF.Models
             int age = Convert.ToInt32(todaysdate.Year) - Convert.ToInt32(birthday.Year);
             return age;
         }
+        //public Freelancer EditEducation(int cv_id)
+        //{
+        //    var query =
+        //       from sc in pgfe.education
+        //       where sc.skill_id == skill_ID && sc.cv_id == id
+        //       select sc;
+
+
+
+
+
+
+
+
+        //}
 
 
         public Freelancer ViewFreelancer(int freelancer_id, int cv_id)
