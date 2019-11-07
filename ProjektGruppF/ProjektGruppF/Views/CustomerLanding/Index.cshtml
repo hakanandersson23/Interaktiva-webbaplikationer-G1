@@ -43,7 +43,7 @@
                         }
 
                         @***************** Knapp för att spara frilansare****************@
-                        @using (Html.BeginForm("Testing", "CustomerLanding", new { cusID = 2, freeID = item.Freelancer_id }))
+                        @using (Html.BeginForm("Testing", "CustomerLanding", new { cusID = 11, freeID = item.Freelancer_id }))
                         {
                             <input class="btn btn-primary" type="submit" value="Save" style="width: 40%; float: right;" onclick="location.href='@Url.Action("Testing", "savedFreelancers")'" />
                         }

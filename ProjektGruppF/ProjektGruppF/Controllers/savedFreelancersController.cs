@@ -13,6 +13,10 @@ namespace ProjektGruppF.Controllers
         FreelancerCardOperations fc = new FreelancerCardOperations();
         public ActionResult Index()
         {
+            int cusID = 11;
+            savedFreelancersOperations sfo = new savedFreelancersOperations();
+            return View(sfo.CusSavedFree(cusID));
+            /*
             savedFreelancersOperations sOP = new savedFreelancersOperations();
             List<string> skills = new List<string>();
             skills.Add("All Skills");
@@ -23,6 +27,7 @@ namespace ProjektGruppF.Controllers
             SelectList skillsList = new SelectList(skills);
             ViewData["skillsList"] = skillsList;
             return View(sOP.AllFreelancers());
+            */
         }
         public JsonResult GetExpertises(string skills)
         {

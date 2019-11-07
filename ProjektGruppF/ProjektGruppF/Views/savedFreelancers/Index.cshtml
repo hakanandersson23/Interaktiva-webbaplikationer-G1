@@ -1,36 +1,52 @@
-﻿@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
-
+﻿@model List<ProjektGruppF.ViewModels.Freelancer>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>These are your saved freelancers</h2>
-<p>Filter your freelancers by choosing desired skill and expertise or by using the searchbox.</p>
+<h2 style="text-align: center; margin-top: 3%;"> Freelancers</h2>
 
-@using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
-{
-    @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
-}
-<br />
-<select id="expertise"></select>
-<br /><br />
-<input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;"/>
 
-<div class="searchField">
+@Html.AntiForgeryToken()
+
+<input id="filter" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%; height: 50px; margin-top: 2%; margin-bottom: 3%; margin-left: 37%;" />
+<div id="results">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-sm-3">
-                <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
-                    <img src="" class="card-img-top" alt="A picture of the freelancer">
-                    <div class="card-body" style="padding:1.25rem; background:lightblue;">
-                        <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
-                        <p class="card-text">
-                            Adress: @item.Adress  <br>
-                            Phonenumber: @item.Phonenumber  <br>
-                            Email: @item.Email  <br><br>
+            <div class="col-lg-3 col-md-3 colsm-3 col-xs-6 results" style="display:flex;">
+                <div class="card bg-light mb-3 " style="margin-bottom:20px;">
+                    <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:180px; width:100%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Firstname @item.Lastname</h5>
+                        <p class="card-text" style=" flex:1;">
+                            Age: @item.Age <br>
+                            Nationality: @item.Nationality  <br>
+                            @foreach (var skill in item.SkillList)
+                            {
+                                @skill.name<br />
+                            }
+                            @foreach (var expertise in item.ExpertiseList)
+                            {
+                                @expertise.name
+                                <span>
+                                    @for (int i = 0; i < Convert.ToInt32(expertise.rank_expertise_id); i++)
+                                    {
+                                        <span class="fa fa-star" style="color: orange;"></span>
+                                    }
+                                    <br />
+                                </span>
+                            }
                         </p>
-                        <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">View CV</a>
+                        @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
+                        {
+                            <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
+                        }
+
+                        @***************** Knapp för att spara frilansare****************@
+                        @using (Html.BeginForm("Testing", "CustomerLanding", new { cusID = 2, freeID = item.Freelancer_id }))
+                        {
+                            <input class="btn btn-primary" type="button" value="Remove" style="width: 40%; float: right;" />
+                        }
                     </div>
                 </div>
             </div>
@@ -40,45 +56,130 @@
 
 @section scripts {
     <script>
-        $(document).ready(function () {
-            $("#expertise").prop("disabled", true);
-            $("#skillsList").change(function () {
-                if ($("#skillsList").val() != "All Skills") {
-                    var options = {};
-                    options.url = "/savedFreelancers/GetExpertises";
-                    options.type = "POST";
-                    options.data = JSON.stringify({ skills: $("#skillsList").val() });
-                    options.dataType = "json";
-                    options.contentType = "application/json";
-                    options.success = function (expertise) {
-                        $("#expertise").empty();
-                        for (var i = 0; i < expertise.length; i++) {
-                            $("#expertise").append("<option>" + expertise[i] + "</option>");
-                        }
-                        $("#expertise").prop("disabled", false);
-                    };
-                    options.error = function () { alert("Error retrieving expertises!"); };
-                    $.ajax(options);
-                }
-                else {
-                    $("#expertise").empty();
-                    $("#expertise").prop("disabled", true);
-                }
-            });
-        });
-
-        $('select').on('change', function () {
-            $('#input').val($(this).val());
-        });
-
-        $(document).ready(function filter() {
+       @* $(document).ready(function filter() {
             $('#input').on('keyup', function () {
                 var value = $(this).val().toLowerCase();
                 $('.searchField *').filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+        });*@
+  @*  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+        $(document).ready(function filter() {
+            $("#filter").keyup(function () {
+
+                // Retrieve the input field text and reset the count to zero
+                var filter = $(this).val(),
+                    count = 0;
+
+                // Loop through the comment list
+                $('#results div').each(function () {
+
+
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                        $(this).hide();  // MY CHANGE
+
+                        // Show the list item if the phrase matches and increase the count by 1
+                    } else {
+                        $(this).show(); // MY CHANGE
+                        count++;
+                    }
+
+                });
+
+            });
         });
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 }
+
+
+<!-- #region gamla saved freelancer code -->
+@*@model List<ProjektGruppF.ViewModels.SavedFreelancersVM>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>These are your saved freelancers</h2>
+    <p>Filter your freelancers by choosing desired skill and expertise or by using the searchbox.</p>
+
+    @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
+    {
+        @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
+    }
+    <br />
+    <select id="expertise"></select>
+    <br /><br />
+    <input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;"/>
+
+    <div class="searchField">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-3">
+                    <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
+                        <img src="" class="card-img-top" alt="A picture of the freelancer">
+                        <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                            <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
+                            <p class="card-text">
+                                Adress: @item.Adress  <br>
+                                Phonenumber: @item.Phonenumber  <br>
+                                Email: @item.Email  <br><br>
+                            </p>
+                            <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">View CV</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @section scripts {
+        <script>
+            $(document).ready(function () {
+                $("#expertise").prop("disabled", true);
+                $("#skillsList").change(function () {
+                    if ($("#skillsList").val() != "All Skills") {
+                        var options = {};
+                        options.url = "/savedFreelancers/GetExpertises";
+                        options.type = "POST";
+                        options.data = JSON.stringify({ skills: $("#skillsList").val() });
+                        options.dataType = "json";
+                        options.contentType = "application/json";
+                        options.success = function (expertise) {
+                            $("#expertise").empty();
+                            for (var i = 0; i < expertise.length; i++) {
+                                $("#expertise").append("<option>" + expertise[i] + "</option>");
+                            }
+                            $("#expertise").prop("disabled", false);
+                        };
+                        options.error = function () { alert("Error retrieving expertises!"); };
+                        $.ajax(options);
+                    }
+                    else {
+                        $("#expertise").empty();
+                        $("#expertise").prop("disabled", true);
+                    }
+                });
+            });
+
+            $('select').on('change', function () {
+                $('#input').val($(this).val());
+            });
+
+            $(document).ready(function filter() {
+                $('#input').on('keyup', function () {
+                    var value = $(this).val().toLowerCase();
+                    $('.searchField *').filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    }
+*@
+<!-- #endregion -->
