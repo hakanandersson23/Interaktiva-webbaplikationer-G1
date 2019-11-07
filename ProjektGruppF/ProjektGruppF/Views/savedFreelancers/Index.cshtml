@@ -4,50 +4,38 @@
     ViewBag.Title = "Index";
 }
 
-<h2>These are your saved freelancers programming</h2>
-<p>Filter your search by choosing desired skill, expertise and rank in the drop-down boxes below and then clicking on "Filter".</p>
+<h2>These are your saved freelancers</h2>
+<p>Filter your freelancers by choosing desired skill and expertise or by using the searchbox.</p>
 
 @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
 {
     @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
 }
 <br />
-<select id="expertise" class="centerSelect"></select>
+<select id="expertise"></select>
 <br /><br />
+<input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;"/>
 
-<input id="input" type="text" />
-
 <div class="searchField">
-    <p>Jag heter Charlie</p>
-</div>
-<div class="searchField">
-    <p>hallå där</p>
-</div>
-<div class="searchField">
-    <p>absolut!!!!</p>
-</div>
-<div class="searchField">
-    <p>wowwowowowowow wowowow</p>
-</div>
-
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-sm-3">
-            <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
-                <img src="" class="card-img-top" alt="A picture of the freelancer">
-                <div class="card-body" style="padding:1.25rem; background:lightblue;">
-                    <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
-                    <p id="filter" class="card-text">
-                        Adress: @item.Adress  <br>
-                        Phonenumber: @item.Phonenumber  <br>
-                        Email: @item.Email  <br>
-                    </p>
-                    <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; float: left; margin-left: 35%; margin-right: 35%; width: 30%;">View CV</a>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card" style=" background:yellow; border: 1px solid rgba(0,0,0,.125); border-radius:.25rem; margin-top: 5%; margin-bottom: 5%;">
+                    <img src="" class="card-img-top" alt="A picture of the freelancer">
+                    <div class="card-body" style="padding:1.25rem; background:lightblue;">
+                        <h5 class="card-title">@item.Firstname.ToUpper() @item.Lastname.ToUpper()</h5>
+                        <p class="card-text">
+                            Adress: @item.Adress  <br>
+                            Phonenumber: @item.Phonenumber  <br>
+                            Email: @item.Email  <br><br>
+                        </p>
+                        <a href=@Url.Action("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">View CV</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
 
 @section scripts {

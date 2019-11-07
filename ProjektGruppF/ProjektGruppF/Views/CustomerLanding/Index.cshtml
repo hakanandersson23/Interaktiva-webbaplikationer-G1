@@ -3,12 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Sidan ska visa alla frilansare cvkort</h2>
+<h2 style="text-align: center; margin-top: 3%;">Available Freelancers</h2>
 
 
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
-<div class="card-group">
+<input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%; height: 50px; margin-top: 2%; margin-bottom: 3%; margin-left: 37%;"/>
+<div class="searchField">
     <div class="row">
         @foreach (var item in Model)
         {
@@ -39,17 +40,17 @@
                         </p>
                         <div>
                             @* <a style="float:right;" href="#" class="btn btn-primary">save</a>
-        <a href="#" class="btn btn-primary">View</a>*@
+                                <a href="#" class="btn btn-primary">View</a>*@
                             @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
                             {
-                                <input class="btn btn-primary" type="submit" value="View" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
+                                <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
                             }
-
-                            @**************** Knapp för att spara frilansare***************
-        @using (Html.BeginForm("Index", "CustomerLanding", new { id = item.Freelancer_id }))
-        {
-            <input type="submit" value="save" onclick="location.href='@Url.Action("Index", "CustomerLanding")'" />
-        }*@
+                            
+                            @***************** Knapp för att spara frilansare****************@
+                            @using (Html.BeginForm("Index", "CustomerLanding", new { id = item.Freelancer_id }))
+                            {
+                                <input class="btn btn-primary" type="submit" value="Save" style="width: 40%; float: right;" onclick="location.href='@Url.Action("Index", "savedFreelancers")'" />
+                            }
                         </div>
                     </div>
                 </div>
@@ -58,3 +59,14 @@
 
     </div>
 </div>
+    <script>
+        $(document).ready(function filter() {
+            $('#input').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('.searchField *').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

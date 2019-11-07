@@ -61,7 +61,7 @@
 
     </dl>
     <div id="Third">
-        <p>This is what you know</p>
+        <p>These are your registered skills:</p>
         @Html.DropDownList("Skill", "Registered skills")
      
         
@@ -73,13 +73,14 @@
 </section>
 <div id="second">
 
-<h3 >Your personal Letter.</h3>
-<p>@Html.DisplayFor(model => model.PersonalLetter)</p>
-<p style="color:blueviolet">Wanna update you personal info? <br /> Click below.</p>
-
-<input type="submit" value="Edit" onclick="location.href='@Url.Action("Edit", "freelancers")'" />
-<p style="color:blueviolet">Take a look at you CV here</p>
-<input type="submit" value="submit" onclick="location.href='@Url.Action("CV", "freelancers")'" />
+    <h3>Your personal Letter.</h3>
+    <p>@Html.DisplayFor(model => model.PersonalLetter)</p>
+    <br /><br /><br />
+    <p style="color:blueviolet">Wanna update you personal info? Click below.</p>
+    <a href=@Url.Action("Edit", "freelancers") class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">Update profile</a>
+    <br /><br />
+    <p style="color:blueviolet">Take a look at you CV here</p>
+    <a href=@Url.Action("CV", "freelancers") class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">View CV</a>
 </div>
 
 
