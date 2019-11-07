@@ -12,12 +12,11 @@ namespace ProjektGruppF.Models
 
         public void UppdateSkill_cv(int id, List<string> name)
         {
+            int skill_ID = GetSkillID(id);
             int nr = 0;
             List<string> L = new List<string>();
-            L.Add("Programming");
-            L.Add("Web developing");
-            L.Add("Databases");
-            L.Add("Mobile applications developing");
+            
+            L = name;
             foreach (var item in L)
             {
                 if (item== "Programming")
@@ -40,7 +39,7 @@ namespace ProjektGruppF.Models
             
             var query =
                from sc in pgfe.skill_cv
-               where sc.skill_id == 1 && sc.cv_id == id
+               where sc.skill_id ==skill_ID  && sc.cv_id == id
                select sc;
 
             foreach (skill_cv sc in query)
@@ -85,6 +84,23 @@ namespace ProjektGruppF.Models
 
 
         }
+
+        public int GetSkillID(int cv_id)
+        {
+            int nr = 0;
+            var query =
+                     (from sc in pgfe.skill_cv
+                      where sc.cv_id == cv_id
+                      select new
+                      {
+                          sc.skill_id
+                      }).FirstOrDefault();
+            nr = query.skill_id;
+
+            return nr;
+           
+        }
+
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
         public List<Freelancer> FreelancercardVMList() {
             ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
