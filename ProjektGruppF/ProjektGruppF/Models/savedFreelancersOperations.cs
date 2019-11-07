@@ -133,5 +133,44 @@ namespace ProjektGruppF.Models
             }
             return allRanks;
         }*/
+
+        public List<Freelancer> SavedFreeID(int cusID)
+        {
+            ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
+            List<Freelancer> CusSavedFreeID = new List<Freelancer>();
+            var IdList = (from c_f in pgfe.customer_freelancer
+                          where c_f.customer_id == cusID
+                            select new
+                            {
+                                c_f.freelancer_id
+                            }).ToList();
+            foreach( var item in IdList)
+            {
+                Freelancer f = new Freelancer();
+                f.Freelancer_id = item.freelancer_id;
+                CusSavedFreeID.Add(f);
+            }
+            return CusSavedFreeID;
+        }
+
+        public List<Freelancer> CusSavedFree(int cusID)
+        {
+            FreelancerCardOperations flco = new FreelancerCardOperations();
+            List<Freelancer> AllFreelancers = flco.FreelancercardVMList();
+            List<Freelancer> FilteredList = new List<Freelancer>();
+            List<Freelancer> sfID = SavedFreeID(cusID);
+
+            foreach (var freelancerItem in AllFreelancers)
+            {
+                foreach (var idItem in sfID)
+                {
+                    if(freelancerItem.Freelancer_id == idItem.Freelancer_id)
+                    {
+                        FilteredList.Add(freelancerItem);
+                    }
+                }
+            }
+            return FilteredList;
+        }
     }
 }
