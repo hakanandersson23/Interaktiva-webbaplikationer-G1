@@ -28,39 +28,45 @@
             @Html.DisplayNameFor(model => model.Registration_date)
         </th>
         <th>@Html.DisplayNameFor(model => model.Language) </th>
+        <th>
+            @Html.DisplayNameFor(model => model.main_abilities)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Drivers_license)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Registration_date)
-            </td>
-            <td>
-               
-                @for (int i = 0; i < item.TotalLanguageList.Count; i++)
-                {
-                    @Html.ListBox("language", new SelectList(item.Language, "language_id", "name"))
-                    @Html.DisplayFor(modelItem => item.TotalLanguageList[i])
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drivers_license)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Registration_date)
+        </td>
+        @*<td>
 
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Cv_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Cv_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Cv_id })
-            </td>
-        </tr>
+            @for (int i = 0; i < item.TotalLanguageList.Count; i++)
+            {
+                @Html.ListBox("language", new SelectList(item.Language, "language_id", "name"))
+                @Html.DisplayFor(modelItem => item.TotalLanguageList[i])
+
+            }
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.main_abilities)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Cv_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Cv_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Cv_id })
+        </td>
+    </tr>
     }
 
 </table>

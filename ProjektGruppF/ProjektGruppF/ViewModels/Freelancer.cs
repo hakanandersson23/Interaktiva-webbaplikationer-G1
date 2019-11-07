@@ -69,25 +69,26 @@ namespace ProjektGruppF.ViewModels
 
         public IEnumerable<SelectListItem> AllLanguages { get; set; }
         private List<int> languageList;
-        public List<int> TotalLanguageList
-        {
-            get
-            {
-                if (languageList == null)
-                {
+        public language language { get; set; }
+        //public List<int> TotalLanguageList
+        //{
+        //    get
+        //    {
+        //        if (languageList == null)
+        //        {
 
-                    //listOfCourses = Program.Course.Select(m => m.Id).ToList();
-                    //cv Cv = new cv();
+        //            //listOfCourses = Program.Course.Select(m => m.Id).ToList();
+        //            //cv Cv = new cv();
 
-                    //languageList = cv.language.Select(m => m.language_id).ToList();
-                   // languageList = Cv.language.Select(m => m.language_id).ToList();
-                    
+        //            //languageList = cv.language.Select(m => m.language_id).ToList();
+        //            languageList = Cv.language.Select(m => m.).ToList();
+        //            //languageList = Cv.language.Select(o => new SelectListItem { Text = o., Value = o.Id.ToString() });
 
-                }
-                return languageList;
-            }
-            set { languageList = value; }
-        }
+        //        }
+        //        return languageList;
+        //    }
+        //    set { languageList = value; }
+        //}
         public string languageName { get; set; }
         public int language_id { get; set; }
     }
