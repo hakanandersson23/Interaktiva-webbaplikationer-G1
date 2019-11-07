@@ -320,6 +320,18 @@ namespace ProjektGruppF.Models
             };
             return languageL;
         }
+
+        public void SavefreeToCus(int cusID, int freeID)
+        {
+            customer_freelancer cf = new customer_freelancer
+            {
+                freelancer_id = freeID,
+                customer_id = cusID
+            };
+            pgfe.customer_freelancer.Add(cf);
+            pgfe.SaveChanges();
+
+        }
     }
 }
    
