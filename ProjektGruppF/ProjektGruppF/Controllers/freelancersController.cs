@@ -52,7 +52,7 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: freelancers/Details/5
-        public ActionResult Start(int? id=11)
+        public ActionResult Start(int? id=9)
         {
             
 
@@ -68,7 +68,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(freelancer);
         }
-        public ActionResult CV(int freelancer_id=11, int cv_id=12)
+        public ActionResult CV(int freelancer_id=9, int cv_id=7)
         {
             if (freelancer_id == 0)
             {

@@ -9,12 +9,12 @@
     @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
     {
         @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
-    }
+
     <br />
     <select id="expertise"></select>
     <br /><br />
     <input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%;" />
-    
+
     <div class="form-group">
         @Html.LabelFor(model => model.Cv_id, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -23,14 +23,14 @@
         </div>
     </div>
 
-    
+
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Add expertise" class="btn btn-default" />
         </div>
     </div>
-
+    }
     @section scripts {
         <script>
             $(document).ready(function () {
@@ -75,3 +75,4 @@
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     }
+    

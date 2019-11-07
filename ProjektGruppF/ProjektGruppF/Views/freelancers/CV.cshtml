@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "CV";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
 }
 
 <h2>CV</h2>
@@ -54,11 +54,11 @@
                     @item.name <br />
                 }
                 <hr>
-                <h5 class="card-title" font-weight: bold;">Languages</h5>
+                @*<h5 class="card-title" font-weight: bold;">Languages</h5>
                 @foreach (var item in Model.LanguageList)
                 {
                     @item.name<br />
-                }
+                }*@
             </p>
         </div>
     </div>
