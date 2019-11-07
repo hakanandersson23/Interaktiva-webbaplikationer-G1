@@ -64,12 +64,12 @@ namespace ProjektGruppF.ViewModels
         public List<Main_abilities> MainAbilitiesList { get; set; }
         public List<language> FreelancerLanguageList { get; set; }
 
-        public List<language> LanguageList { get; set; }
+        //public List<language> LanguageList { get; set; } //liger nu in cv.cs
         public cv Cv { get; set; }
 
-        public IEnumerable<SelectListItem> AllLanguages { get; set; }
-        private List<int> languageList;
-        public language language { get; set; }
+        //public IEnumerable<SelectListItem> AllLanguages { get; set; }
+        //private List<int> languageList;
+        //public language language { get; set; }
         //public List<int> TotalLanguageList
         //{
         //    get
@@ -89,7 +89,7 @@ namespace ProjektGruppF.ViewModels
         //    }
         //    set { languageList = value; }
         //}
-        public string languageName { get; set; }
-        public int language_id { get; set; }
+        //public string languageName { get; set; }
+        //public int language_id { get; set; }
     }
 }

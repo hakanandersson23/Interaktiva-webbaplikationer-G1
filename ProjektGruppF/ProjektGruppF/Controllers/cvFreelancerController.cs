@@ -25,7 +25,7 @@ namespace ProjektGruppF.Controllers
         {
             CvFreelancerOperations cvfO = new CvFreelancerOperations();
 
-            return View(cvfO.languageList());
+            return View(cvfO.LanguageList());
         }
         // GET: cvFreelancer/Details/5
         public ActionResult Details(int? id)
@@ -117,7 +117,7 @@ namespace ProjektGruppF.Controllers
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
 
             var FreelancerViewModel = new Freelancer
-            { Cv = db.cv.Include(i => i.language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
+            { Cv = db.cv.Include(i => i.Language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
 
 
             if (FreelancerViewModel.Cv == null)

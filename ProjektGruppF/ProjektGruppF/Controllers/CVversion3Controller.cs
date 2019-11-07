@@ -20,6 +20,13 @@ namespace ProjektGruppF.Controllers
             return View(db.cv.ToList());
         }
 
+        public ActionResult Index(string language)
+        {
+            CvFreelancerOperations cvfO = new CvFreelancerOperations();
+
+            return View(cvfO.LanguageList());
+        }
+
         // GET: CVversion3/Details/5
         public ActionResult Details(int? id)
         {
@@ -59,41 +66,41 @@ namespace ProjektGruppF.Controllers
         }
 
         // GET: CVversion3/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    cv cv = db.cv.Find(id);
-        //    if (cv == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(cv);
-        //}
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-
-            var FreelancerViewModel = new ViewModels.Freelancer
-            { Cv = db.cv.Include(i => i.language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
-
-
-            if (FreelancerViewModel.Cv == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            cv cv = db.cv.Find(id);
+            if (cv == null)
+            {
                 return HttpNotFound();
-
-
-            var languagesList = db.language.ToList();
-            FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
-
-            //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
-            ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
-
-
-            return View(FreelancerViewModel);
+            }
+            return View(cv);
         }
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+        //    var FreelancerViewModel = new ViewModels.Freelancer
+        //    { Cv = db.cv.Include(i => i.Language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
+
+
+        //    if (FreelancerViewModel.Cv == null)
+        //        return HttpNotFound();
+
+
+        //    var languagesList = db.language.ToList();
+        //    FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
+
+        //    //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
+        //    ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
+
+
+        //    return View(FreelancerViewModel);
+        //}
 
         // POST: CVversion3/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

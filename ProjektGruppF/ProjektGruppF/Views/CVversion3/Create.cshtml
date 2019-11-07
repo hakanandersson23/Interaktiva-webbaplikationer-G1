@@ -1,5 +1,5 @@
-﻿@model ProjektGruppF.Models.cv
-
+﻿@*@model ProjektGruppF.Models.cv*@
+@model ProjektGruppF.ViewModels.Freelancer
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -57,12 +57,118 @@
         </div>*@
 
     <div class="form-group">
-        @Html.LabelFor(model => model.language, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.language, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.language, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <hr>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Education, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <fieldset>
+                <select id="F_Education" required>
+                    <option value="">-select education-</option>
+                    <option value=" it architect">it architect</option>
+                    <option value="system development">system development</option>
+                    <option value="it management">it management</option>
+                    <option value="computer science">computer science</option>
+                    <option value="web architect">web architect</option>
+                    <option value="civil enginer">civil enginer</option>
+                </select>
+
+            </fieldset>
+            <p margin-top: 10px> Name of Educational Institution</p>
+            @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+            <fieldset>
+                <select id="F_EducationYears" required>
+                    <option value="">-select years-</option>
+                    <option value=" 1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Work_experience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p margin-top: 10px> Write about your specialities</p>
+            @Html.EditorFor(model => model.Work_experience, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Work_experience, "", new { @class = "text-danger" })
+
+
+            @*@Html.TextAreaFor(model => model.main_abilities_cv, 5, 55, null)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.main_abilities, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p margin-top: 10px> Write about your specialities</p>
+            @Html.EditorFor(model => model.main_abilities, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.main_abilities, "", new { @class = "text-danger" })
+
+
+            @*@Html.TextAreaFor(model => model.main_abilities_cv, 5, 55, null)*@
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Skill, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.skill, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.skill, "", new { @class = "text-danger" })*@
+            <select id="leftSelect">
+                <option value="programming">Programmer</option>
+                <option value="web_developing">Web developer</option>
+                <option value="databases">Databaseadministrator</option>
+                <option value="m_app_developing">Mobile application developer</option>
+                <option value="usability_testing">Usability tester</option>
+                <option value="logo_designing">Logo designer</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Expertise, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.expertise, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.expertise, "", new { @class = "text-danger" })*@
+            <select id="centerSelect">
+                <option value="programming">C#</option>
+                <option value="programming">Java</option>
+                <option value="programming">Javascript</option>
+                <option value="programming">Python</option>
+                <option value="programming">Postgres</option>
+                <option value="programming">PHP</option>
+                <option value="programming">JQuery</option>
+                <option value="programming">HTML</option>
+                <option value="programming">CSS</option>
+                <option value="programming">Android</option>
+                <option value="programming">IOS</option>
+                <option value="programming">MYSQL</option>
+                <option value="programming">Oracle</option>
+            </select>
+
+            <select id="rightSelect">
+                <option value="five">5</option>
+                <option value="four">4</option>
+                <option value="three">3</option>
+                <option value="two">2</option>
+                <option value="one">1</option>
+            </select>
+
+
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />

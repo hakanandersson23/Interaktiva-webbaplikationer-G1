@@ -58,7 +58,13 @@ namespace ProjektGruppF.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<main_abilities_cv> main_abilities_cv { get; set; }
 
-        public string language { get; set; }
-        public int? language_id { get; internal set; }
+        //public List<language> LanguageList { get; set; }
+        //public language language_id { get; set; }
+        //public language name { get; set; }
+        //public string Language { get; set; }
+        //public string name { get; set; }
+        //public int language_id { get; set; }
+
+        //public int? language_id { get; internal set; }
     }
 }
