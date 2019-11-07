@@ -303,11 +303,15 @@
     <Content Include="Views\freelancers\CV.cshtml" />
     <Content Include="Views\savedFreelancers\_ViewStart.cshtml" />
     <Content Include="Views\customers\_ViewStart.cshtml" />
+
+    <Content Include="Views\freelancers\skills_Expertiser.cshtml" />
+
     <Content Include="Views\CVversion3\Create.cshtml" />
     <Content Include="Views\CVversion3\Delete.cshtml" />
     <Content Include="Views\CVversion3\Details.cshtml" />
     <Content Include="Views\CVversion3\Edit.cshtml" />
     <Content Include="Views\CVversion3\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

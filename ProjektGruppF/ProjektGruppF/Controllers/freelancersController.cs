@@ -14,6 +14,8 @@ namespace ProjektGruppF.Controllers
 
         //TESTLinda
     {
+        FreelancerCardOperations fc = new FreelancerCardOperations();
+
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: freelancers
@@ -22,12 +24,27 @@ namespace ProjektGruppF.Controllers
             var freelancer = db.freelancer.Include(f => f.cv);
             return View(freelancer);
         }
+        public ActionResult skills_Expertiser()
+        {
+            savedFreelancersOperations sOP = new savedFreelancersOperations();
+            List<string> skills = new List<string>();
+            skills.Add("All Skills");
+            skills.Add("Programming");
+            skills.Add("Web developing");
+            skills.Add("Databases");
+            skills.Add("Mobile applications developing");
+            SelectList skillsList = new SelectList(skills);
+            ViewData["skillsList"] = skillsList;
+            return View(sOP.AllFreelancers());
+
+        }
 
         // GET: freelancers/Details/5
         public ActionResult Start(int? id=11)
         {
+            
 
-            ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
+            //ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -145,6 +162,39 @@ namespace ProjektGruppF.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult GetExpertises(string skills)
+        {
+            List<string> expertises = new List<string>();
+            List<string> s = new List<string>();
+            s.Add(skills);
+            fc.UppdateSkill_cv(12, s);
+            switch (skills)
+            {
+                case "Programming":
+                    expertises.Add("C#");
+                    expertises.Add("Java");
+                    expertises.Add("Python");
+                    break;
+                case "Web developing":
+                    expertises.Add("HTML");
+                    expertises.Add("CSS");
+                    expertises.Add("Javascript");
+                    expertises.Add("JQuery");
+                    expertises.Add("PHP");
+                    break;
+                case "Databases":
+                    expertises.Add("Postgres");
+                    expertises.Add("Oracle");
+                    expertises.Add("MySQL");
+                    break;
+                case "Mobile applications developing":
+                    expertises.Add("Android");
+                    expertises.Add("IOS");
+                    break;
+            }
+            return Json(expertises);
         }
     }
 }
