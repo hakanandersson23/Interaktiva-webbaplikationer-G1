@@ -14,20 +14,49 @@ namespace ProjektGruppF.Controllers
 
         //TESTLinda
     {
+        FreelancerCardOperations fc = new FreelancerCardOperations();
+
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
+            savedFreelancersOperations sOP = new savedFreelancersOperations();
         // GET: freelancers
         public ActionResult Index()
         {
             var freelancer = db.freelancer.Include(f => f.cv);
             return View(freelancer);
         }
+        public ActionResult skills_Expertiser()
+        {
+            List<string> skills = new List<string>();
+            skills.Add("All Skills");
+            skills.Add("Programming");
+            skills.Add("Web developing");
+            skills.Add("Databases");
+            skills.Add("Mobile applications developing");
+            SelectList skillsList = new SelectList(skills);
+            ViewData["skillsList"] = skillsList;
+            return View(sOP.AllFreelancers());
+
+        }
+        [HttpPost]
+        public ActionResult skills_ExpertiserCreate([Bind(Include = "expertise_id,cv_id")] expertise_cv expertise)
+        {
+            if (ModelState.IsValid)
+            {
+                db.expertise_cv.Add(expertise);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(sOP.AllFreelancers());
+
+        }
 
         // GET: freelancers/Details/5
-        public ActionResult Start(int? id=11)
+        public ActionResult Start(int? id=9)
         {
+            
 
-            ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
+            //ViewBag.skill = new SelectList(db.skill, "skill_id", "name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,7 +68,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(freelancer);
         }
-        public ActionResult CV(int freelancer_id=11, int cv_id=12)
+        public ActionResult CV(int freelancer_id=9, int cv_id=7)
         {
             if (freelancer_id == 0)
             {
@@ -57,7 +86,7 @@ namespace ProjektGruppF.Controllers
         // GET: freelancers/Create
         public ActionResult Create()
         {
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality");
+           // ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality");
             return View();
         }
 
@@ -75,12 +104,12 @@ namespace ProjektGruppF.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
+            //ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);
             return View(freelancer);
         }
 
         // GET: freelancers/Edit/5
-        public ActionResult Edit(int? id=8)
+        public ActionResult Edit(int? id=11)
         {
             if (id == null)
             {
@@ -145,6 +174,39 @@ namespace ProjektGruppF.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult GetExpertises(string skills)
+        {
+            List<string> expertises = new List<string>();
+            List<string> s = new List<string>();
+            s.Add(skills);
+            fc.UppdateSkill_cv(12, s);
+            switch (skills)
+            {
+                case "Programming":
+                    expertises.Add("C#");
+                    expertises.Add("Java");
+                    expertises.Add("Python");
+                    break;
+                case "Web developing":
+                    expertises.Add("HTML");
+                    expertises.Add("CSS");
+                    expertises.Add("Javascript");
+                    expertises.Add("JQuery");
+                    expertises.Add("PHP");
+                    break;
+                case "Databases":
+                    expertises.Add("Postgres");
+                    expertises.Add("Oracle");
+                    expertises.Add("MySQL");
+                    break;
+                case "Mobile applications developing":
+                    expertises.Add("Android");
+                    expertises.Add("IOS");
+                    break;
+            }
+            return Json(expertises);
         }
     }
 }

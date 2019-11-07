@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "CV";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
 }
 
 <h2>CV</h2>
@@ -45,7 +45,13 @@
                 <h5 class="card-title" font-weight: bold;">Expertise</h5>
                 @foreach (var item in Model.ExpertiseList)
                 {
-                    @item.expertise_id @item.name<br />
+                    @item.name <span>
+                    @for (int i = 0; i < Convert.ToInt32(item.rank_expertise_id); i++)
+                        {
+                            <span class="fa fa-star" style="color: orange;"></span>
+                        }
+                            <br />
+                        </span><br />
                 }
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
@@ -54,11 +60,11 @@
                     @item.name <br />
                 }
                 <hr>
-                <h5 class="card-title" font-weight: bold;">Languages</h5>
+                @*<h5 class="card-title" font-weight: bold;">Languages</h5>
                 @foreach (var item in Model.LanguageList)
                 {
                     @item.name<br />
-                }
+                }*@
             </p>
         </div>
     </div>

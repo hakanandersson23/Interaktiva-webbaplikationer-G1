@@ -146,8 +146,6 @@
     <Compile Include="Controllers\freelancersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\savedFreelancersController.cs" />
-    <Compile Include="Controllers\TestcvFreelancerController.cs" />
-    <Compile Include="Controllers\viewCVController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,7 +268,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_FreelancerLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -282,31 +280,23 @@
     <Content Include="Views\freelancers\Start.cshtml" />
     <Content Include="Views\freelancers\Edit.cshtml" />
     <Content Include="Views\freelancers\Index.cshtml" />
-    <Content Include="Views\cvFreelancer\Create.cshtml" />
-    <Content Include="Views\cvFreelancer\Delete.cshtml" />
-    <Content Include="Views\cvFreelancer\Details.cshtml" />
-    <Content Include="Views\cvFreelancer\Edit.cshtml" />
-    <Content Include="Views\cvFreelancer\Index.cshtml" />
     <Content Include="Views\savedFreelancers\Index.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
-    <Content Include="Views\cvFreelancer\Conformation.cshtml" />
     <Content Include="Views\CustomerLanding\Index.cshtml" />
     <Content Include="Views\CustomerLanding\FreelancerProfile.cshtml" />
-    <Content Include="Views\CV_\Create.cshtml" />
-    <Content Include="Views\CV_\Delete.cshtml" />
-    <Content Include="Views\CV_\Details.cshtml" />
-    <Content Include="Views\CV_\Edit.cshtml" />
-    <Content Include="Views\CV_\Index.cshtml" />
     <Content Include="Views\Shared\_CustomerLayout.cshtml" />
     <Content Include="Views\CustomerLanding\_ViewStart.cshtml" />
     <Content Include="Views\freelancers\CV.cshtml" />
     <Content Include="Views\savedFreelancers\_ViewStart.cshtml" />
     <Content Include="Views\customers\_ViewStart.cshtml" />
+    <Content Include="Views\freelancers\skills_Expertiser.cshtml" />
     <Content Include="Views\CVversion3\Create.cshtml" />
     <Content Include="Views\CVversion3\Delete.cshtml" />
     <Content Include="Views\CVversion3\Details.cshtml" />
     <Content Include="Views\CVversion3\Edit.cshtml" />
     <Content Include="Views\CVversion3\Index.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
