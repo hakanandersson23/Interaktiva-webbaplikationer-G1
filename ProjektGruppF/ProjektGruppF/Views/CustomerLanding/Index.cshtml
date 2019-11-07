@@ -8,17 +8,17 @@
 
 @Html.AntiForgeryToken()
 
-<input id="input" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%; height: 50px; margin-top: 2%; margin-bottom: 3%; margin-left: 37%;" />
-<div class="searchField">
+<input id="filter" type="text" placeholder="Search for skill, expertise or freelancer" style="width: 50%; height: 50px; margin-top: 2%; margin-bottom: 3%; margin-left: 37%;" />
+<div id="results">
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-lg-3 col-md-3 colsm-3 col-xs-6">
-                <div class="card bg-light mb-3" style="margin-bottom:20px;">
+            <div class="col-lg-3 col-md-3 colsm-3 col-xs-6 results" style="display:flex;">
+                <div class="card bg-light mb-3 " style="margin-bottom:20px;">
                     <img src="https://icon-library.net/images/default-profile-icon/default-profile-icon-24.jpg" class="card-img-top" alt="A picture of the freelancer" style="height:180px; width:100%; ">
                     <div class="card-body">
                         <h5 class="card-title">@item.Firstname @item.Lastname</h5>
-                        <p class="card-text">
+                        <p class="card-text" style=" flex:1;">
                             Age: @item.Age <br>
                             Nationality: @item.Nationality  <br>
                             @foreach (var skill in item.SkillList)
@@ -27,29 +27,25 @@
                             }
                             @foreach (var expertise in item.ExpertiseList)
                             {
-                                <div>
-                                    @expertise.name
-                                    <span>
-                                        @for (int i = 0; i < Convert.ToInt32(expertise.rank_expertise_id); i++)
-                                        {
-                                            <span class="glyphicon glyphicon-star">+</span>
-                                        }
-                                    </span>
-                                </div>
+                                @expertise.name
+                                <span>
+                                    @for (int i = 0; i < Convert.ToInt32(expertise.rank_expertise_id); i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star">+</span>
+                                    }
+                                </span>
                             }
                         </p>
-                        <div>
-                            @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
-                            {
-                                <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
-                            }
+                        @using (Html.BeginForm("FreelancerProfile", "CustomerLanding", new { freelancer_id = item.Freelancer_id, cv_id = item.Cv_id }))
+                        {
+                            <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
+                        }
 
-                            @***************** Knapp för att spara frilansare****************@
-                            @using (Html.BeginForm("Index", "CustomerLanding", new { id = item.Freelancer_id }))
-                            {
-                                <input class="btn btn-primary" type="submit" value="Save" style="width: 40%; float: right;" onclick="location.href='@Url.Action("Index", "savedFreelancers")'" />
-                            }
-                        </div>
+                        @***************** Knapp för att spara frilansare****************@
+                        @using (Html.BeginForm("Index", "CustomerLanding", new { id = item.Freelancer_id }))
+                        {
+                            <input class="btn btn-primary" type="submit" value="Save" style="width: 40%; float: right;" onclick="location.href='@Url.Action("Index", "savedFreelancers")'" />
+                        }
                     </div>
                 </div>
             </div>
@@ -59,16 +55,41 @@
 
 @section scripts {
     <script>
-
-
-        $(document).ready(function filter() {
+       @* $(document).ready(function filter() {
             $('#input').on('keyup', function () {
                 var value = $(this).val().toLowerCase();
                 $('.searchField *').filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+        });*@
+  @*  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+        $(document).ready(function filter() {
+            $("#filter").keyup(function () {
+
+                // Retrieve the input field text and reset the count to zero
+                var filter = $(this).val(),
+                    count = 0;
+
+                // Loop through the comment list
+                $('#results div').each(function () {
+
+
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                        $(this).hide();  // MY CHANGE
+
+                        // Show the list item if the phrase matches and increase the count by 1
+                    } else {
+                        $(this).show(); // MY CHANGE
+                        count++;
+                    }
+
+                });
+
+            });
         });
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 }
