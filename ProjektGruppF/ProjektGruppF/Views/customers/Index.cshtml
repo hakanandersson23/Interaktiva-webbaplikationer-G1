@@ -44,8 +44,9 @@
             @Html.DisplayFor(model => model.phonenumber)
         </td>
         <td>
-            @Html.ActionLink("Edit", "customers", new { id= Model.customer_id }) 
-         @*   @Html.ActionLink("Delete", "Delete", new { id= Model.customer_id })*@
+            @*@Html.ActionLink("Edit", "customers", new { id= Model.customer_id })*@
+            @*   @Html.ActionLink("Delete", "Delete", new { id= Model.customer_id })*@
+            <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("Edit", "customers")'" />
         </td>
     </tr>
 

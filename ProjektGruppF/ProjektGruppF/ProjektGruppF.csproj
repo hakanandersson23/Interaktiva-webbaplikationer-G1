@@ -297,6 +297,9 @@
     <Content Include="Views\CVversion3\Index.cshtml" />
     <Content Include="Views\Home\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\CVversion3\EditEducation.cshtml" />
+    <Content Include="Views\CVversion3\MainAbilities.cshtml" />
+    <Content Include="Views\CVversion3\MainAbilitiesL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
