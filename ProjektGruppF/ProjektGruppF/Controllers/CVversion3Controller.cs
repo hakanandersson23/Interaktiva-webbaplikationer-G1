@@ -125,7 +125,7 @@ namespace ProjektGruppF.Controllers
             {
                 db.Entry(cv).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit");
             }
             return View(cv);
         }
@@ -194,7 +194,7 @@ namespace ProjektGruppF.Controllers
             return View(ma);
         }
         [HttpPost]
-        public ActionResult EditWorkExperience([Bind(Include = "work_experience_id,employer_name,job_title,role,start_date,end_date,")] work_experience we)
+        public ActionResult EditWorkExperience([Bind(Include = "work_experience_id, cv_id, employer_name,job_title,role,start_date,end_date,")] work_experience we)
         {
 
             if (ModelState.IsValid)

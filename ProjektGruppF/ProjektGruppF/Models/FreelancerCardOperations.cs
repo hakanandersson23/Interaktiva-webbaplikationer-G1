@@ -236,6 +236,7 @@ namespace ProjektGruppF.Models
                        where c.cv_id == cv_id
                        select new
                        {
+                           we.work_experience_id,
                            we.employer_name,
                            we.job_title,
                            we.role,
@@ -251,6 +252,8 @@ namespace ProjektGruppF.Models
                 we2.role = item.role;
                 we2.start_date = item.start_date;
                 we2.end_date = item.end_date;
+                we2.cv_id = cv_id;
+                we2.work_experience_id = item.work_experience_id;
                 weL.Add(we2);
             };
             return weL;
