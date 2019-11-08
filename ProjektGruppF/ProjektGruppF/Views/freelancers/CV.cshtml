@@ -76,11 +76,7 @@
                 <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
                 @foreach (var item in Model.MainAbilitiesList)
                 {
-                    if (item.main_abilities_id == 2)
-                    {
-
-                        @item.name <br />
-                    }
+                    @item.name; <br />
                 }
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Languages</h5>
