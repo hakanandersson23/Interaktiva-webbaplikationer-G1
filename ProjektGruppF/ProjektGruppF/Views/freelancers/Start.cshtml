@@ -61,15 +61,19 @@
 </div>
 </section>
 <div id="second">
-
     <h3>Your personal Letter.</h3>
     <p>@Html.DisplayFor(model => model.PersonalLetter)</p>
     <br /><br /><br />
-    <p style="color:blueviolet">Wanna update you personal info? Click below.</p>
+    <hr />
+    <hr />
+    <p style="color:blue">Wanna update you personal info? Click below.</p>
     <a href=@Url.Action("Edit", "freelancers") class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">Update profile</a>
     <br /><br />
-    <p style="color:blueviolet">Take a look at you CV here</p>
+    <p style="color:blue">Take a look at you CV here</p>
     <a href=@Url.Action("CV", "freelancers", new {  }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">View CV</a>
+    <br /><br />
+    <p style="color:blue">Edit your CV by clicking here</p>
+    <a href=@Url.Action("Edit", "CVversion3", new {  }) class="btn btn-primary" style="margin-top: 5%; margin-bottom: 5%; margin-left: 20%; margin-right: 35%; width: 50%;">Edit CV</a>
 </div>
 
 

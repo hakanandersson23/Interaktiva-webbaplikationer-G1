@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="margin-top: 3%; margin-bottom: 3%;">This is the first step in creating your own CV and letting employeers find you!</h2>
 
 
 @using (Html.BeginForm())
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CV</h4>
+        <h5>Step 1 / </h5>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.cv_id)
@@ -42,58 +42,54 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*@<div class="form-group">
             @Html.LabelFor(model => model.registration_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.registration_date, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.registration_date, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" style="margin-left: 13%;" class="btn btn-primary" />
             </div>
         </div>
     </div>
     <tr>
         <td>
-            <p>Whats your education?</p>
-        </td>
-        <td>
-            @Html.ActionLink("EditEducation", "EditEducation")
+            @Html.ActionLink("Whats your education?", "EditEducation")
         </td>
     </tr>
+    <hr />
     <tr>
         <td>
-            <p>Whats your abilities?</p>
-        </td>
-        <td>
-            @Html.ActionLink("EditMainAbilities", "EditMainAbilities")
+            @Html.ActionLink("Whats your abilities?", "EditMainAbilities")
         </td>
     </tr>
+    <hr />
     <tr>
         <td>
-            <p>What languages do you speak?</p>
-        </td>
-        <td>
-            @Html.ActionLink("EditLanguage", "EditLanguage")
+            @Html.ActionLink("What languages do you speak?", "EditLanguage")
         </td>
     </tr>
+    <hr />
     <tr>
         <td>
-            <p>What work experience do you have?</p>
-        </td>
-        <td>
-            @Html.ActionLink("EditWorkExperience", "EditWorkExperience")
+            @Html.ActionLink("What work experience do you have?", "EditWorkExperience")
         </td>
     </tr>
-}
+    <hr />
+    <tr>
+        <td>
+            @Html.ActionLink("What is your main skill and expertise?", "skills_Expertiser", "freelancers")
+        </td>
+    </tr>
+}<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "Start", "freelancers")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
