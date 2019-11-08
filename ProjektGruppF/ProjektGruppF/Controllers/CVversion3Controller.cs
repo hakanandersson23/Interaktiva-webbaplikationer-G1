@@ -178,7 +178,6 @@ namespace ProjektGruppF.Controllers
         public ActionResult EditMainAbilities([Bind(Include = "main_abilities_id,name")] Main_abilities ma)
         {
            
-            //FreelancerCardOperations fc = new FreelancerCardOperations();
             if (ModelState.IsValid)
             {
                 db.Entry(ma).State = EntityState.Modified;
@@ -188,11 +187,24 @@ namespace ProjektGruppF.Controllers
             }
             return View(ma);
         }
-        public ActionResult EditMainWorkExperience(int id = 2)
+        public ActionResult EditWorkExperience(int id = 15)
         {
 
-            Main_abilities ma = db.Main_abilities.Find(id);
+            work_experience ma = db.work_experience.Find(id);
             return View(ma);
+        }
+        [HttpPost]
+        public ActionResult EditWorkExperience([Bind(Include = "work_experience_id,employer_name,job_title,role,start_date,end_date,")] work_experience we)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(we).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
+            return View(we);
         }
 
 

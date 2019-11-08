@@ -25,9 +25,13 @@
                 <h5 class="card-title" font-weight: bold;">Work experience</h5>
                 @foreach (var item in Model.Work_Experience_List)
                 {
+                    if (item.work_experience_id==15)
+                    {
                     <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
                     @item.job_title<br>
                     @item.role<br><br>
+
+                    }
                 }
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Education</h5>
@@ -46,29 +50,38 @@
                 @foreach (var item in Model.ExpertiseList)
                 {
                     @item.name <span>
-                    @for (int i = 0; i < Convert.ToInt32(item.rank_expertise_id); i++)
+                        @for (int i = 0; i < Convert.ToInt32(item.rank_expertise_id); i++)
                         {
                             <span class="fa fa-star" style="color: orange;"></span>
                         }
-                            <br />
-                        </span><br />
+                        <br />
+                    </span><br />
                 }
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Main Abilities</h5>
                 @foreach (var item in Model.MainAbilitiesList)
                 {
-                    if (item.main_abilities_id==2)
+                    if (item.main_abilities_id == 2)
                     {
 
-                    @item.name <br />
+                        @item.name <br />
                     }
                 }
                 <hr>
-                @*<h5 class="card-title" font-weight: bold;">Languages</h5>
-                @foreach (var item in Model.LanguageList)
+                <h5 class="card-title" font-weight: bold;">Languages</h5>
+                @foreach (var item in Model.FreelancerLanguageList)
                 {
-                    @item.name<br />
-                }*@
+                    if (item.language_id == 1)
+                    {
+
+                        @item.name <br />
+                    }
+                }
+                @*<h5 class="card-title" font-weight: bold;">Languages</h5>
+        @foreach (var item in Model.LanguageList)
+        {
+            @item.name<br />
+        }*@
             </p>
         </div>
     </div>

@@ -300,7 +300,7 @@
     <Content Include="Views\CVversion3\EditEducation.cshtml" />
     <Content Include="Views\CVversion3\EditMainAbilities.cshtml" />
     <Content Include="Views\CVversion3\MainAbilitiesL.cshtml" />
-    <Content Include="Views\CVversion3\EditWork.cshtml" />
+    <Content Include="Views\CVversion3\EditWorkExperience.cshtml" />
     <Content Include="Views\CVversion3\EditLanguage.cshtml" />
   </ItemGroup>
   <ItemGroup>
