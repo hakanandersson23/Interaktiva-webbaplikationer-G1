@@ -12,6 +12,7 @@ namespace ProjektGruppF.ViewModels
 {
     public class Freelancer
     {
+        public int CvIDNewFreelancer { get; set; }
         public int Freelancer_id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }

@@ -299,9 +299,9 @@
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\CVversion3\EditEducation.cshtml" />
     <Content Include="Views\CVversion3\EditMainAbilities.cshtml" />
-    <Content Include="Views\CVversion3\MainAbilitiesL.cshtml" />
     <Content Include="Views\CVversion3\EditWorkExperience.cshtml" />
     <Content Include="Views\CVversion3\EditLanguage.cshtml" />
+    <Content Include="Views\CVversion3\CreateFreelancer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

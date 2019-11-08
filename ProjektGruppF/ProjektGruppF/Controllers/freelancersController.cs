@@ -104,7 +104,7 @@ namespace ProjektGruppF.Controllers
                 
                 db.freelancer.Add(freelancer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             //ViewBag.cv_id = new SelectList(db.cv, "cv_id", "nationality", freelancer.cv_id);

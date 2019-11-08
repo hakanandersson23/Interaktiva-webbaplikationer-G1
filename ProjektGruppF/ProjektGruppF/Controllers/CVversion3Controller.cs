@@ -13,6 +13,7 @@ namespace ProjektGruppF.Controllers
 {
     public class CVversion3Controller : Controller
     {
+        Freelancer f = new Freelancer();
             FreelancerCardOperations fc = new FreelancerCardOperations();
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
@@ -22,27 +23,7 @@ namespace ProjektGruppF.Controllers
             return View(db.cv.ToList());
         }
 
-        //public ActionResult Index(string language)
-        //{
-        //    CvFreelancerOperations cvfO = new CvFreelancerOperations();
-
-        //    return View(cvfO.LanguageList());
-        //}
-
-        // GET: CVversion3/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            cv cv = db.cv.Find(id);
-            if (cv == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cv);
-        }
+        
 
         // GET: CVversion3/Create
         public ActionResult Create()
@@ -55,26 +36,36 @@ namespace ProjektGruppF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] ViewModels.Freelancer freelancer)
+        public ActionResult Create([Bind(Include = "cv_id,birthday,nationality")] cv cv )
         {
-            cv cv = new cv();
-            language language = new language();
+           
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);
-                //List<string> languages = new List<string>();
-                //languages.Add("Swedish");
-                //languages.Add("English");
-                //languages.Add("Spanish");
-                //languages.Add("French");
-                //SelectList languagesList = new SelectList(languages);
-                //ViewData["languagesList"] = languagesList;
-                //db.language.Add(language);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                fc.UpdFreelancer(10,cv.cv_id);
+                return RedirectToAction("CreateFreelancer");
             }
 
-            return View(freelancer);
+            return View(cv);
+        }
+        public ActionResult CreateFreelancer()
+        {
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult CreateFreelancer([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,cv_id")] freelancer fe)
+        {
+            if (ModelState.IsValid)
+            {
+            fe.cv_id = fc.GetCvID(10);
+                db.freelancer.Add(fe);
+                db.SaveChanges();
+                return RedirectToAction("Start", "freelancers");
+            }
+
+            return View();
         }
         
         // GET: CVversion3/Edit/5
@@ -91,32 +82,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(cv);
         }
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
-
-        //    var FreelancerViewModel = new ViewModels.Freelancer
-        //    { Cv = db.cv.Include(i => i.Language).First(i => i.language_id == id), };//skapade         public int? language_id { get; internal set; } i cv.cs
-
-
-        //    if (FreelancerViewModel.Cv == null)
-        //        return HttpNotFound();
-
-
-        //    var languagesList = db.language.ToList();
-        //    FreelancerViewModel.AllLanguages = languagesList.Select(o => new SelectListItem { Text = o.name, Value = o.language_id.ToString() });
-
-        //    //ViewBag.EmployerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.cv.freelancer_id);
-        //    ViewBag.FreelancerID = new SelectList(db.freelancer, "Id", "Name", FreelancerViewModel.Cv.freelancer);
-
-
-        //    return View(FreelancerViewModel);
-        //}
-
-        // POST: CVversion3/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "cv_id,birthday,nationality,drivers_license,registration_date,profil")] cv cv)
@@ -148,26 +114,7 @@ namespace ProjektGruppF.Controllers
             }
             return View(ed);
         }
-        //public ActionResult EditMainAbilities()
-        //{
-
-        //   // Main_abilities ma = db.Main_abilities.Find(id);
-        //    return View(fc.freeMainAbilities(9,7));
-        //}
-        //[HttpPost]
-        //public ActionResult EditMainAbilities([Bind(Include = "main_abilities_id,name")] Freelancer ma)
-        //{
-        //    ma = fc.freeMainAbilities(9, 7);
-        //    //FreelancerCardOperations fc = new FreelancerCardOperations();
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(ma).State = EntityState.Modified;
-
-        //        db.SaveChanges();
-        //        return RedirectToAction("Edit");
-        //    }
-        //    return View(ma);
-        //}
+        
         public ActionResult EditMainAbilities(int id=2)
         {
 
@@ -209,13 +156,7 @@ namespace ProjektGruppF.Controllers
 
 
 
-        public ActionResult MainAbilitiesL()
-        {
-
-            FreelancerCardOperations fc = new FreelancerCardOperations();
-            //Main_abilities ma = db.Main_abilities.Find(id);
-            return View(fc.freeMainAbilities(9,7));
-        }
+        
         public ActionResult EditLanguage(int id = 1)
         {
             language la = db.language.Find(id);

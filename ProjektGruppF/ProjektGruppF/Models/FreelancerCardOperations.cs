@@ -9,6 +9,20 @@ namespace ProjektGruppF.Models
 {
     public class FreelancerCardOperations
     {
+        public void UpdFreelancer(int freelancer_id,int cv)
+        {
+            var query =
+              from sc in pgfe.freelancer
+              where sc.freelancer_id == 10
+              select sc;
+
+            foreach (freelancer sc in query)
+            {
+                sc.cv_id = cv;
+            }
+            pgfe.SaveChanges();
+
+        }
 
         public void UppdateSkill_cv(int id, List<string> name)
         {
@@ -99,6 +113,21 @@ namespace ProjektGruppF.Models
 
             return nr;
            
+        }
+        public int? GetCvID(int freeID)
+        {
+            int? nr = 0;
+            var query =
+                     (from sc in pgfe.freelancer
+                      where sc.freelancer_id == freeID
+                      select new
+                      {
+                          sc.cv_id
+                      }).FirstOrDefault();
+            nr = query.cv_id;
+
+            return nr;
+
         }
 
         ProjektGruppFEntities1 pgfe = new ProjektGruppFEntities1();
