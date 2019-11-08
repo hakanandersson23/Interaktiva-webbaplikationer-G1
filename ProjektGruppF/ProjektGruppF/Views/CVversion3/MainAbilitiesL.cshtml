@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektGruppF.Models.Main_abilities>
+﻿@model ProjektGruppF.ViewModels.Freelancer
 
 @{
     ViewBag.Title = "MainAbilitiesL";
@@ -13,22 +13,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.Firstname)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model.MainAbilitiesList)
+    {
+        @item.name
+        
+    }
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.main_abilities_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.main_abilities_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.main_abilities_id })
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model. }) |
+            @Html.ActionLink("Details", "Details", new { id = item.main_abilities_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.main_abilities_id })*@
         </td>
     </tr>
-}
+    }
 
 </table>

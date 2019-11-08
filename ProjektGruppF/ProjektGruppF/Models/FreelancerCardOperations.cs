@@ -202,6 +202,32 @@ namespace ProjektGruppF.Models
             };
             return fl;
         }
+        public Freelancer freeMainAbilities(int freelancer_id, int cv_id)
+        {
+            var freelancer = (from free in pgfe.freelancer
+                              join c in pgfe.cv on free.cv_id equals c.cv_id
+                              where free.freelancer_id == freelancer_id
+                              select new
+                              {
+                                  free.freelancer_id,
+                                  free.firstname,
+                                  free.lastname,
+                                  free.adress,
+                                  free.phonenumber,
+                                  free.email,
+                                  free.PersonalLetter,
+                                  c.drivers_license,
+                                  c.cv_id,
+                                  c.birthday,
+                                  c.nationality,
+                              }).FirstOrDefault();
+            Freelancer fl = new Freelancer()
+            {
+                MainAbilitiesList = GetMain_Abilities(cv_id)
+            };
+            return fl;
+
+        }
 
         public List<work_experience> GetWork_Experiences(int cv_id)
         {

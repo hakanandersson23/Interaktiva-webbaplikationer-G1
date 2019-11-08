@@ -7,11 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
+using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
     public class CVversion3Controller : Controller
     {
+            FreelancerCardOperations fc = new FreelancerCardOperations();
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: CVversion3
@@ -122,7 +124,6 @@ namespace ProjektGruppF.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(cv).State = EntityState.Modified;
-                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -134,50 +135,6 @@ namespace ProjektGruppF.Controllers
             education ed = db.education.Find(id);
             return View(ed);
         }
-        public ActionResult EditMainAbilities(int id = 2)
-        {
-            Main_abilities ma = db.Main_abilities.Find(id);
-            return View(ma);
-        }
-        public ActionResult EditWork(int id = 2)
-        {
-            work_experience w = db.work_experience.Find(id);
-            return View(w);
-        }
-        public ActionResult EditLanguage(int id = 2)
-        {
-            language l = db.language.Find(id);
-            return View(l);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditLanguage([Bind(Include = "language_id, name")] language l)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(l).State = EntityState.Modified;
-
-                db.SaveChanges();
-                return RedirectToAction("EditMainAbilities");
-            }
-            return View(l);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditWork([Bind(Include = "work_experience_id,employer_name,job_title,role, start_date, end_date")] work_experience w)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(w).State = EntityState.Modified;
-                
-                db.SaveChanges();
-                return RedirectToAction("EditMainAbilities");
-            }
-            return View(w);
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditEducation([Bind(Include = "education_id,education_name,university_name,study_years")] education ed)
@@ -187,15 +144,21 @@ namespace ProjektGruppF.Controllers
                 db.Entry(ed).State = EntityState.Modified;
                 
                 db.SaveChanges();
-                return RedirectToAction("EditWork");
+                return RedirectToAction("Edit");
             }
             return View(ed);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditMainAbilities([Bind(Include = "main_abilities_id,name")] Main_abilities ma)
+        public ActionResult MainAbilities()
         {
+
+           // Main_abilities ma = db.Main_abilities.Find(id);
+            return View(fc.freeMainAbilities(9,7));
+        }
+        [HttpPost]
+        public ActionResult MainAbilities([Bind(Include = "main_abilities_id,name")] Freelancer ma)
+        {
+            ma = fc.freeMainAbilities(9,7);
+            //FreelancerCardOperations fc = new FreelancerCardOperations();
             if (ModelState.IsValid)
             {
                 db.Entry(ma).State = EntityState.Modified;
@@ -204,6 +167,15 @@ namespace ProjektGruppF.Controllers
                 return RedirectToAction("Edit");
             }
             return View(ma);
+        }
+
+
+        public ActionResult MainAbilitiesL()
+        {
+
+            FreelancerCardOperations fc = new FreelancerCardOperations();
+            //Main_abilities ma = db.Main_abilities.Find(id);
+            return View(fc.freeMainAbilities(9,7));
         }
 
         // GET: CVversion3/Delete/5
