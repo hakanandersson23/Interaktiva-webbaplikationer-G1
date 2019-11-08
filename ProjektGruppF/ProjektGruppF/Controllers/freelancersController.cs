@@ -101,6 +101,7 @@ namespace ProjektGruppF.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.freelancer.Add(freelancer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

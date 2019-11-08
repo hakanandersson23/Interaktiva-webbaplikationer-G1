@@ -10,57 +10,60 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.work_experience_id)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.work_experience_id)
 
-        <div class="form-group">
-            <h6>Your last employer</h6>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.employer_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.employer_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.cv_id)
 
-        <div class="form-group">
-            <h6>Your jobtitle</h6>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.job_title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.job_title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <h6>Your role</h6>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <h6>When did you start working there?</h6>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.start_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <h6>When did you stop working there?</h6>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.end_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.end_date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <h6>Your last employer</h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.employer_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.employer_name, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <h6>Your jobtitle</h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.job_title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.job_title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6>Your role</h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6>When did you start working there?</h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.start_date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h6>When did you stop working there?</h6>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.end_date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.end_date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
