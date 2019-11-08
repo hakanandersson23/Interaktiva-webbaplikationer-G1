@@ -62,14 +62,14 @@ namespace ProjektGruppF.Controllers
             if (ModelState.IsValid)
             {
                 db.cv.Add(cv);
-                List<string> languages = new List<string>();
-                languages.Add("Swedish");
-                languages.Add("English");
-                languages.Add("Spanish");
-                languages.Add("French");
-                SelectList languagesList = new SelectList(languages);
-                ViewData["languagesList"] = languagesList;
-                db.language.Add(language);
+                //List<string> languages = new List<string>();
+                //languages.Add("Swedish");
+                //languages.Add("English");
+                //languages.Add("Spanish");
+                //languages.Add("French");
+                //SelectList languagesList = new SelectList(languages);
+                //ViewData["languagesList"] = languagesList;
+                //db.language.Add(language);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -197,7 +197,24 @@ namespace ProjektGruppF.Controllers
             //Main_abilities ma = db.Main_abilities.Find(id);
             return View(fc.freeMainAbilities(9,7));
         }
+        public ActionResult EditLanguage(int id = 1)
+        {
+            language la = db.language.Find(id);
+            return View(la);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditLanguage([Bind(Include = "language_id,name")] language la)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(la).State = EntityState.Modified;
 
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
+            return View(la);
+        }
         // GET: CVversion3/Delete/5
         public ActionResult Delete(int? id)
         {
