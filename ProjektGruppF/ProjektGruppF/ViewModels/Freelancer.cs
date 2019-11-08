@@ -6,13 +6,12 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using ProjektGruppF.Models;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjektGruppF.ViewModels
 {
     public class Freelancer
     {
-
-        public virtual int freelancer_id { get; set; }
         public int Freelancer_id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -22,10 +21,18 @@ namespace ProjektGruppF.ViewModels
         public string Employername { get; set; }
         public string Jobtitle { get; set; }
         public string Role { get; set; }
+        [Display(Name = "Start date")]
+        [DataType(DataType.Date)]
         public System.DateTime? Startdate { get; set; }
+        [Display(Name = "End date")]
+        [DataType(DataType.Date)]
         public System.DateTime? Enddate { get; set; }
+        public string PersonalNote { get; set; }
+        public string MainAbilityName { get; set; }
 
         public virtual int Cv_id { get; set; }
+        [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         public System.DateTime Birthday { get; set; }
         public int Age { get; set; }
         //public DateTime Birthday { get; set; }

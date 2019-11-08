@@ -12,6 +12,7 @@ namespace ProjektGruppF.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     public partial class cv
@@ -30,6 +31,7 @@ namespace ProjektGruppF.Models
     
         public int cv_id { get; set; }
         [DisplayName ("Date of Birth")]
+        [DataType(DataType.Date)]
         public System.DateTime birthday { get; set; }
         [DisplayName("Nationality")]
 

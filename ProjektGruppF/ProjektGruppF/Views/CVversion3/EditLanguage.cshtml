@@ -1,27 +1,24 @@
-﻿@model ProjektGruppF.Models.Main_abilities
+﻿@model ProjektGruppF.Models.language
 
 @{
-    ViewBag.Title = "MainAbilities";
-    Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
+    ViewBag.Title = "EditLanguage";
 }
 
-<h2>MainAbilities</h2>
-
+<h2>What languages do you speak?</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Main_abilities</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.main_abilities_id)
+        @Html.HiddenFor(model => model.language_id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <h6>Write all languages with a comma as a separator</h6>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @placeholder="e.g. swedish, english, spanish..." } })
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -37,7 +34,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

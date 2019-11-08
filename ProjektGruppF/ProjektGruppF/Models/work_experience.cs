@@ -11,14 +11,19 @@ namespace ProjektGruppF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class work_experience
     {
         public int work_experience_id { get; set; }
         public string employer_name { get; set; }
         public string job_title { get; set; }
         public string role { get; set; }
+        [Display(Name = "Start date")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> start_date { get; set; }
+        [Display(Name = "End date")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> end_date { get; set; }
         public Nullable<int> cv_id { get; set; }
     

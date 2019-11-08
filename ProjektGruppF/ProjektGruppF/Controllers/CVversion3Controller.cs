@@ -122,6 +122,7 @@ namespace ProjektGruppF.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(cv).State = EntityState.Modified;
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -133,6 +134,50 @@ namespace ProjektGruppF.Controllers
             education ed = db.education.Find(id);
             return View(ed);
         }
+        public ActionResult EditMainAbilities(int id = 2)
+        {
+            Main_abilities ma = db.Main_abilities.Find(id);
+            return View(ma);
+        }
+        public ActionResult EditWork(int id = 2)
+        {
+            work_experience w = db.work_experience.Find(id);
+            return View(w);
+        }
+        public ActionResult EditLanguage(int id = 2)
+        {
+            language l = db.language.Find(id);
+            return View(l);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditLanguage([Bind(Include = "language_id, name")] language l)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(l).State = EntityState.Modified;
+
+                db.SaveChanges();
+                return RedirectToAction("EditMainAbilities");
+            }
+            return View(l);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditWork([Bind(Include = "work_experience_id,employer_name,job_title,role, start_date, end_date")] work_experience w)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(w).State = EntityState.Modified;
+                
+                db.SaveChanges();
+                return RedirectToAction("EditMainAbilities");
+            }
+            return View(w);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditEducation([Bind(Include = "education_id,education_name,university_name,study_years")] education ed)
@@ -142,21 +187,22 @@ namespace ProjektGruppF.Controllers
                 db.Entry(ed).State = EntityState.Modified;
                 
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("EditWork");
             }
             return View(ed);
         }
-        public ActionResult MainAbilities(int id=2)
-        {
 
-            Main_abilities ma = db.Main_abilities.Find(id);
-            return View(ma);
-        }
-        public ActionResult MainAbilitiesL()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMainAbilities([Bind(Include = "main_abilities_id,name")] Main_abilities ma)
         {
+            if (ModelState.IsValid)
+            {
+                db.Entry(ma).State = EntityState.Modified;
 
-            //Main_abilities ma = db.Main_abilities.Find(id);
-            Main_abilities ma = new Main_abilities();
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
             return View(ma);
         }
 
