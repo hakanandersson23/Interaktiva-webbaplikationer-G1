@@ -24,16 +24,19 @@
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Work experience</h5>
                 @foreach (var item in Model.Work_Experience_List)
-                {
-                    if (item.work_experience_id==15)
-                    {
-                    <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
-                    @item.job_title<br>
-                    @item.role<br><br>
+        {
+            if (item.work_experience_id==15)
+            {
+            <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
+            @item.job_title<br>
+            @item.role<br><br>
 
-                    }
-                }
+            }
+        }
+
                 <hr>
+
+                
                 <h5 class="card-title" font-weight: bold;">Education</h5>
                 @foreach (var item in Model.EducationList)
                 {
