@@ -188,6 +188,13 @@ namespace ProjektGruppF.Controllers
             }
             return View(ma);
         }
+        public ActionResult EditMainWorkExperience(int id = 2)
+        {
+
+            Main_abilities ma = db.Main_abilities.Find(id);
+            return View(ma);
+        }
+
 
 
         public ActionResult MainAbilitiesL()
