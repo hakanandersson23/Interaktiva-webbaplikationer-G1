@@ -223,7 +223,7 @@ namespace ProjektGruppF.Models
                               }).FirstOrDefault();
             Freelancer fl = new Freelancer()
             {
-                EducationList = GetEducations(cv_id)
+                MainAbilitiesList = GetMain_Abilities(cv_id)
             };
             return fl;
 

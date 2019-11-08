@@ -7,11 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjektGruppF.Models;
+using ProjektGruppF.ViewModels;
 
 namespace ProjektGruppF.Controllers
 {
     public class CVversion3Controller : Controller
     {
+            FreelancerCardOperations fc = new FreelancerCardOperations();
         private ProjektGruppFEntities1 db = new ProjektGruppFEntities1();
 
         // GET: CVversion3
@@ -149,15 +151,14 @@ namespace ProjektGruppF.Controllers
         public ActionResult MainAbilities()
         {
 
-            FreelancerCardOperations fc = new FreelancerCardOperations();
            // Main_abilities ma = db.Main_abilities.Find(id);
-            return View(fc.ViewFreelancer(9,7));
+            return View(fc.freeMainAbilities(9,7));
         }
         [HttpPost]
-        public ActionResult MainAbilities([Bind(Include = "main_abilities_id,name")] freelancer ma)
+        public ActionResult MainAbilities([Bind(Include = "main_abilities_id,name")] Freelancer ma)
         {
-
-            FreelancerCardOperations fc = new FreelancerCardOperations();
+            ma = fc.freeMainAbilities(9,7);
+            //FreelancerCardOperations fc = new FreelancerCardOperations();
             if (ModelState.IsValid)
             {
                 db.Entry(ma).State = EntityState.Modified;
