@@ -24,16 +24,29 @@
                 <hr>
                 <h5 class="card-title" font-weight: bold;">Work experience</h5>
                 @*@foreach (var item in Model.Work_Experience_List)
+        {
+            if (item.cv_id == 7)
+            {
+                <p>Employer:@item.employer_name<p/>
+
+
+             }
+               }*@
+
+                @foreach (var item in Model.Work_Experience_List)
                 {
                     if (item.cv_id == 7)
                     {
-                        <p>Employer:@item.employer_name<p/>
-                   
+                        <h6>Employer:@item.employer_name</h6>
+                        <h6>Job title:@item.job_title</h6>
+                        <h6>Role:@item.role</h6>
+                        <h6>Start date:@item.start_date</h6>
+                        <h6>End date:@item.end_date</h6>
 
-                     }
-                       }*@
+                    }
+                }
 
-                <hr>
+
 
 
                 <h5 class="card-title" font-weight: bold;">Education</h5>
@@ -81,8 +94,8 @@
                 }
                 <hr>
                 <
-               
-            </div>
+
+</div>
     </div>
 </div>
        
