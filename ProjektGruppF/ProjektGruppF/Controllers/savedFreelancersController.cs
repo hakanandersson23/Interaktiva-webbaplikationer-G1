@@ -67,5 +67,11 @@ namespace ProjektGruppF.Controllers
             sfo.DeleteFreeFromCus(cusID, freeID);
             return RedirectToAction("Index");
         }
+        public ActionResult SaveFreeToCus(int cusID, int freeID)
+        {
+            FreelancerCardOperations flc = new FreelancerCardOperations();
+            flc.SavefreeToCus(cusID, freeID);
+            return RedirectToAction("Index");
+        }
     }
 }

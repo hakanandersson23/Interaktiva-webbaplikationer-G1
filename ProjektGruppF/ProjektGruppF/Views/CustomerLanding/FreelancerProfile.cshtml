@@ -23,7 +23,11 @@
                 </p>
                 <div style="margin-top:3rem">
                     <input class="btn btn-primary" type="button" value="Print cv" onclick="myFunction()" />
-                    <input class="btn btn-primary" type="button" value="Download cv"/>
+                    <input class="btn btn-primary" type="button" value="Download cv" />
+                    @using (Html.BeginForm("SaveFreeToCus", "savedFreelancers", new { cusID = 11, freeID = Model.Freelancer_id }))
+                    {
+                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Save" style="width: 40%; margin-top:1rem;" onclick="location.href='@Url.Action("SaveFreeToCus", "savedFreelancers")'" />
+                    }
                 </div>
             </div>
         </div>
@@ -35,7 +39,9 @@
                 <h5 style="text-align:center">Curriculum Vitae</h5>
             </div>
             <div class="card-body">
-                <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
+                <h5 class="card-title">
+                    @Model.Firstname @Model.Lastname 
+                </h5>
                 <p class="card-text">
                     @Model.CoverLetter <br>
                     Adress:@Model.Adress  <br>
