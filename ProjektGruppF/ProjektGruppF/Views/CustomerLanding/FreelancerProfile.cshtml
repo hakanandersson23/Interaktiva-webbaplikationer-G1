@@ -17,7 +17,7 @@
                     <hr />
                     Adress: @Model.Adress  <br>
                     Phonenumber: @Model.Phonenumber  <br>
-                    Email: @Model.Email  <br>                    
+                    Email: <a href="mailto:@Model.Email">@Model.Email</a>
                     Linkedin: <a href="https://se.linkedin.com/" target="_blank">https://se.linkedin.com/</a>
                     Github:<a href="https://github.com/" target="_blank">https://github.com/</a>
                 </p>
@@ -46,17 +46,19 @@
                     @Model.CoverLetter <br>
                     Adress:@Model.Adress  <br>
                     Phonenumber: @Model.Phonenumber  <br>
-                    Email: @Model.Email  <br>
+                    Email: <a href="mailto:@Model.Email">@Model.Email</a> <br />
+                    <hr />
                     Birthday:@Model.Birthday  <br>
                     Nationality: @Model.Nationality  <br>
-                    Drivers license: @Model.Drivers_license  <br><br>
+                    <hr />
+                    Drivers license: @Model.Drivers_license  <br>
                     <hr>
                     <h5 class="card-title" font-weight: bold;">Work experience</h5>
                     @foreach (var item in Model.Work_Experience_List)
                     {
                         <h6>@item.employer_name @item.start_date <span>-</span> @item.end_date </h6>
                         @item.job_title<br>
-                        @item.role<br><br>
+                        @item.role<br>
                     }
                     <hr>
                     <h5 class="card-title" font-weight: bold;">Education</h5>

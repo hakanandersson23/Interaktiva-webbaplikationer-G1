@@ -4,8 +4,10 @@
     ViewBag.Title = "skills_Expertiser";
     Layout = "~/Views/Shared/_FreelancerLayout.cshtml";
 }
-<h2 style="margin-top: 3%; margin-bottom: 3%;">This is the final step in creating your CV</h2>
-<h5>Skill and expertise</h5>
+<h2 style="margin-top: 3%; margin-bottom: 3%;">Choose your main skill and expertise from the dropdown boxes below.</h2>
+<div style="border: 1px solid black; margin-bottom: 3%;" >
+    <div style="height:28px; width:82%; background: green; color: white; text-align: center;">Step 5</div>
+</div>
 @using (Html.BeginForm("ProcessForm", "SavedFreelancers", FormMethod.Post))
 {
     @Html.DropDownList("skillsList", ViewData["skillsList"] as SelectList)
@@ -13,7 +15,13 @@
 <br />
 <select id="expertise"></select>
 <br /><br />
-<input class="btn btn-primary" type="submit" value="Create CV" style="width: 15%; float: left;" onclick=" return confirm('Are you sure you want to save?'), location.href='@Url.Action("Start", "freelancers")'"/>
+<input class="btn btn-primary" type="submit" value="Save" style="width: 15%; float: left;" onclick=" return confirm('Are you sure you want to save?'), location.href='@Url.Action("Start", "freelancers")'"/>
+<br />
+<br />
+<br />
+<div>
+    @Html.ActionLink("Back", "Edit", "CVversion3")
+</div>
 
 @section scripts {
     <script>
@@ -42,21 +50,6 @@
                     $("#expertise").prop("disabled", true);
                 }
             });
-        });
-
-        $('select').on('change', function () {
-            $('#input').val($(this).val());
-        });
-
-        $(document).ready(function filter() {
-            $('#input').on('keyup', function () {
-                var value = $(this).val().toLowerCase();
-                $('.searchField *').filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-
-            
         });
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

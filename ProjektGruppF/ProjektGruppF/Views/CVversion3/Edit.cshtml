@@ -13,7 +13,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h5>Step 1 / </h5>
+        <div style="border: 1px solid black;">
+            <div style="height:28px; width:16%; background: green; color: white; text-align: center;">Step 1</div>
+        </div>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.cv_id)
@@ -35,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.drivers_license, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p>Drivers license (yes/no): </p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.drivers_license, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.drivers_license, "", new { @class = "text-danger" })
@@ -57,21 +59,10 @@
             </div>
         </div>
     </div>
+    <br />
     <tr>
         <td>
             @Html.ActionLink("Whats your education?", "EditEducation")
-        </td>
-    </tr>
-    <hr />
-    <tr>
-        <td>
-            @Html.ActionLink("Whats your abilities?", "EditMainAbilities")
-        </td>
-    </tr>
-    <hr />
-    <tr>
-        <td>
-            @Html.ActionLink("What languages do you speak?", "EditLanguage")
         </td>
     </tr>
     <hr />
@@ -83,10 +74,24 @@
     <hr />
     <tr>
         <td>
-            @Html.ActionLink("What is your main skill and expertise?", "skills_Expertiser", "freelancers")
+            @Html.ActionLink("What languages do you speak?", "EditLanguage")
         </td>
     </tr>
-}<hr />
+    <hr />
+    <tr>
+        <td>
+            @Html.ActionLink("What is your main skill and expertise?", "skills_Expertiser", "freelancers") 
+        </td>
+    </tr>
+    <hr />
+    <tr>
+        <td>
+            @Html.ActionLink("Whats your main ability?", "EditMainAbilities")
+        </td>
+    </tr>
+}
+<hr />
+<hr />
 <div>
     @Html.ActionLink("Back", "Start", "freelancers")
 </div>
