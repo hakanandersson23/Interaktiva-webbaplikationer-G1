@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2 style="text-align: center; margin-top: 3%;"> Freelancers</h2>
+<h2 style="text-align: center; margin-top: 3%;"> Saved freelancers</h2>
 
 
 @Html.AntiForgeryToken()
@@ -44,10 +44,10 @@
                             <input class="btn btn-primary" type="submit" value="View CV" style="width: 40%; float: left;" onclick="location.href='@Url.Action("FreelancerProfile", "CustomerLanding")'" />
                         }
 
-                        @***************** Knapp för att spara frilansare****************@
-                        @using (Html.BeginForm("Testing", "CustomerLanding", new { cusID = 2, freeID = item.Freelancer_id }))
+                        @***************** Knapp för att radera frilansare****************@
+                        @using (Html.BeginForm("DeleteFreelancer", "savedFreelancers", new { cusID = 11, freeID = item.Freelancer_id }))
                         {
-                            <input class="btn btn-primary" type="button" value="Remove" style="width: 40%; float: right;" />
+                            <input class="btn btn-primary" type="submit" value="Remove" style="width: 40%; float: right;" onclick="location.href='@Url.Action("DeleteFreelancer", "savedFreelancers")'" />
                         }
                     </div>
                 </div>

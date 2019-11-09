@@ -172,5 +172,14 @@ namespace ProjektGruppF.Models
             }
             return FilteredList;
         }
+
+        public void DeleteFreeFromCus(int cusID, int FreeID)
+        {
+            var query = (from c_f in pg.customer_freelancer
+                         where c_f.customer_id == cusID && c_f.freelancer_id == FreeID
+                         select c_f).FirstOrDefault();
+            pg.customer_freelancer.Remove(query);
+            pg.SaveChanges();
+        }
     }
 }
