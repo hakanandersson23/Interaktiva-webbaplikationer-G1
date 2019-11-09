@@ -61,5 +61,11 @@ namespace ProjektGruppF.Controllers
             }
             return Json(expertises);
         }
+        public ActionResult DeleteFreelancer(int cusID, int freeID)
+        {
+            savedFreelancersOperations sfo = new savedFreelancersOperations();
+            sfo.DeleteFreeFromCus(cusID, freeID);
+            return RedirectToAction("Index");
+        }
     }
 }
