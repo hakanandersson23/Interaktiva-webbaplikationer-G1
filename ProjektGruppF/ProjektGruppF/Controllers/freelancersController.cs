@@ -47,7 +47,7 @@ namespace ProjektGruppF.Controllers
             {   
                 db.expertise_cv.Add(expertise);
                 db.SaveChanges();
-                return RedirectToAction("start");
+                return RedirectToAction("EditMainAbilities", "CVversion3");
             }
             return View();
 

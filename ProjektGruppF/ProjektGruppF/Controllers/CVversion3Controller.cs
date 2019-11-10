@@ -91,7 +91,7 @@ namespace ProjektGruppF.Controllers
             {
                 db.Entry(cv).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("EditEducation");
             }
             return View(cv);
         }
@@ -110,7 +110,7 @@ namespace ProjektGruppF.Controllers
                 db.Entry(ed).State = EntityState.Modified;
                 
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("EditWorkExperience");
             }
             return View(ed);
         }
@@ -149,7 +149,7 @@ namespace ProjektGruppF.Controllers
                 db.Entry(we).State = EntityState.Modified;
 
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("EditLanguage");
             }
             return View(we);
         }
@@ -171,7 +171,7 @@ namespace ProjektGruppF.Controllers
                 db.Entry(la).State = EntityState.Modified;
 
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("skills_Expertiser", "freelancers");
             }
             return View(la);
         }
