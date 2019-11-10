@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron" style="float: left; margin-top: 20%; margin-left: 20%;">
+<div class="jumbotron" style="float: left; margin-top: 20%; margin-left: 15%; width: 30%; height: 35%;">
     <h1>Freelancer</h1>
     <p class="lead">Log in as a freelancer</p>
     <p><a href=@Url.Action("Start", "freelancers") class="btn btn-primary btn-lg" style="width: 100%;">Freelancer &raquo;</a></p>
@@ -10,11 +10,11 @@
             @Html.ActionLink("No account? Sign up as a freelancer here.", "Create","CVversion3")
     </div>
 </div>
-<div class="jumbotron" style="float: right; margin-top: 20%; margin-right: 20%;">
+<div class="jumbotron" style="float: right; margin-top: 20%; margin-right: 15%; width: 30%; height: 35%;">
     <h1>Customer</h1>
     <p class="lead">Log in as a customer</p>
     <p><a href=@Url.Action("Index", "CustomerLanding") class="btn btn-primary btn-lg" style="width: 100%;">Customer &raquo;</a></p>
-
-
-       
+    <div>
+        @Html.ActionLink("No account? Sign up as a customer here. (Ej implementerat)", "", "")
+    </div>
 </div>

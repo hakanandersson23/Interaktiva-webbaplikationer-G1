@@ -132,7 +132,7 @@ namespace ProjektGruppF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "freelancer_id,firstname,lastname,adress,phonenumber,email,PersonalLetter")] freelancer freelancer)
+        public ActionResult Edit([Bind(Include = "cv_id,freelancer_id,firstname,lastname,adress,phonenumber,email,PersonalLetter")] freelancer freelancer)
         {
             if (ModelState.IsValid)
             {
