@@ -130,7 +130,7 @@ namespace ProjektGruppF.Controllers
                 db.Entry(ma).State = EntityState.Modified;
 
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("Start","freelancers");
             }
             return View(ma);
         }
