@@ -13,11 +13,12 @@
         <div class="card-body">
             <h5 class="card-title">@Model.Firstname @Model.Lastname</h5>
             <p class="card-text">
-                @Model.CoverLetter <br>
-                Adress:@Model.Adress  <br>
+                @Model.CoverLetter
+                <hr />
+                Adress: @Model.Adress  <br>
                 Phonenumber: @Model.Phonenumber  <br>
                 Email: @Model.Email  <br>
-                Birthday:@Model.Birthday  <br>
+                Birthday: @Model.Birthday  <br>
                 Nationality: @Model.Nationality  <br>
                 Drivers license: @Model.Drivers_license  <br><br>
                 <hr>
@@ -36,17 +37,17 @@
                 {
                     if (item.cv_id == 7)
                     {
-                        <h6>Employer:@item.employer_name</h6>
-                        <h6>Job title:@item.job_title</h6>
-                        <h6>Role:@item.role</h6>
-                        <h6>Start date:@item.start_date</h6>
-                        <h6>End date:@item.end_date</h6>
+                        <p>Employer: @item.employer_name</p>
+                        <p>Job title: @item.job_title</p>
+                        <p>Role: @item.role</p>
+                        <p>Start date: @item.start_date</p>
+                        <p>End date: @item.end_date</p>
 
                     }
                 }
 
 
-
+                <hr />
 
                 <h5 class="card-title" font-weight: bold;">Education</h5>
                 @foreach (var item in Model.EducationList)

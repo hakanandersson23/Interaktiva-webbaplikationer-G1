@@ -221,6 +221,7 @@ namespace ProjektGruppF.Models
                 Drivers_license = freelancer.drivers_license,
                 Cv_id = freelancer.cv_id,
                 Age = AgeConverter(freelancer.birthday),
+                Birthday = freelancer.birthday,
                 Nationality = freelancer.nationality,
                 Work_Experience_List = GetWork_Experiences(cv_id),
                 SkillList = GetSkills(cv_id),
