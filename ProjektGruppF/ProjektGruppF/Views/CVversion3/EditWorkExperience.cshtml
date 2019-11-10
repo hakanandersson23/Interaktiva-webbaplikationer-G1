@@ -17,6 +17,8 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.work_experience_id)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.cv_id)
 
     <div class="form-group">
         <h6>Your last employer</h6>
